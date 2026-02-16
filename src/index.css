@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* DMV DJ Sessions - Dark Syber Palette */
+:root {
+  /* Base - Dark Syber */
+  --syber-black: #050505;
+  --syber-card: #0A0A0A;
+  --syber-border: #1A1A1A;
+  --hint-red: #E21D1D;
+  --syber-silver: #C0C0C0;
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-muted: #888888;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--syber-black);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace utility */
+.font-mono {
+  font-family: 'Geist Mono', 'Roboto Mono', monospace;
+}
+
+/* Grid background pattern - Dark Syber */
+.grid-bg {
+  position: relative;
+}
+
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#1A1A1A 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Sharp borders - no radius */
+.border-sharp {
+  border-radius: 0;
+}
+
+/* Custom scrollbar - Dark Syber */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--syber-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--syber-border);
+}
+
+/* Double line divider - Logo inspired */
+.syber-divider {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.syber-divider::before,
+.syber-divider::after {
+  content: '';
+  height: 1px;
+  background: var(--syber-border);
+}
+
+/* Crosshair cursor for interactive areas */
+.cursor-cross {
+  cursor: crosshair;
+}
+
+/* Blinking red dot */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1.5s infinite;
+}
+
+/* Form input styles */
+input, select, textarea {
+  font-family: 'Geist Mono', 'Roboto Mono', monospace;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0px 1000px #0A0A0A inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Select dropdown styling */
+select option {
+  background: #0A0A0A;
+  color: #ffffff;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth page transitions */
+main {
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
