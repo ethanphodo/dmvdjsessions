@@ -21,15 +21,15 @@ export default function VideoPlayer({
   if (!url) {
     return (
       <div className={`aspect-video bg-[#1A1A1A] flex items-center justify-center ${className}`}>
-        <span className="font-mono text-xs text-[#888] uppercase">
-          VIDEO_UNAVAILABLE
+        <span className="text-sm text-[#666]">
+          Video unavailable
         </span>
       </div>
     )
   }
 
   return (
-    <div className={`relative aspect-video bg-black ${className}`}>
+    <div className={`relative aspect-video bg-black rounded-sm overflow-hidden ${className}`}>
       <iframe
         src={url}
         title={title}
@@ -38,12 +38,6 @@ export default function VideoPlayer({
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
-      {/* Corner Label */}
-      <div className="absolute top-0 left-0 px-2 py-1 bg-[#0A0A0A]/90 border-r border-b border-[#1A1A1A]">
-        <span className="font-mono text-[10px] uppercase text-[#888]">
-          {embedType.toUpperCase()}
-        </span>
-      </div>
     </div>
   )
 }

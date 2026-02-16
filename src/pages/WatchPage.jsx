@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { videos } from '../data/videos'
 import { useVideoFilter } from '../hooks/useVideoFilter'
-import PageHeader from '../components/layout/PageHeader'
 import VideoFilters from '../components/video/VideoFilters'
 import VideoGrid from '../components/video/VideoGrid'
 import VideoPlayer from '../components/ui/VideoPlayer'
@@ -21,7 +20,6 @@ export default function WatchPage() {
 
   const handleSelectVideo = (video) => {
     setSelectedVideo(video)
-    // Scroll to player
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -30,34 +28,39 @@ export default function WatchPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] pt-12">
+    <div className="min-h-screen bg-black pt-20 md:pt-16">
       <div className="max-w-7xl mx-auto px-6">
-        <PageHeader
-          sectionNumber="01"
-          sectionLabel="WATCH"
-          title="Session Library"
-          subtitle="Explore our growing collection of intimate DJ sessions recorded across DC, Maryland, and Virginia."
-        />
+        {/* Minimal Header */}
+        <div className="pt-8 pb-8">
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-2">
+            Sessions
+          </h1>
+          <p className="text-[#888] text-lg">
+            Discover intimate DJ sets from the DMV scene.
+          </p>
+        </div>
 
         {/* Video Player */}
         {selectedVideo && (
           <div className="mb-8">
-            <div className="border border-[#E21D1D] bg-[#0A0A0A]">
+            <div className="bg-black">
               {/* Player Header */}
-              <div className="border-b border-[#1A1A1A] px-6 py-4 flex items-center justify-between">
+              <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h2 className="text-lg font-black uppercase tracking-tighter text-white">
+                  <h2 className="text-xl font-bold text-white">
                     {selectedVideo.title}
                   </h2>
-                  <p className="font-mono text-xs text-[#888] uppercase">
+                  <p className="text-sm text-[#888]">
                     {selectedVideo.djName}
                   </p>
                 </div>
                 <button
                   onClick={handleClosePlayer}
-                  className="font-mono text-xs uppercase text-[#888] hover:text-[#E21D1D] transition-colors"
+                  className="p-2 text-[#888] hover:text-white transition-colors"
                 >
-                  ✕ CLOSE
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
 
@@ -68,35 +71,22 @@ export default function WatchPage() {
                 title={selectedVideo.title}
               />
 
-              {/* Player Info */}
-              <div className="p-6">
-                <p className="text-sm text-[#888] mb-4">
-                  {selectedVideo.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {selectedVideo.genres.map((genre) => (
-                    <span
-                      key={genre}
-                      className="px-2 py-1 border border-[#1A1A1A] font-mono text-xs text-white uppercase"
-                    >
-                      {genre}
-                    </span>
-                  ))}
-                  {selectedVideo.mood.map((m) => (
-                    <span
-                      key={m}
-                      className="px-2 py-1 bg-[#1A1A1A] font-mono text-xs text-[#888] uppercase"
-                    >
-                      {m}
-                    </span>
-                  ))}
-                </div>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mt-4">
+                {selectedVideo.genres.map((genre) => (
+                  <span
+                    key={genre}
+                    className="px-3 py-1 bg-[#1A1A1A] text-sm text-white rounded-full"
+                  >
+                    {genre}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         )}
 
-        {/* Filters */}
+        {/* Filters - Simplified */}
         <div className="mb-8">
           <VideoFilters
             filters={filters}
@@ -114,7 +104,7 @@ export default function WatchPage() {
             videos={filteredVideos}
             selectedVideo={selectedVideo}
             onSelectVideo={handleSelectVideo}
-            emptyMessage="No sessions match your filters. Try adjusting your search."
+            emptyMessage="No sessions match your filters."
           />
         </div>
       </div>

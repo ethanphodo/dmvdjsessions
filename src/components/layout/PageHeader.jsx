@@ -6,7 +6,7 @@ export default function PageHeader({
   children,
 }) {
   return (
-    <div className="pt-24 pb-12">
+    <div className="pt-12 md:pt-24 pb-12">
       {/* Section Label */}
       <div className="font-mono text-xs uppercase tracking-tight text-[#888] mb-8">
         [ {sectionNumber} ] {sectionLabel}

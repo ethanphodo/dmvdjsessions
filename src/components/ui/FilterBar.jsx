@@ -13,71 +13,70 @@ export default function FilterBar({
   const { genres = [], series = [], moods = [] } = filterOptions
 
   return (
-    <div className={`border border-[#1A1A1A] bg-[#0A0A0A] ${className}`}>
-      {/* Filter Header */}
-      <div className="border-b border-[#1A1A1A] px-4 py-3 flex items-center justify-between">
-        <span className="font-mono text-xs uppercase tracking-tight text-white">
-          FILTERS
-        </span>
-        <span className="font-mono text-xs text-[#888]">
-          {resultCount} / {totalCount} SESSIONS
-        </span>
-      </div>
-
+    <div className={`${className}`}>
       {/* Filter Controls */}
-      <div className="p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Search */}
-          <div className="space-y-2">
-            <label className="block font-mono text-xs uppercase tracking-tight text-[#888]">
-              Search
-            </label>
-            <input
-              type="text"
-              value={filters.search || ''}
-              onChange={(e) => onFilterChange('search', e.target.value)}
-              placeholder="DJ name, title..."
-              className="w-full px-4 py-2 bg-[#050505] border border-[#1A1A1A] text-white text-sm font-mono placeholder:text-[#888]/50 focus:outline-none focus:border-[#E21D1D] transition-colors"
-            />
-          </div>
-
-          {/* Genre */}
-          <Select
-            label="Genre"
-            name="genre"
-            value={filters.genre || 'all'}
-            onChange={(e) => onFilterChange('genre', e.target.value)}
-            options={[{ value: 'all', label: 'All Genres' }, ...genres]}
-          />
-
-          {/* Series */}
-          <Select
-            label="Series"
-            name="series"
-            value={filters.series || 'all'}
-            onChange={(e) => onFilterChange('series', e.target.value)}
-            options={[{ value: 'all', label: 'All Series' }, ...series]}
-          />
-
-          {/* Mood */}
-          <Select
-            label="Mood"
-            name="mood"
-            value={filters.mood || 'all'}
-            onChange={(e) => onFilterChange('mood', e.target.value)}
-            options={[{ value: 'all', label: 'All Moods' }, ...moods]}
+      <div className="flex flex-wrap items-center gap-4">
+        {/* Search */}
+        <div className="flex-1 min-w-[200px] max-w-sm">
+          <input
+            type="text"
+            value={filters.search || ''}
+            onChange={(e) => onFilterChange('search', e.target.value)}
+            placeholder="Search sessions..."
+            className="w-full px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm transition-all"
           />
         </div>
 
-        {/* Reset Button */}
+        {/* Genre */}
+        <select
+          value={filters.genre || 'all'}
+          onChange={(e) => onFilterChange('genre', e.target.value)}
+          className="px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm cursor-pointer"
+        >
+          <option value="all">All Genres</option>
+          {genres.map((g) => (
+            <option key={g.value} value={g.value}>{g.label}</option>
+          ))}
+        </select>
+
+        {/* Series */}
+        <select
+          value={filters.series || 'all'}
+          onChange={(e) => onFilterChange('series', e.target.value)}
+          className="px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm cursor-pointer"
+        >
+          <option value="all">All Series</option>
+          {series.map((s) => (
+            <option key={s.value} value={s.value}>{s.label}</option>
+          ))}
+        </select>
+
+        {/* Mood */}
+        <select
+          value={filters.mood || 'all'}
+          onChange={(e) => onFilterChange('mood', e.target.value)}
+          className="px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm cursor-pointer"
+        >
+          <option value="all">All Moods</option>
+          {moods.map((m) => (
+            <option key={m.value} value={m.value}>{m.label}</option>
+          ))}
+        </select>
+
+        {/* Reset */}
         {hasActiveFilters && (
           <button
             onClick={onReset}
-            className="mt-4 font-mono text-xs uppercase tracking-tight text-[#E21D1D] hover:text-white transition-colors"
+            className="text-sm text-[#E21D1D] hover:text-white transition-colors"
           >
-            ← Clear Filters
+            Clear
           </button>
         )}
+
+        {/* Count */}
+        <span className="text-sm text-[#666] ml-auto">
+          {resultCount} of {totalCount}
+        </span>
       </div>
     </div>
   )

@@ -2,74 +2,68 @@ import { Link } from 'react-router-dom'
 
 function Hero() {
   return (
-    <section className="relative min-h-screen w-full bg-[#050505] grid-bg pt-12">
+    <section className="relative min-h-screen w-full bg-black pt-20 md:pt-12 flex items-center">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#0A0A0A]" />
+
+      {/* Subtle grid overlay */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="w-full h-full" style={{
+          backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)',
+          backgroundSize: '32px 32px'
+        }} />
+      </div>
+
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-16">
-        {/* Section Label */}
-        <div className="font-mono text-xs uppercase tracking-tight text-[#888] mb-8">
-          [ 01 ] HERO
-        </div>
-
+      <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
         {/* Headline */}
-        <div className="border border-[#1A1A1A] bg-[#0A0A0A] p-8 md:p-12 mb-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-6 text-white italic">
-            The Sound
-            <br />
-            of The Capital
-          </h1>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-8 text-white">
+          The Sound
+          <br />
+          <span className="text-[#E21D1D]">of The Capital</span>
+        </h1>
 
-          <p className="font-mono text-sm text-[#888] max-w-md">
-            Intimate sessions with DMV's finest house music selectors.
-            Washington DC / Maryland / Virginia.
-          </p>
-        </div>
-
-        {/* Double Line Divider - Logo Inspired */}
-        <div className="syber-divider mb-6" />
-
-        {/* Video Container */}
-        <div className="border border-[#1A1A1A] bg-black aspect-video relative overflow-hidden mb-6">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-90"
-          >
-            <source src="/videos/hero-1.mp4" type="video/mp4" />
-          </video>
-
-          {/* Video Overlay Label */}
-          <div className="absolute top-4 left-4 font-mono text-xs text-white uppercase tracking-tight flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#E21D1D] blink" />
-            <span>LIVE_PREVIEW</span>
-          </div>
-
-          {/* Technical Data */}
-          <div className="absolute bottom-4 right-4 font-mono text-xs text-white/70 uppercase">
-            1920×1080 / 24FPS
-          </div>
-        </div>
+        <p className="text-lg md:text-xl text-[#888] max-w-lg mb-12">
+          Intimate sessions with DMV's finest house music selectors.
+        </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Link
             to="/watch"
-            className="border border-white/20 px-6 py-3 bg-white text-black font-mono text-xs uppercase tracking-tight hover:border-[#E21D1D] hover:bg-[#E21D1D] hover:text-white transition-all duration-75"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#E21D1D] text-white font-mono text-sm uppercase tracking-tight hover:bg-white hover:text-black transition-all duration-150"
           >
             Watch Sessions
           </Link>
           <Link
             to="/apply"
-            className="border border-white/20 px-6 py-3 bg-transparent text-white font-mono text-xs uppercase tracking-tight hover:border-[#E21D1D] hover:text-[#E21D1D] transition-all duration-75"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-mono text-sm uppercase tracking-tight hover:border-[#E21D1D] hover:text-[#E21D1D] transition-all duration-150"
           >
-            Apply to Play // [01]
+            Apply to Play
           </Link>
+        </div>
+
+        {/* Stats */}
+        <div className="mt-20 flex gap-12">
+          <div>
+            <div className="text-3xl md:text-4xl font-black text-white">8</div>
+            <div className="font-mono text-xs text-[#888] uppercase mt-1">Sessions</div>
+          </div>
+          <div>
+            <div className="text-3xl md:text-4xl font-black text-white">50K+</div>
+            <div className="font-mono text-xs text-[#888] uppercase mt-1">Views</div>
+          </div>
+          <div>
+            <div className="text-3xl md:text-4xl font-black text-white">DMV</div>
+            <div className="font-mono text-xs text-[#888] uppercase mt-1">DC • MD • VA</div>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Border - Double Line */}
-      <div className="syber-divider" />
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#E21D1D]" />
+      </div>
     </section>
   )
 }

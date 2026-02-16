@@ -27,7 +27,7 @@ const partnerBenefits = {
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-[#050505] grid-bg pt-12">
+    <div className="min-h-screen bg-[#050505] grid-bg pt-20 md:pt-12">
       <div className="max-w-7xl mx-auto px-6">
         <PageHeader
           sectionNumber="01"

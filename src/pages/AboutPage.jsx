@@ -11,7 +11,7 @@ export default function AboutPage() {
   const pastEvents = getPastEvents()
 
   return (
-    <div className="min-h-screen bg-[#050505] pt-12">
+    <div className="min-h-screen bg-[#050505] pt-20 md:pt-12">
       <div className="max-w-7xl mx-auto px-6">
         <PageHeader
           sectionNumber="01"
