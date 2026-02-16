@@ -1,12 +1,8 @@
-// Color palette
-export const COLORS = {
-  syberBlack: '#050505',
-  syberCard: '#0A0A0A',
-  syberBorder: '#1A1A1A',
-  hintRed: '#E21D1D',
-  syberSilver: '#C0C0C0',
-  textPrimary: '#FFFFFF',
-  textMuted: '#888888',
+// Series accent colors
+export const SERIES_COLORS = {
+  studio: '#D6A756',    // Warm Amber
+  warehouse: '#8B1E2D', // Deep Red
+  rooftop: '#7FAFD4',   // Soft Sky Blue
 }
 
 // Genre options
@@ -15,63 +11,23 @@ export const GENRES = [
   { value: 'deep-house', label: 'Deep House' },
   { value: 'tech-house', label: 'Tech House' },
   { value: 'afro-house', label: 'Afro House' },
-  { value: 'minimal', label: 'Minimal' },
-  { value: 'progressive', label: 'Progressive' },
-  { value: 'disco', label: 'Disco / Nu-Disco' },
+  { value: 'afrobeats', label: 'Afrobeats' },
+  { value: 'amapiano', label: 'Amapiano' },
   { value: 'techno', label: 'Techno' },
-]
-
-// Mood options for filtering
-export const MOODS = [
-  { value: 'chill', label: 'Chill' },
-  { value: 'groovy', label: 'Groovy' },
-  { value: 'energetic', label: 'Energetic' },
-  { value: 'dark', label: 'Dark' },
-  { value: 'melodic', label: 'Melodic' },
-  { value: 'uplifting', label: 'Uplifting' },
-]
-
-// Series types
-export const SERIES = [
-  { value: 'studio', label: 'Studio Sessions' },
-  { value: 'warehouse', label: 'Warehouse Sessions' },
-  { value: 'rooftop', label: 'Rooftop Sessions' },
+  { value: 'minimal', label: 'Minimal' },
+  { value: 'disco', label: 'Disco' },
 ]
 
 // Location options
 export const LOCATIONS = [
-  { value: 'dc', label: 'Washington DC' },
+  { value: 'dc', label: 'Washington, DC' },
   { value: 'md', label: 'Maryland' },
   { value: 'va', label: 'Virginia' },
 ]
 
-// Social platforms
-export const SOCIAL_PLATFORMS = [
-  { value: 'instagram', label: 'Instagram' },
-  { value: 'soundcloud', label: 'SoundCloud' },
-  { value: 'mixcloud', label: 'Mixcloud' },
-  { value: 'spotify', label: 'Spotify' },
-  { value: 'youtube', label: 'YouTube' },
-]
-
-// Event types
-export const EVENT_TYPES = [
-  { value: 'recording', label: 'Recording Session' },
-  { value: 'live', label: 'Live Event' },
-  { value: 'premiere', label: 'Video Premiere' },
-]
-
-// Event status
-export const EVENT_STATUS = {
-  upcoming: { label: 'Upcoming', color: '#E21D1D' },
-  past: { label: 'Past', color: '#888888' },
-  cancelled: { label: 'Cancelled', color: '#888888' },
-}
-
 // Navigation links
 export const NAV_LINKS = [
-  { path: '/watch', label: 'Watch' },
-  { path: '/apply', label: 'Apply' },
+  { path: '/sessions', label: 'Sessions' },
+  { path: '/submit', label: 'Submit' },
   { path: '/about', label: 'About' },
-  { path: '/partners', label: 'Partners' },
 ]

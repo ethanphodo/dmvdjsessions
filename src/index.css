@@ -1,30 +1,41 @@
 @import "tailwindcss";
 
-/* DMV DJ Sessions - Dark Minimal Palette */
+/* DMV DJ Sessions - Brand System */
 :root {
-  /* Base - Pure Dark */
-  --syber-black: #000000;
-  --syber-card: #0A0A0A;
-  --syber-border: #1A1A1A;
-  --hint-red: #E21D1D;
-  --syber-silver: #C0C0C0;
+  /* Base */
+  --black: #000000;
+  --charcoal: #0A0A0A;
+  --dark-gray: #1A1A1A;
+
+  /* Series Accent Colors */
+  --studio-amber: #D6A756;
+  --warehouse-red: #8B1E2D;
+  --rooftop-blue: #7FAFD4;
 
   /* Text */
   --text-primary: #FFFFFF;
-  --text-muted: #888888;
+  --text-secondary: #888888;
+  --text-muted: #666666;
 }
 
 @font-face {
-  font-family: 'Geist Mono';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Geist Mono';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2');
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
   font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -39,84 +50,30 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--syber-black);
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  background-color: var(--black);
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Monospace utility */
-.font-mono {
-  font-family: 'Geist Mono', 'Roboto Mono', monospace;
-}
-
-/* Grid background pattern - Dark Syber */
-.grid-bg {
-  position: relative;
-}
-
-.grid-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#1A1A1A 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* Sharp borders - no radius */
-.border-sharp {
-  border-radius: 0;
-}
-
-/* Custom scrollbar - Dark Syber */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--syber-black);
+  background: var(--black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--syber-border);
+  background: var(--dark-gray);
 }
 
-/* Double line divider - Logo inspired */
-.syber-divider {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.syber-divider::before,
-.syber-divider::after {
-  content: '';
-  height: 1px;
-  background: var(--syber-border);
-}
-
-/* Crosshair cursor for interactive areas */
-.cursor-cross {
-  cursor: crosshair;
-}
-
-/* Blinking red dot */
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.blink {
-  animation: blink 1.5s infinite;
-}
-
-/* Form input styles */
+/* Form inputs */
 input, select, textarea {
-  font-family: 'Geist Mono', 'Roboto Mono', monospace;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
 }
 
 input:-webkit-autofill,
@@ -133,59 +90,48 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Select dropdown styling */
 select option {
   background: #0A0A0A;
   color: #ffffff;
 }
 
-/* Line clamp utility */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+/* Utility classes */
+.text-balance {
+  text-wrap: balance;
 }
 
-/* Smooth page transitions */
-main {
-  animation: fadeIn 0.15s ease-out;
+/* Subtle grain overlay */
+.grain {
+  position: relative;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
 }
 
-/* Card hover animations - Spotify style */
+/* Card hover */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .card-hover:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
-/* Thumbnail hover glow */
-.thumbnail-hover {
-  transition: all 0.2s ease;
+/* Series accent borders */
+.accent-studio {
+  border-color: var(--studio-amber);
 }
 
-.thumbnail-hover:hover {
-  box-shadow: 0 0 20px rgba(226, 29, 29, 0.3);
+.accent-warehouse {
+  border-color: var(--warehouse-red);
 }
 
-/* Play button overlay */
-.play-overlay {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.group:hover .play-overlay {
-  opacity: 1;
+.accent-rooftop {
+  border-color: var(--rooftop-blue);
 }

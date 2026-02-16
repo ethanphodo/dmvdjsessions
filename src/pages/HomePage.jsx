@@ -1,110 +1,73 @@
-import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
-import { getLatestVideos } from '../data/videos'
-import { getFeaturedDJs } from '../data/djs'
-import VideoCard from '../components/video/VideoCard'
 
 export default function HomePage() {
-  const latestVideos = getLatestVideos(6)
-  const featuredDJs = getFeaturedDJs()
-
   return (
     <>
       <Hero />
 
-      {/* Latest Sessions */}
-      <section className="bg-black py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-white">
-                Latest Sessions
-              </h2>
-              <p className="text-[#888] mt-2">Fresh from the studio</p>
-            </div>
-            <Link
-              to="/watch"
-              className="text-[#E21D1D] hover:text-white transition-colors text-sm font-medium"
-            >
-              View All →
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestVideos.map((video) => (
-              <Link key={video.id} to="/watch">
-                <VideoCard video={video} />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured DJs */}
-      <section className="bg-[#0A0A0A] py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-white">
-                The Roster
-              </h2>
-              <p className="text-[#888] mt-2">DMV's finest selectors</p>
-            </div>
-            <Link
-              to="/about"
-              className="text-[#E21D1D] hover:text-white transition-colors text-sm font-medium"
-            >
-              Meet All →
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {featuredDJs.slice(0, 3).map((dj) => (
-              <div key={dj.id} className="group card-hover">
-                <div className="aspect-square bg-[#1A1A1A] overflow-hidden">
-                  {dj.image ? (
-                    <img
-                      src={dj.image}
-                      alt={dj.name}
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-[#333] text-4xl font-bold">
-                        {dj.name.charAt(0)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="pt-4">
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#E21D1D] transition-colors">
-                    {dj.name}
-                  </h3>
-                  <p className="text-sm text-[#888] mt-1">
-                    {dj.genres.join(' • ')}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-black py-32">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Ready to Play?
+      {/* Series Preview */}
+      <section className="bg-black py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-12">
+            Series
           </h2>
-          <p className="text-xl text-[#888] max-w-lg mx-auto mb-10">
-            Join Season 1. Submit your mix and become part of the DMV DJ Sessions roster.
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Studio */}
+            <div className="group">
+              <div className="h-px bg-[#D6A756] mb-6" />
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-2">
+                Studio Sessions
+              </h3>
+              <p className="text-sm text-[#888]">
+                Intimate sets. Warm light. Pure sound.
+              </p>
+            </div>
+
+            {/* Warehouse */}
+            <div className="group">
+              <div className="h-px bg-[#8B1E2D] mb-6" />
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-2">
+                Warehouse Series
+              </h3>
+              <p className="text-sm text-[#888]">
+                Raw energy. Industrial space. No limits.
+              </p>
+            </div>
+
+            {/* Rooftop */}
+            <div className="group">
+              <div className="h-px bg-[#7FAFD4] mb-6" />
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-2">
+                Rooftop Series
+              </h3>
+              <p className="text-sm text-[#888]">
+                Golden hour. City views. Open air.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="h-px bg-[#1A1A1A]" />
+
+      {/* CTA */}
+      <section className="bg-black py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-6">
+            Play First.
+          </h2>
+          <p className="text-[#888] max-w-md mx-auto mb-10">
+            We curate emerging DJs across the DMV.<br />
+            Submit your mix and tell us your sound.
           </p>
-          <Link
-            to="/apply"
-            className="inline-flex items-center justify-center px-10 py-4 bg-[#E21D1D] text-white font-medium hover:bg-white hover:text-black transition-all duration-150"
+          <a
+            href="/submit"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-sm font-medium uppercase tracking-wide hover:bg-[#888] transition-colors"
           >
-            Apply Now
-          </Link>
+            Submit a Set
+          </a>
         </div>
       </section>
     </>
