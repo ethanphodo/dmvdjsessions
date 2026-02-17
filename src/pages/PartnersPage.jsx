@@ -1,5 +1,6 @@
 import PageHeader from '../components/layout/PageHeader'
 import PartnerForm from '../components/forms/PartnerForm'
+import SEO from '../components/SEO'
 
 const partnerBenefits = {
   venue: [
@@ -27,8 +28,13 @@ const partnerBenefits = {
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-[#050505] grid-bg pt-20 md:pt-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="min-h-screen bg-black pt-28">
+      <SEO
+        title="Partners | DMV DJ Sessions"
+        description="Partner with DMV DJ Sessions. We work with venues, sponsors, and media partners who share our vision for showcasing DMV talent."
+        keywords="DJ partnerships, venue partnerships, music sponsors, DMV music, Washington DC events"
+      />
+      <div className="container-main">
         <PageHeader
           sectionNumber="01"
           sectionLabel="PARTNERS"
@@ -58,7 +64,7 @@ export default function PartnersPage() {
                 <ul className="space-y-2 font-mono text-xs text-[#888] uppercase">
                   {partnerBenefits.venue.map((benefit, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#E21D1D]">→</span>
+                      <span className="text-[#D6A756]">→</span>
                       <span>{benefit}</span>
                     </li>
                   ))}
@@ -80,7 +86,7 @@ export default function PartnersPage() {
                 <ul className="space-y-2 font-mono text-xs text-[#888] uppercase">
                   {partnerBenefits.sponsor.map((benefit, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#E21D1D]">→</span>
+                      <span className="text-[#D6A756]">→</span>
                       <span>{benefit}</span>
                     </li>
                   ))}
@@ -102,7 +108,7 @@ export default function PartnersPage() {
                 <ul className="space-y-2 font-mono text-xs text-[#888] uppercase">
                   {partnerBenefits.media.map((benefit, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#E21D1D]">→</span>
+                      <span className="text-[#D6A756]">→</span>
                       <span>{benefit}</span>
                     </li>
                   ))}
@@ -111,13 +117,13 @@ export default function PartnersPage() {
             </div>
 
             {/* Current Partners */}
-            <div className="border border-[#E21D1D] bg-[#0A0A0A]">
+            <div className="border border-[#D6A756] bg-[#0A0A0A]">
               <div className="border-b border-[#1A1A1A] px-4 py-3 flex items-center justify-between">
                 <span className="font-mono text-xs uppercase tracking-tight text-white">
                   CURRENT_PARTNERS
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#E21D1D]" />
+                  <span className="w-2 h-2 bg-[#D6A756]" />
                   <span className="font-mono text-[10px] uppercase text-[#888]">ACTIVE</span>
                 </div>
               </div>
@@ -138,7 +144,7 @@ export default function PartnersPage() {
               </p>
               <a
                 href="mailto:partners@dmvdjsessions.com"
-                className="inline-block border border-white/20 px-4 py-2 bg-transparent text-white font-mono text-xs uppercase tracking-tight hover:border-[#E21D1D] hover:text-[#E21D1D] transition-all duration-75"
+                className="inline-block border border-white/20 px-4 py-2 bg-transparent text-white font-mono text-xs uppercase tracking-tight hover:border-[#D6A756] hover:text-[#D6A756] transition-all duration-75"
               >
                 partners@dmvdjsessions.com
               </a>

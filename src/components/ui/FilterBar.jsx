@@ -14,69 +14,84 @@ export default function FilterBar({
 
   return (
     <div className={`${className}`}>
-      {/* Filter Controls */}
-      <div className="flex flex-wrap items-center gap-4">
-        {/* Search */}
-        <div className="flex-1 min-w-[200px] max-w-sm">
+      {/* Filter Controls - Responsive Grid */}
+      <div className="space-y-4">
+        {/* Search - Full Width on Mobile */}
+        <div className="w-full">
           <input
             type="text"
             value={filters.search || ''}
             onChange={(e) => onFilterChange('search', e.target.value)}
             placeholder="Search sessions..."
-            className="w-full px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm transition-all"
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-[#D6A756] focus:border-transparent rounded-lg backdrop-blur-sm transition-all"
           />
         </div>
 
-        {/* Genre */}
-        <select
-          value={filters.genre || 'all'}
-          onChange={(e) => onFilterChange('genre', e.target.value)}
-          className="px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm cursor-pointer"
-        >
-          <option value="all">All Genres</option>
-          {genres.map((g) => (
-            <option key={g.value} value={g.value}>{g.label}</option>
-          ))}
-        </select>
-
-        {/* Series */}
-        <select
-          value={filters.series || 'all'}
-          onChange={(e) => onFilterChange('series', e.target.value)}
-          className="px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm cursor-pointer"
-        >
-          <option value="all">All Series</option>
-          {series.map((s) => (
-            <option key={s.value} value={s.value}>{s.label}</option>
-          ))}
-        </select>
-
-        {/* Mood */}
-        <select
-          value={filters.mood || 'all'}
-          onChange={(e) => onFilterChange('mood', e.target.value)}
-          className="px-4 py-2.5 bg-[#1A1A1A] border-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E21D1D] rounded-sm cursor-pointer"
-        >
-          <option value="all">All Moods</option>
-          {moods.map((m) => (
-            <option key={m.value} value={m.value}>{m.label}</option>
-          ))}
-        </select>
-
-        {/* Reset */}
-        {hasActiveFilters && (
-          <button
-            onClick={onReset}
-            className="text-sm text-[#E21D1D] hover:text-white transition-colors"
+        {/* Filter Dropdowns - Grid on Mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {/* Genre */}
+          <select
+            value={filters.genre || 'all'}
+            onChange={(e) => onFilterChange('genre', e.target.value)}
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#D6A756] focus:border-transparent rounded-lg backdrop-blur-sm cursor-pointer appearance-none"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem center', backgroundSize: '1rem' }}
           >
-            Clear
-          </button>
-        )}
+            <option value="all">All Genres</option>
+            {genres.map((g) => (
+              <option key={g.value} value={g.value}>{g.label}</option>
+            ))}
+          </select>
 
-        {/* Count */}
-        <span className="text-sm text-[#666] ml-auto">
-          {resultCount} of {totalCount}
-        </span>
+          {/* Series */}
+          <select
+            value={filters.series || 'all'}
+            onChange={(e) => onFilterChange('series', e.target.value)}
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#D6A756] focus:border-transparent rounded-lg backdrop-blur-sm cursor-pointer appearance-none"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem center', backgroundSize: '1rem' }}
+          >
+            <option value="all">All Series</option>
+            {series.map((s) => (
+              <option key={s.value} value={s.value}>{s.label}</option>
+            ))}
+          </select>
+
+          {/* Mood */}
+          <select
+            value={filters.mood || 'all'}
+            onChange={(e) => onFilterChange('mood', e.target.value)}
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#D6A756] focus:border-transparent rounded-lg backdrop-blur-sm cursor-pointer appearance-none"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem center', backgroundSize: '1rem' }}
+          >
+            <option value="all">All Moods</option>
+            {moods.map((m) => (
+              <option key={m.value} value={m.value}>{m.label}</option>
+            ))}
+          </select>
+
+          {/* Reset Button - Styled */}
+          {hasActiveFilters ? (
+            <button
+              onClick={onReset}
+              className="w-full px-4 py-3 bg-[#D6A756]/10 border border-[#D6A756]/30 text-[#D6A756] text-sm font-medium uppercase tracking-wide rounded-lg hover:bg-[#D6A756]/20 transition-all"
+            >
+              Clear
+            </button>
+          ) : (
+            <div className="hidden sm:block" />
+          )}
+        </div>
+
+        {/* Results Count */}
+        <div className="flex items-center justify-between pt-2">
+          <span className="text-xs font-mono text-[#666] uppercase tracking-wide">
+            Showing {resultCount} of {totalCount} sessions
+          </span>
+          {hasActiveFilters && (
+            <span className="text-xs font-mono text-[#D6A756] uppercase tracking-wide">
+              Filtered
+            </span>
+          )}
+        </div>
       </div>
     </div>
   )

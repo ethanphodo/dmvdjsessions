@@ -3,6 +3,7 @@ import PageTitle from '../components/layout/PageTitle'
 import SEO from '../components/SEO'
 import SessionCard from '../components/sessions/SessionCard'
 import FilterBar from '../components/ui/FilterBar'
+import VideoModal from '../components/ui/VideoModal'
 import NewsletterSignup from '../components/ui/NewsletterSignup'
 import { videos, getLatestVideos } from '../data/videos'
 import { GENRES, LOCATIONS } from '../utils/constants'
@@ -29,6 +30,7 @@ export default function WatchPage() {
     series: 'all',
     mood: 'all',
   })
+  const [selectedVideo, setSelectedVideo] = useState(null)
 
   const latestVideos = getLatestVideos(2)
 
@@ -136,6 +138,7 @@ export default function WatchPage() {
                   })}
                   isNew={isNew}
                   isFeatured={isFeatured}
+                  onClick={() => setSelectedVideo(video)}
                 />
               </div>
             )
@@ -206,6 +209,13 @@ export default function WatchPage() {
           </a>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={!!selectedVideo}
+        onClose={() => setSelectedVideo(null)}
+        video={selectedVideo}
+      />
     </div>
   )
 }
