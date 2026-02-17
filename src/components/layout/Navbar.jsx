@@ -62,9 +62,9 @@ function Navbar() {
           </div>
 
           {/* Center - Logo */}
-          <Link to="/" className="flex-1 flex justify-center hover:opacity-80 transition-opacity">
-            <h1 className="text-lg md:text-xl font-black tracking-tighter uppercase italic text-white">
-              DMV DJ <span className="text-[#D6A756]">Sessions</span>
+          <Link to="/" className="flex-1 flex justify-center hover:opacity-70 transition-opacity">
+            <h1 className="text-base md:text-lg font-medium tracking-tight text-white">
+              DMV DJ Sessions
             </h1>
           </Link>
 

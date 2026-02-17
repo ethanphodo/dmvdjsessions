@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import SEO from '../components/SEO'
-import { ScrubText, RevealText } from '../components/ui/ScrubText'
 import NewsletterSignup from '../components/ui/NewsletterSignup'
 import { getUpcomingEvents } from '../data/events'
 import { SERIES_COLORS } from '../utils/constants'
@@ -18,21 +17,16 @@ export default function HomePage() {
       {/* Why We Exist */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
             Why We Exist
           </h2>
 
-          <div className="space-y-6 text-responsive-xl leading-relaxed">
+          <div className="space-y-6 text-lg md:text-xl leading-relaxed">
             <p>
-              The DMV has no shortage of talent.<br />
-              What it lacks is a consistent stage.
+              The DMV has no shortage of talent. What it lacks is a consistent stage.
             </p>
-            <p className="text-[#888]">
-              We built this platform to give emerging DJs a space to perform with intention — not in a crowded club, not in a chaotic livestream — but in a curated environment where the music leads.
-            </p>
-            <p className="text-[#888]">
-              Every set is filmed with purpose.<br />
-              Every artist is selected with care.
+            <p className="text-gray-500">
+              We built this platform to give emerging DJs a space to perform with intention — in a curated environment where the music leads.
             </p>
           </div>
         </div>
@@ -43,20 +37,19 @@ export default function HomePage() {
       {/* What Makes Us Different */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
             What Makes Us Different
           </h2>
 
-          <ul className="space-y-4 md:space-y-5 text-lg md:text-xl">
+          <ul className="space-y-3 text-gray-400">
             {[
               'Curated talent only',
               'Cinematic performance format',
               'Series-based identity',
-              'Consistent visual language',
               'Quality over quantity',
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4 hover-lift" style={{ transitionDelay: `${i * 0.05}s` }}>
-                <span className="text-[#666] mt-1">—</span>
+              <li key={i} className="flex items-start gap-3">
+                <span className="text-gray-600">—</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -69,63 +62,54 @@ export default function HomePage() {
       {/* The Series */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-12 md:mb-16">
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-10 md:mb-12">
             The Series
           </h2>
 
-          <div className="space-y-12 md:space-y-16">
+          <div className="space-y-10 md:space-y-12">
             {/* Studio */}
-            <div className="group hover-lift">
-              <div className="w-16 h-px bg-[#D6A756] mb-6 group-hover:w-24 transition-all duration-500" />
-              <ScrubText
-                as="h3"
-                className="text-2xl md:text-3xl uppercase tracking-ultra-tight mb-3"
-                minWeight={500}
-                maxWeight={900}
-                minSkew={0}
-                maxSkew={-4}
-              >
-                Studio Sessions
-              </ScrubText>
-              <p className="text-[#888] text-lg md:text-xl">
-                Controlled lighting. Focused sound. Pure performance.
-              </p>
+            <div className="group">
+              <div className="flex items-start gap-4">
+                <div className="w-1 h-12 bg-[#D6A756] rounded-full flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl md:text-2xl font-medium mb-2">
+                    Studio Sessions
+                  </h3>
+                  <p className="text-gray-500">
+                    Controlled lighting. Focused sound. Pure performance.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Warehouse */}
-            <div className="group hover-lift">
-              <div className="w-16 h-px bg-[#8B1E2D] mb-6 group-hover:w-24 transition-all duration-500" />
-              <ScrubText
-                as="h3"
-                className="text-2xl md:text-3xl uppercase tracking-ultra-tight mb-3"
-                minWeight={500}
-                maxWeight={900}
-                minSkew={0}
-                maxSkew={-4}
-              >
-                Warehouse Series
-              </ScrubText>
-              <p className="text-[#888] text-lg md:text-xl">
-                Industrial energy. Dark textures. Harder sounds.
-              </p>
+            <div className="group">
+              <div className="flex items-start gap-4">
+                <div className="w-1 h-12 bg-[#8B1E2D] rounded-full flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl md:text-2xl font-medium mb-2">
+                    Warehouse Series
+                  </h3>
+                  <p className="text-gray-500">
+                    Industrial energy. Dark textures. Harder sounds.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Rooftop */}
-            <div className="group hover-lift">
-              <div className="w-16 h-px bg-[#7FAFD4] mb-6 group-hover:w-24 transition-all duration-500" />
-              <ScrubText
-                as="h3"
-                className="text-2xl md:text-3xl uppercase tracking-ultra-tight mb-3"
-                minWeight={500}
-                maxWeight={900}
-                minSkew={0}
-                maxSkew={-4}
-              >
-                Rooftop Sessions
-              </ScrubText>
-              <p className="text-[#888] text-lg md:text-xl">
-                Golden hour. Open air. Elevated atmosphere.
-              </p>
+            <div className="group">
+              <div className="flex items-start gap-4">
+                <div className="w-1 h-12 bg-[#7FAFD4] rounded-full flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl md:text-2xl font-medium mb-2">
+                    Rooftop Sessions
+                  </h3>
+                  <p className="text-gray-500">
+                    Golden hour. Open air. Elevated atmosphere.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -136,11 +120,11 @@ export default function HomePage() {
       {/* Upcoming Events Teaser */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
             Upcoming Events
           </h2>
 
-          <div className="space-y-6 mb-10">
+          <div className="space-y-6 mb-8">
             {getUpcomingEvents().slice(0, 2).map((event) => {
               const getAccent = () => {
                 if (event.address.toLowerCase().includes('dc')) return SERIES_COLORS.studio
@@ -155,16 +139,16 @@ export default function HomePage() {
               }
 
               return (
-                <div key={event.id} className="group flex items-center gap-6 hover-lift">
-                  <div className="w-2 h-16 transition-all duration-300" style={{ backgroundColor: accent }} />
-                  <div className="flex-1">
-                    <p className="text-xs text-[#888] uppercase tracking-wide mb-1">
+                <div key={event.id} className="flex items-start gap-4">
+                  <div className="w-1 h-12 rounded-full flex-shrink-0 mt-1" style={{ backgroundColor: accent }} />
+                  <div>
+                    <p className="text-xs text-gray-600 mb-1">
                       {formatDate(event.date)} · {event.time}
                     </p>
-                    <h3 className="text-xl font-bold uppercase tracking-tight text-white group-hover:text-[#888] transition-colors">
+                    <h3 className="text-lg font-medium text-white mb-1">
                       {event.title}
                     </h3>
-                    <p className="text-sm text-[#666]">{event.location}</p>
+                    <p className="text-sm text-gray-600">{event.location}</p>
                   </div>
                 </div>
               )
@@ -173,11 +157,11 @@ export default function HomePage() {
 
           <Link
             to="/events"
-            className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-[#888] hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors"
           >
-            View All Events
+            View all events
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </div>
@@ -188,24 +172,21 @@ export default function HomePage() {
       {/* For the Artists */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
-            For the Artists
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
+            For Artists
           </h2>
 
-          <p className="text-responsive-xl mb-8 md:mb-12">
-            We provide:
-          </p>
+          <p className="text-lg mb-6">We provide:</p>
 
-          <ul className="space-y-4 md:space-y-5 text-lg md:text-xl text-[#888]">
+          <ul className="space-y-3 text-gray-500">
             {[
               'Professional multi-angle video',
               'High-quality audio capture',
-              'Branded performance format',
-              'Short-form clips for social distribution',
-              'A platform designed for discovery',
+              'Short-form clips for social',
+              'A platform for discovery',
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4">
-                <span className="text-white mt-1">—</span>
+              <li key={i} className="flex items-start gap-3">
+                <span className="text-gray-600">—</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -218,46 +199,12 @@ export default function HomePage() {
       {/* Our Vision */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
-            Our Vision
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
+            Vision
           </h2>
 
-          <p className="text-responsive-xl leading-relaxed">
+          <p className="text-lg md:text-xl leading-relaxed text-gray-400">
             To build a recognizable performance platform rooted in the DMV that grows into a nationally respected stage for emerging electronic artists.
-          </p>
-        </div>
-      </section>
-
-      <div className="divider" />
-
-      {/* Our Standard */}
-      <section className="bg-black section-padding">
-        <div className="container-narrow">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
-            Our Standard
-          </h2>
-
-          <p className="text-lg md:text-xl text-[#888] mb-8">
-            Every session must meet:
-          </p>
-
-          <ul className="space-y-4 md:space-y-5 text-lg md:text-xl">
-            {[
-              'Performance quality',
-              'Sound integrity',
-              'Visual consistency',
-              'Identity alignment',
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4">
-                <span className="text-[#666] mt-1">—</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-[#666] mt-12 md:mt-16 text-lg md:text-xl">
-            We don't publish everything.<br />
-            We publish what lasts.
           </p>
         </div>
       </section>
@@ -267,13 +214,13 @@ export default function HomePage() {
       {/* Newsletter */}
       <section className="bg-black section-padding">
         <div className="container-narrow text-center">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-6">
+          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-6">
             Stay Connected
           </h2>
-          <p className="text-responsive-xl font-bold uppercase tracking-tight mb-4">
-            Get Exclusive Drops
+          <p className="text-xl md:text-2xl font-medium mb-4">
+            Get updates
           </p>
-          <p className="text-[#888] text-lg mb-8">
+          <p className="text-gray-500 mb-8">
             Early access to events, new sessions, and behind-the-scenes content.
           </p>
           <NewsletterSignup />
@@ -285,21 +232,15 @@ export default function HomePage() {
       {/* CTA */}
       <section className="bg-black section-padding">
         <div className="container-narrow text-center">
-          <p className="text-sm font-medium uppercase tracking-wide text-[#666] mb-6">
-            Ready?
-          </p>
-          <RevealText
-            as="h2"
-            className="text-5xl md:text-6xl lg:text-7xl uppercase tracking-ultra-tight mb-6"
-          >
-            Play First.
-          </RevealText>
-          <p className="text-[#888] text-lg mb-10 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-medium mb-4">
+            Ready to play?
+          </h2>
+          <p className="text-gray-500 mb-8">
             Submit your mix and tell us your sound.
           </p>
           <Link
             to="/submit"
-            className="btn-hover inline-flex items-center justify-center px-10 py-4 bg-white text-black text-sm font-medium uppercase tracking-wide hover:bg-[#E5E5E5] transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
           >
             Submit a Set
           </Link>
