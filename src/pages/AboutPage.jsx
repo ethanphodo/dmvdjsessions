@@ -1,8 +1,13 @@
 import PageTitle from '../components/layout/PageTitle'
+import SEO from '../components/SEO'
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-black pt-28">
+      <SEO
+        title="About | DMV DJ Sessions"
+        description="A platform dedicated to spotlighting the next wave of DMV DJs through high-quality, identity-driven sets. Studio, Warehouse, and Rooftop series."
+      />
       <div className="container-narrow text-center">
         <PageTitle title="ABOUT" />
 

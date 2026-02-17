@@ -28,6 +28,7 @@ export const LOCATIONS = [
 // Navigation links
 export const NAV_LINKS = [
   { path: '/sessions', label: 'Sessions' },
+  { path: '/events', label: 'Events' },
   { path: '/submit', label: 'Submit' },
   { path: '/about', label: 'About' },
 ]

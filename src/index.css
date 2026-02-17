@@ -58,6 +58,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* ========================================
    BASE STYLES
    ======================================== */
@@ -78,6 +92,252 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection Color - Brand accent */
+::selection {
+  background: var(--studio-amber);
+  color: #000;
+}
+
+::-moz-selection {
+  background: var(--studio-amber);
+  color: #000;
+}
+
+/* Mono font utility */
+.font-mono {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ========================================
+   NOISE TEXTURE OVERLAY
+   ======================================== */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   GLASSMORPHISM UTILITIES
+   ======================================== */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   MODERN TYPOGRAPHY
+   ======================================== */
+.text-display {
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.text-mono-label {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   ANIMATED MESH GRADIENT BACKGROUND
+   ======================================== */
+.mesh-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.mesh-gradient::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(214, 167, 86, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(139, 30, 45, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(127, 175, 212, 0.05) 0%, transparent 30%);
+  animation: meshMove 20s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(2%, 2%) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1%, 3%) rotate(-1deg);
+  }
+  75% {
+    transform: translate(3%, -2%) rotate(0.5deg);
+  }
+}
+
+/* ========================================
+   SPOTLIGHT CURSOR
+   ======================================== */
+.spotlight-container {
+  position: relative;
+}
+
+.spotlight-container::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.spotlight-container:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   BENTO GRID LAYOUTS
+   ======================================== */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+  }
+
+  .bento-featured {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .bento-tall {
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento-wide {
+    grid-column: span 2;
+  }
+}
+
+/* ========================================
+   SCANLINE OVERLAY (Video Aesthetic)
+   ======================================== */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scanlines:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   GLOW EFFECTS
+   ======================================== */
+.glow-amber {
+  box-shadow: 0 0 40px rgba(214, 167, 86, 0.15);
+}
+
+.glow-red {
+  box-shadow: 0 0 40px rgba(139, 30, 45, 0.15);
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px rgba(127, 175, 212, 0.15);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 30px rgba(214, 167, 86, 0.5);
+}
+
+/* ========================================
+   MODERN BUTTON STYLES
+   ======================================== */
+.btn-neon {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 1rem 2rem;
+  color: white;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-neon::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--studio-amber);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.btn-neon:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* ========================================

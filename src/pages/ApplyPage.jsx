@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PageTitle from '../components/layout/PageTitle'
+import SEO from '../components/SEO'
 
 export default function ApplyPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -29,6 +30,10 @@ export default function ApplyPage() {
 
   return (
     <div className="min-h-screen bg-black pt-28">
+      <SEO
+        title="Submit | DMV DJ Sessions"
+        description="Submit your mix to DMV DJ Sessions. We curate emerging DJs across Washington DC, Maryland, and Virginia for high-quality video sessions."
+      />
       <div className="container-form text-center">
         <PageTitle title="SUBMIT" />
 

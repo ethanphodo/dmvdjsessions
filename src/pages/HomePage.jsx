@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
+import SEO from '../components/SEO'
+import NewsletterSignup from '../components/ui/NewsletterSignup'
+import { getUpcomingEvents } from '../data/events'
+import { SERIES_COLORS } from '../utils/constants'
 
 export default function HomePage() {
   return (
     <>
+      <SEO
+        title="DMV DJ Sessions | Where the Next Wave Plays First"
+        description="High-quality DJ sessions spotlighting the next wave of DMV talent. Curated performances from Washington DC, Maryland, and Virginia."
+      />
       <Hero />
 
       {/* Why We Exist */}
@@ -103,6 +111,58 @@ export default function HomePage() {
 
       <div className="divider" />
 
+      {/* Upcoming Events Teaser */}
+      <section className="bg-black section-padding">
+        <div className="container-narrow">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
+            Upcoming Events
+          </h2>
+
+          <div className="space-y-6 mb-10">
+            {getUpcomingEvents().slice(0, 2).map((event) => {
+              const getAccent = () => {
+                if (event.address.toLowerCase().includes('dc')) return SERIES_COLORS.studio
+                if (event.address.toLowerCase().includes('md')) return SERIES_COLORS.warehouse
+                if (event.address.toLowerCase().includes('va')) return SERIES_COLORS.rooftop
+                return SERIES_COLORS.studio
+              }
+              const accent = getAccent()
+              const formatDate = (dateStr) => {
+                const d = new Date(dateStr)
+                return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+              }
+
+              return (
+                <div key={event.id} className="group flex items-center gap-6 hover-lift">
+                  <div className="w-2 h-16 transition-all duration-300" style={{ backgroundColor: accent }} />
+                  <div className="flex-1">
+                    <p className="text-xs text-[#888] uppercase tracking-wide mb-1">
+                      {formatDate(event.date)} · {event.time}
+                    </p>
+                    <h3 className="text-xl font-bold uppercase tracking-tight text-white group-hover:text-[#888] transition-colors">
+                      {event.title}
+                    </h3>
+                    <p className="text-sm text-[#666]">{event.location}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          <Link
+            to="/events"
+            className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-[#888] hover:text-white transition-colors"
+          >
+            View All Events
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+
+      <div className="divider" />
+
       {/* For the Artists */}
       <section className="bg-black section-padding">
         <div className="container-narrow">
@@ -177,6 +237,24 @@ export default function HomePage() {
             We don't publish everything.<br />
             We publish what lasts.
           </p>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* Newsletter */}
+      <section className="bg-black section-padding">
+        <div className="container-narrow text-center">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-6">
+            Stay Connected
+          </h2>
+          <p className="text-responsive-xl font-bold uppercase tracking-tight mb-4">
+            Get Exclusive Drops
+          </p>
+          <p className="text-[#888] text-lg mb-8">
+            Early access to events, new sessions, and behind-the-scenes content.
+          </p>
+          <NewsletterSignup />
         </div>
       </section>
 
