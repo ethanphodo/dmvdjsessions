@@ -51,13 +51,12 @@ export function ScrubText({
   return (
     <MotionComponent
       ref={ref}
-      className={`font-display ${className}`}
+      className={className}
       style={{
         fontWeight: enableWeight ? fontWeight : undefined,
         skewX: enableSkew ? skewX : undefined,
         letterSpacing: enableTracking ? letterSpacing : undefined,
         y: enableParallax ? y : undefined,
-        fontStyle: 'italic',
       }}
     >
       {children}
@@ -96,7 +95,7 @@ export function ScrubCharacters({
   })
 
   return (
-    <Component ref={ref} className={`font-display inline-flex flex-wrap ${className}`}>
+    <Component ref={ref} className={`inline-flex flex-wrap ${className}`}>
       {characters.map((char, index) => (
         <ScrubCharacter
           key={index}
@@ -143,7 +142,6 @@ function ScrubCharacter({
         fontWeight,
         opacity,
         y,
-        fontStyle: 'italic',
       }}
     >
       {char === ' ' ? '\u00A0' : char}
@@ -182,10 +180,9 @@ export function VelocityScrub({
   return (
     <MotionComponent
       ref={ref}
-      className={`font-display ${className}`}
+      className={className}
       style={{
         fontWeight,
-        fontStyle: 'italic',
       }}
     >
       {children}
@@ -200,7 +197,7 @@ export function RevealText({
   children,
   as: Component = 'h2',
   className = '',
-  delay = 0,
+  enableSkew = false,
 }) {
   const ref = useRef(null)
 
@@ -209,23 +206,27 @@ export function RevealText({
     offset: ['start 85%', 'start 50%'],
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1])
-  const y = useTransform(scrollYProgress, [0, 1], [60, 0])
-  const fontWeight = useTransform(scrollYProgress, [0, 1], [300, 900])
-  const skewX = useTransform(scrollYProgress, [0, 1], [10, 0])
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+  })
+
+  const opacity = useTransform(smoothProgress, [0, 1], [0, 1])
+  const y = useTransform(smoothProgress, [0, 1], [40, 0])
+  const fontWeight = useTransform(smoothProgress, [0, 1], [400, 700])
+  const skewX = useTransform(smoothProgress, [0, 1], [4, 0])
 
   const MotionComponent = motion[Component] || motion.div
 
   return (
     <MotionComponent
       ref={ref}
-      className={`font-display ${className}`}
+      className={className}
       style={{
         opacity,
         y,
         fontWeight,
-        skewX,
-        fontStyle: 'italic',
+        skewX: enableSkew ? skewX : undefined,
       }}
     >
       {children}

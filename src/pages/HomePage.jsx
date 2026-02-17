@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Hero from '../components/Hero'
 import SEO from '../components/SEO'
+import { ScrubText, RevealText } from '../components/ui/ScrubText'
 import NewsletterSignup from '../components/ui/NewsletterSignup'
 import { getUpcomingEvents } from '../data/events'
 import { SERIES_COLORS } from '../utils/constants'
@@ -66,51 +68,75 @@ export default function HomePage() {
             The Series
           </h2>
 
-          <div className="space-y-10 md:space-y-12">
+          <div className="space-y-12 md:space-y-14">
             {/* Studio */}
-            <div className="group">
-              <div className="flex items-start gap-4">
-                <div className="w-1 h-12 bg-[#D6A756] rounded-full flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl md:text-2xl font-medium mb-2">
-                    Studio Sessions
-                  </h3>
-                  <p className="text-gray-500">
-                    Controlled lighting. Focused sound. Pure performance.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <motion.div
+              className="group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="w-12 h-px bg-[#D6A756] mb-5 group-hover:w-20 transition-all duration-500" />
+              <ScrubText
+                as="h3"
+                className="text-xl md:text-2xl tracking-tight mb-2"
+                minWeight={400}
+                maxWeight={700}
+                enableSkew={false}
+              >
+                Studio Sessions
+              </ScrubText>
+              <p className="text-gray-500">
+                Controlled lighting. Focused sound. Pure performance.
+              </p>
+            </motion.div>
 
             {/* Warehouse */}
-            <div className="group">
-              <div className="flex items-start gap-4">
-                <div className="w-1 h-12 bg-[#8B1E2D] rounded-full flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl md:text-2xl font-medium mb-2">
-                    Warehouse Series
-                  </h3>
-                  <p className="text-gray-500">
-                    Industrial energy. Dark textures. Harder sounds.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <motion.div
+              className="group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="w-12 h-px bg-[#8B1E2D] mb-5 group-hover:w-20 transition-all duration-500" />
+              <ScrubText
+                as="h3"
+                className="text-xl md:text-2xl tracking-tight mb-2"
+                minWeight={400}
+                maxWeight={700}
+                enableSkew={false}
+              >
+                Warehouse Series
+              </ScrubText>
+              <p className="text-gray-500">
+                Industrial energy. Dark textures. Harder sounds.
+              </p>
+            </motion.div>
 
             {/* Rooftop */}
-            <div className="group">
-              <div className="flex items-start gap-4">
-                <div className="w-1 h-12 bg-[#7FAFD4] rounded-full flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl md:text-2xl font-medium mb-2">
-                    Rooftop Sessions
-                  </h3>
-                  <p className="text-gray-500">
-                    Golden hour. Open air. Elevated atmosphere.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <motion.div
+              className="group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-12 h-px bg-[#7FAFD4] mb-5 group-hover:w-20 transition-all duration-500" />
+              <ScrubText
+                as="h3"
+                className="text-xl md:text-2xl tracking-tight mb-2"
+                minWeight={400}
+                maxWeight={700}
+                enableSkew={false}
+              >
+                Rooftop Sessions
+              </ScrubText>
+              <p className="text-gray-500">
+                Golden hour. Open air. Elevated atmosphere.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -232,18 +258,42 @@ export default function HomePage() {
       {/* CTA */}
       <section className="bg-black section-padding">
         <div className="container-narrow text-center">
-          <h2 className="text-3xl md:text-4xl font-medium mb-4">
-            Ready to play?
-          </h2>
-          <p className="text-gray-500 mb-8">
-            Submit your mix and tell us your sound.
-          </p>
-          <Link
-            to="/submit"
-            className="inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-xs tracking-widest text-gray-600 uppercase mb-6"
           >
-            Submit a Set
-          </Link>
+            Ready?
+          </motion.p>
+          <RevealText
+            as="h2"
+            className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6"
+          >
+            Play First.
+          </RevealText>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-500 mb-10"
+          >
+            Submit your mix and tell us your sound.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <Link
+              to="/submit"
+              className="inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
+            >
+              Submit a Set
+            </Link>
+          </motion.div>
         </div>
       </section>
     </>

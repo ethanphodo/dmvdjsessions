@@ -16,8 +16,10 @@ function Hero() {
     mass: 0.5,
   })
 
-  const headlineY = useTransform(smoothProgress, [0, 1], [0, -80])
+  // Scroll-linked transforms
+  const headlineY = useTransform(smoothProgress, [0, 1], [0, -100])
   const headlineOpacity = useTransform(smoothProgress, [0, 0.4, 0.8], [1, 1, 0])
+  const headlineWeight = useTransform(smoothProgress, [0, 0.5], [500, 700])
 
   return (
     <section
@@ -39,12 +41,13 @@ function Hero() {
           DMV DJ Sessions
         </motion.p>
 
-        {/* Headline */}
+        {/* Headline with scroll-linked weight */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-medium uppercase leading-[0.95] mb-8 tracking-tight"
+          className="text-4xl md:text-6xl lg:text-7xl uppercase leading-[0.95] mb-8 tracking-tight"
+          style={{ fontWeight: headlineWeight }}
         >
           Where the next wave
           <br />
@@ -70,9 +73,12 @@ function Hero() {
         >
           <Link
             to="/submit"
-            className="inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
+            className="group inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
           >
             Submit a Set
+            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </Link>
           <Link
             to="/sessions"
@@ -92,8 +98,14 @@ function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent"
-          />
+            className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center p-1"
+          >
+            <motion.div
+              className="w-1 h-2 bg-white/40 rounded-full"
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
 
