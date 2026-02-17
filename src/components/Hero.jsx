@@ -21,26 +21,25 @@ function Hero() {
 
       {/* Content */}
       <div className="relative container-main py-32 md:py-40 lg:py-48 text-center">
-        {/* Label */}
+        {/* Label - Technical Mono */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-[#D6A756] uppercase mb-6"
+          className="font-technical text-[9px] md:text-[10px] tracking-super-wide text-[#D6A756] uppercase mb-6"
         >
           Curated Sessions // DMV
         </motion.p>
 
-        {/* Headline - kinetic typography */}
+        {/* Headline - Display Font with True Italic */}
         <motion.h1
           ref={headlineRef}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.9] mb-6 md:mb-8 kinetic-text"
+          className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.9] mb-6 md:mb-8 kinetic-text tracking-ultra-tight"
           style={{
             fontWeight: kineticStyle.fontWeight,
-            letterSpacing: kineticStyle.letterSpacing,
             transform: kineticStyle.transform,
             fontStyle: 'italic',
           }}
@@ -69,7 +68,7 @@ function Hero() {
         >
           <Link
             to="/submit"
-            className="group inline-flex items-center justify-center px-8 py-4 bg-white text-black text-xs font-black italic uppercase tracking-widest hover:bg-[#D6A756] transition-colors duration-300"
+            className="group inline-flex items-center justify-center px-8 py-4 bg-white text-black text-xs font-bold italic uppercase tracking-wide-caps hover:bg-[#D6A756] transition-colors duration-300"
           >
             Submit a Set
             <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +77,7 @@ function Hero() {
           </Link>
           <Link
             to="/sessions"
-            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-xs font-black italic uppercase tracking-widest hover:border-white hover:bg-white/5 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-xs font-bold italic uppercase tracking-wide-caps hover:border-white hover:bg-white/5 transition-all duration-300"
           >
             Watch Sessions
           </Link>

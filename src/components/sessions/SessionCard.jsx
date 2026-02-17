@@ -66,13 +66,13 @@ function SessionCard({
           {/* Badges - top left */}
           <div className="absolute top-4 left-4 flex items-center gap-2">
             {isNew && (
-              <span className="bg-white text-black text-[10px] font-black uppercase tracking-widest px-3 py-1">
+              <span className="font-display bg-white text-black text-[10px] font-bold uppercase tracking-wide-caps px-3 py-1">
                 New
               </span>
             )}
             {isFeatured && (
               <span
-                className="text-[10px] font-black uppercase tracking-widest px-3 py-1"
+                className="font-display text-[10px] font-bold uppercase tracking-wide-caps px-3 py-1"
                 style={{ backgroundColor: seriesColor, color: '#000' }}
               >
                 Featured
@@ -82,7 +82,7 @@ function SessionCard({
 
           {/* Status badge - top right */}
           {status && (
-            <span className="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-xl text-[10px] font-mono uppercase tracking-wide text-white border border-white/20">
+            <span className="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-xl font-technical text-[9px] uppercase tracking-wide-caps text-white border border-white/20">
               {status}
             </span>
           )}
@@ -102,18 +102,18 @@ function SessionCard({
 
         {/* Text below */}
         <div className="p-5">
-          <h3 className="text-xl font-black uppercase tracking-tighter text-white italic group-hover:text-white/80 transition-colors">
+          <h3 className="font-display text-xl font-bold italic uppercase tracking-ultra-tight text-white group-hover:text-white/80 transition-colors">
             {title}
           </h3>
           {djName && (
-            <p className="text-sm font-mono text-gray-400 mt-1 uppercase tracking-widest">{djName}</p>
+            <p className="font-technical text-xs text-gray-400 mt-1 uppercase tracking-super-wide">{djName}</p>
           )}
           {genres.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {genres.slice(0, 2).map((genre) => (
                 <span
                   key={genre}
-                  className="text-[10px] uppercase tracking-widest font-mono px-2 py-1 border border-white/10 text-gray-500"
+                  className="font-technical text-[9px] uppercase tracking-wide-caps px-2 py-1 border border-white/10 text-gray-500"
                 >
                   {genre}
                 </span>
@@ -121,7 +121,7 @@ function SessionCard({
             </div>
           )}
           {date && (
-            <p className="text-[10px] text-gray-600 mt-3 uppercase tracking-widest font-mono">{date}</p>
+            <p className="font-technical text-[9px] text-gray-600 mt-3 uppercase tracking-super-wide">{date}</p>
           )}
         </div>
       </div>

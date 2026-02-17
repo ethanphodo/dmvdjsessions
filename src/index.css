@@ -35,41 +35,105 @@
 }
 
 /* ========================================
-   FONTS
+   FONTS - Neue Montreal Typography System
+   Premium music platform aesthetic
    ======================================== */
+
+/* Neue Montreal - Regular (Body Copy) */
 @font-face {
-  font-family: 'Geist';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
+/* Neue Montreal - Medium */
 @font-face {
-  font-family: 'Geist';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Medium.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
+/* Neue Montreal - Bold */
 @font-face {
-  font-family: 'Geist';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Bold.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
+/* Neue Montreal - Bold Italic (True Italic for headlines) */
 @font-face {
-  font-family: 'Geist';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Black.woff2') format('woff2');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-BoldItalic.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Neue Montreal - Black (Display weight) */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Black.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
 
+/* Neue Montreal - Black Italic (Hero headlines - TRUE ITALIC) */
 @font-face {
-  font-family: 'Geist Mono';
-  src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-BlackItalic.woff2') format('woff2'),
+       url('/fonts/NeueMontreal-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Neue Montreal Mono - Technical/Labels */
+@font-face {
+  font-family: 'Neue Montreal Mono';
+  src: url('/fonts/NeueMontrealMono-Regular.woff2') format('woff2'),
+       url('/fonts/NeueMontrealMono-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================
+   FONT UTILITIES
+   ======================================== */
+
+/* Display font - for headlines and brand identity */
+.font-display {
+  font-family: 'Neue Montreal', system-ui, -apple-system, sans-serif;
+}
+
+/* Technical mono - for timestamps, labels, DJ handles */
+.font-technical {
+  font-family: 'Neue Montreal Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Letter spacing utilities */
+.tracking-ultra-tight {
+  letter-spacing: -0.05em;
+}
+
+.tracking-super-wide {
+  letter-spacing: 0.3em;
+}
+
+.tracking-wide-caps {
+  letter-spacing: 0.2em;
 }
 
 /* ========================================
@@ -86,7 +150,7 @@ html {
 }
 
 body {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: 'Neue Montreal', system-ui, -apple-system, sans-serif;
   background-color: var(--black);
   color: var(--text-primary);
   line-height: 1.6;
@@ -105,9 +169,9 @@ body {
   color: #000;
 }
 
-/* Mono font utility */
+/* Mono font utility - Technical labels */
 .font-mono {
-  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+  font-family: 'Neue Montreal Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 /* ========================================
@@ -201,7 +265,7 @@ body {
 .text-split span:nth-child(10) { animation-delay: 0.5s; }
 
 .text-mono-label {
-  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-family: 'Neue Montreal Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -410,7 +474,7 @@ body {
    FORM INPUTS
    ======================================== */
 input, select, textarea {
-  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-family: 'Neue Montreal', system-ui, -apple-system, sans-serif;
 }
 
 input:-webkit-autofill,
