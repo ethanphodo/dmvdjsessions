@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import SEO from '../components/SEO'
+import { ScrubText, RevealText } from '../components/ui/ScrubText'
 import NewsletterSignup from '../components/ui/NewsletterSignup'
 import { getUpcomingEvents } from '../data/events'
 import { SERIES_COLORS } from '../utils/constants'
@@ -76,9 +77,16 @@ export default function HomePage() {
             {/* Studio */}
             <div className="group hover-lift">
               <div className="w-16 h-px bg-[#D6A756] mb-6 group-hover:w-24 transition-all duration-500" />
-              <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-3">
+              <ScrubText
+                as="h3"
+                className="text-2xl md:text-3xl uppercase tracking-ultra-tight mb-3"
+                minWeight={500}
+                maxWeight={900}
+                minSkew={0}
+                maxSkew={-4}
+              >
                 Studio Sessions
-              </h3>
+              </ScrubText>
               <p className="text-[#888] text-lg md:text-xl">
                 Controlled lighting. Focused sound. Pure performance.
               </p>
@@ -87,9 +95,16 @@ export default function HomePage() {
             {/* Warehouse */}
             <div className="group hover-lift">
               <div className="w-16 h-px bg-[#8B1E2D] mb-6 group-hover:w-24 transition-all duration-500" />
-              <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-3">
+              <ScrubText
+                as="h3"
+                className="text-2xl md:text-3xl uppercase tracking-ultra-tight mb-3"
+                minWeight={500}
+                maxWeight={900}
+                minSkew={0}
+                maxSkew={-4}
+              >
                 Warehouse Series
-              </h3>
+              </ScrubText>
               <p className="text-[#888] text-lg md:text-xl">
                 Industrial energy. Dark textures. Harder sounds.
               </p>
@@ -98,9 +113,16 @@ export default function HomePage() {
             {/* Rooftop */}
             <div className="group hover-lift">
               <div className="w-16 h-px bg-[#7FAFD4] mb-6 group-hover:w-24 transition-all duration-500" />
-              <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-3">
+              <ScrubText
+                as="h3"
+                className="text-2xl md:text-3xl uppercase tracking-ultra-tight mb-3"
+                minWeight={500}
+                maxWeight={900}
+                minSkew={0}
+                maxSkew={-4}
+              >
                 Rooftop Sessions
-              </h3>
+              </ScrubText>
               <p className="text-[#888] text-lg md:text-xl">
                 Golden hour. Open air. Elevated atmosphere.
               </p>
@@ -266,9 +288,12 @@ export default function HomePage() {
           <p className="text-sm font-medium uppercase tracking-wide text-[#666] mb-6">
             Ready?
           </p>
-          <h2 className="text-responsive-2xl font-bold uppercase tracking-tight mb-6">
+          <RevealText
+            as="h2"
+            className="text-5xl md:text-6xl lg:text-7xl uppercase tracking-ultra-tight mb-6"
+          >
             Play First.
-          </h2>
+          </RevealText>
           <p className="text-[#888] text-lg mb-10 md:mb-12">
             Submit your mix and tell us your sound.
           </p>

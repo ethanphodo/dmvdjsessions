@@ -1,26 +1,57 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import MagneticButton from './ui/MagneticButton'
-import { useKineticTypography } from '../hooks/useKineticTypography'
 
 function Hero() {
-  const { style: kineticStyle, ref: headlineRef } = useKineticTypography({
-    minWeight: 700,
-    maxWeight: 900,
-    minSlant: 0,
-    maxSlant: -8,
-    scrollRange: 400,
+  const containerRef = useRef(null)
+  const headlineRef = useRef(null)
+
+  // Scroll-linked animations for the hero section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
   })
+
+  // Smooth spring for scrubbing
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    mass: 0.5,
+  })
+
+  // Scrubbing transforms for headline
+  const headlineWeight = useTransform(smoothProgress, [0, 0.5], [700, 900])
+  const headlineSkew = useTransform(smoothProgress, [0, 0.5], [0, -6])
+  const headlineY = useTransform(smoothProgress, [0, 1], [0, -100])
+  const headlineOpacity = useTransform(smoothProgress, [0, 0.4, 0.8], [1, 1, 0])
+
+  // Parallax for background elements
+  const bgScale = useTransform(smoothProgress, [0, 1], [1, 1.2])
+  const bgOpacity = useTransform(smoothProgress, [0, 0.5], [0.1, 0.3])
+
   return (
-    <section className="relative min-h-screen w-full bg-black flex items-center justify-center overflow-hidden">
-      {/* Gradient Accents */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-[#D6A756]/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-[#8B1E2D]/10 rounded-full blur-[120px]" />
-      </div>
+    <section
+      ref={containerRef}
+      className="relative min-h-screen w-full bg-black flex items-center justify-center overflow-hidden"
+    >
+      {/* Gradient Accents - Parallax */}
+      <motion.div className="absolute inset-0 overflow-hidden" style={{ scale: bgScale }}>
+        <motion.div
+          className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-[#D6A756] rounded-full blur-[120px]"
+          style={{ opacity: bgOpacity }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-[#8B1E2D] rounded-full blur-[120px]"
+          style={{ opacity: bgOpacity }}
+        />
+      </motion.div>
 
       {/* Content */}
-      <div className="relative container-main py-32 md:py-40 lg:py-48 text-center">
+      <motion.div
+        className="relative container-main py-32 md:py-40 lg:py-48 text-center"
+        style={{ y: headlineY, opacity: headlineOpacity }}
+      >
         {/* Label - Technical Mono */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -31,16 +62,16 @@ function Hero() {
           Curated Sessions // DMV
         </motion.p>
 
-        {/* Headline - Display Font with True Italic */}
+        {/* Headline - Scrubbing Typography */}
         <motion.h1
           ref={headlineRef}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.9] mb-6 md:mb-8 kinetic-text tracking-ultra-tight"
+          className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.9] mb-6 md:mb-8 tracking-ultra-tight"
           style={{
-            fontWeight: kineticStyle.fontWeight,
-            transform: kineticStyle.transform,
+            fontWeight: headlineWeight,
+            skewX: headlineSkew,
             fontStyle: 'italic',
           }}
         >
@@ -98,7 +129,7 @@ function Hero() {
             <div className="w-1 h-2 bg-white/40 rounded-full" />
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Bottom line */}
       <div className="absolute bottom-0 left-0 right-0 divider" />
