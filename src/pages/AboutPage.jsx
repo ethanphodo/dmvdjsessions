@@ -1,28 +1,24 @@
+import PageTitle from '../components/layout/PageTitle'
+
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-black pt-24 md:pt-20">
-      <div className="max-w-3xl mx-auto px-6 section-padding">
-        {/* Header */}
-        <h1 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-12 animate-fade-in">
-          About
-        </h1>
+    <div className="min-h-screen bg-black pt-28">
+      <div className="container-narrow text-center">
+        <PageTitle title="ABOUT" />
 
         {/* Mission */}
-        <p
-          className="text-responsive-xl leading-relaxed mb-16 animate-fade-in"
-          style={{ animationDelay: '0.1s' }}
-        >
+        <p className="text-responsive-xl leading-relaxed mb-20 md:mb-24 animate-fade-in">
           A platform dedicated to spotlighting the next wave of DMV DJs through high-quality, identity-driven sets.
         </p>
 
-        <div className="divider mb-16" />
+        <div className="divider mb-20 md:mb-24" />
 
         {/* Philosophy */}
-        <div className="mb-16">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8">
+        <div className="mb-20 md:mb-24">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-10 md:mb-12">
             Philosophy
           </h2>
-          <div className="space-y-4 text-lg md:text-xl text-[#888]">
+          <div className="space-y-6 text-lg md:text-xl text-[#888]">
             <p className="hover-lift inline-block">Curated over chaotic.</p>
             <p className="hover-lift inline-block">Minimal over loud.</p>
             <p className="hover-lift inline-block">Cinematic over casual.</p>
@@ -30,20 +26,20 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="divider mb-16" />
+        <div className="divider mb-20 md:mb-24" />
 
         {/* Series Identity */}
-        <div className="mb-16">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8">
+        <div className="mb-20 md:mb-24">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-10 md:mb-12">
             Series Identity
           </h2>
 
-          <p className="text-lg md:text-xl text-[#888] mb-8">
+          <p className="text-lg md:text-xl text-[#888] mb-10">
             Studio. Warehouse. Rooftop.<br />
             <span className="text-white">Each series. A distinct identity.</span>
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 mt-16 text-left">
             <div className="group hover-lift">
               <div className="w-full h-1 bg-[#D6A756] mb-4 group-hover:h-2 transition-all duration-300" />
               <h3 className="text-sm font-medium uppercase tracking-wide mb-1">Studio</h3>
@@ -62,11 +58,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="divider mb-16" />
+        <div className="divider mb-20 md:mb-24" />
 
         {/* Contact */}
-        <div>
-          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8">
+        <div className="pb-32">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-10 md:mb-12">
             Contact
           </h2>
           <a
@@ -76,7 +72,7 @@ export default function AboutPage() {
             hello@dmvdjsessions.com
           </a>
 
-          <div className="flex gap-8 mt-8">
+          <div className="flex justify-center gap-8 mt-8">
             <a
               href="https://instagram.com/dmvdjsessions"
               target="_blank"

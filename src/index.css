@@ -260,6 +260,57 @@ select option {
 }
 
 /* ========================================
+   CONTAINER SYSTEM
+   ======================================== */
+.container-main {
+  width: 100%;
+  max-width: 75rem; /* 1200px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 48rem; /* 768px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-narrow {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container-form {
+  width: 100%;
+  max-width: 32rem; /* 512px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-form {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ========================================
    RESPONSIVE SPACING
    ======================================== */
 .section-padding {
@@ -299,13 +350,7 @@ select option {
 .grid-auto-fit {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-md);
-}
-
-@media (min-width: 768px) {
-  .grid-auto-fit {
-    gap: var(--space-lg);
-  }
+  gap: 1.5rem;
 }
 
 /* ========================================
@@ -348,4 +393,103 @@ select option {
   .touch-spacing > * + * {
     margin-top: var(--space-md);
   }
+}
+
+/* ========================================
+   DRAWER NAVIGATION
+   ======================================== */
+
+/* Body scroll lock when drawer open */
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* Drawer overlay */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawer-overlay-visible {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+/* Drawer panel */
+.drawer-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  max-width: 400px;
+  height: 100dvh;
+  background: black;
+  border-right: 1px solid #1A1A1A;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawer-panel-open {
+  transform: translateX(0);
+}
+
+/* Drawer nav links - big and bold */
+.drawer-nav-link {
+  display: block;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #666;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.drawer-nav-link:hover {
+  color: white;
+  transform: translateX(8px);
+}
+
+.drawer-nav-link-active {
+  color: white;
+}
+
+/* ========================================
+   SESSION CARD GRID
+   ======================================== */
+.session-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .session-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .session-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* ========================================
+   CARD HOVER EFFECTS
+   ======================================== */
+.hover-scale-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }

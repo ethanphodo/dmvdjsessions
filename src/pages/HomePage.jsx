@@ -8,7 +8,7 @@ export default function HomePage() {
 
       {/* Why We Exist */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="container-narrow">
           <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
             Why We Exist
           </h2>
@@ -33,7 +33,7 @@ export default function HomePage() {
 
       {/* What Makes Us Different */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="container-narrow">
           <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
             What Makes Us Different
           </h2>
@@ -59,7 +59,7 @@ export default function HomePage() {
 
       {/* The Series */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="container-narrow">
           <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-12 md:mb-16">
             The Series
           </h2>
@@ -105,7 +105,7 @@ export default function HomePage() {
 
       {/* For the Artists */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="container-narrow">
           <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
             For the Artists
           </h2>
@@ -135,7 +135,7 @@ export default function HomePage() {
 
       {/* Our Vision */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="container-narrow">
           <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
             Our Vision
           </h2>
@@ -150,7 +150,7 @@ export default function HomePage() {
 
       {/* Our Standard */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="container-narrow">
           <h2 className="text-sm font-medium uppercase tracking-wide text-[#666] mb-8 md:mb-12">
             Our Standard
           </h2>
@@ -184,14 +184,14 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="bg-black section-padding">
-        <div className="max-w-3xl mx-auto px-6 text-center">
+        <div className="container-narrow text-center">
           <p className="text-sm font-medium uppercase tracking-wide text-[#666] mb-6">
             Ready?
           </p>
           <h2 className="text-responsive-2xl font-bold uppercase tracking-tight mb-6">
             Play First.
           </h2>
-          <p className="text-[#888] text-lg max-w-md mx-auto mb-10 md:mb-12">
+          <p className="text-[#888] text-lg mb-10 md:mb-12">
             Submit your mix and tell us your sound.
           </p>
           <Link
