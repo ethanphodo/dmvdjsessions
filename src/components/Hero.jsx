@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import MagneticButton from './ui/MagneticButton'
+import { useKineticTypography } from '../hooks/useKineticTypography'
 
 function Hero() {
+  const { style: kineticStyle, ref: headlineRef } = useKineticTypography({
+    minWeight: 700,
+    maxWeight: 900,
+    minSlant: 0,
+    maxSlant: -8,
+    scrollRange: 400,
+  })
   return (
     <section className="relative min-h-screen w-full bg-black flex items-center justify-center overflow-hidden">
       {/* Gradient Accents */}
@@ -23,12 +31,19 @@ function Hero() {
           Curated Sessions // DMV
         </motion.p>
 
-        {/* Headline - two lines */}
+        {/* Headline - kinetic typography */}
         <motion.h1
+          ref={headlineRef}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[0.9] mb-6 md:mb-8"
+          className="text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.9] mb-6 md:mb-8 kinetic-text"
+          style={{
+            fontWeight: kineticStyle.fontWeight,
+            letterSpacing: kineticStyle.letterSpacing,
+            transform: kineticStyle.transform,
+            fontStyle: 'italic',
+          }}
         >
           Where the Next Wave
           <br />

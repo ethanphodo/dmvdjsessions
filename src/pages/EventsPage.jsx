@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import PageTitle from '../components/layout/PageTitle'
 import SEO from '../components/SEO'
 import EventCard from '../components/events/EventCard'
 import NewsletterSignup from '../components/ui/NewsletterSignup'
 import { getUpcomingEvents, getPastEvents } from '../data/events'
+import { generateEventSchema } from '../components/JsonLdSchema'
 
 export default function EventsPage() {
   const [filter, setFilter] = useState('upcoming')
@@ -12,11 +13,18 @@ export default function EventsPage() {
   const pastEvents = getPastEvents()
   const displayEvents = filter === 'upcoming' ? upcomingEvents : pastEvents
 
+  // Generate JSON-LD schemas for all upcoming events
+  const eventSchemas = useMemo(() => {
+    return upcomingEvents.map(event => generateEventSchema(event))
+  }, [upcomingEvents])
+
   return (
     <div className="min-h-screen bg-black pt-28">
       <SEO
         title="Events | DMV DJ Sessions"
         description="Live recordings, premieres, and exclusive DJ events across Washington DC, Maryland, and Virginia. Limited capacity, curated experiences."
+        keywords="DJ events, DMV events, Washington DC DJ, Maryland DJ, Virginia DJ, house music events, techno events, live DJ sessions"
+        schema={eventSchemas}
       />
       <div className="container-main">
         <PageTitle title="EVENTS" />

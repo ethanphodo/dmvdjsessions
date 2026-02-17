@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { SERIES_COLORS } from '../../utils/constants'
+import OptimizedImage from '../ui/OptimizedImage'
 
 function SessionCard({
   title,
@@ -34,11 +35,12 @@ function SessionCard({
         {/* Image container */}
         <div className="relative aspect-video overflow-hidden scanlines">
           {thumbnail ? (
-            <img
+            <OptimizedImage
               src={thumbnail}
               alt={title}
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100"
-              loading="lazy"
+              className="grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100"
+              wrapperClassName="absolute inset-0"
+              aspectRatio="16/9"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-black">

@@ -2,20 +2,37 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <footer className="bg-black border-t border-[#1A1A1A]">
+    <footer className="bg-black border-t border-[#1A1A1A]" itemScope itemType="https://schema.org/Organization">
       <div className="container-main py-16 md:py-20 text-center">
-        {/* Brand */}
+        {/* Brand - NAP Info for Local SEO */}
         <Link
           to="/"
           className="text-white text-sm font-medium uppercase tracking-wide hover:text-[#888] transition-colors"
         >
-          DMV DJ Sessions
+          <span itemProp="name">DMV DJ Sessions</span>
         </Link>
 
         {/* Tagline */}
-        <p className="text-xs text-[#666] mt-3 uppercase tracking-wide">
+        <p className="text-xs text-[#666] mt-3 uppercase tracking-wide" itemProp="description">
           Where the Next Wave Plays First
         </p>
+
+        {/* NAP - Location for Local SEO */}
+        <address
+          className="text-xs text-[#444] mt-4 not-italic uppercase tracking-wide"
+          itemProp="address"
+          itemScope
+          itemType="https://schema.org/PostalAddress"
+        >
+          <span itemProp="addressLocality">Washington DC</span> · <span itemProp="addressRegion">Maryland</span> · <span itemProp="addressRegion">Virginia</span>
+        </address>
+        <a
+          href="mailto:hello@dmvdjsessions.com"
+          className="text-xs text-[#555] mt-2 inline-block hover:text-white transition-colors"
+          itemProp="email"
+        >
+          hello@dmvdjsessions.com
+        </a>
 
         {/* Social */}
         <div className="flex items-center justify-center gap-6 mt-8">

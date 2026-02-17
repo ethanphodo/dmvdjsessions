@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import JsonLdSchema, { organizationSchema } from './JsonLdSchema'
 
 function SEO({
   title = 'DMV DJ Sessions',
@@ -6,6 +7,8 @@ function SEO({
   keywords = 'DJ, DMV, Washington DC, Maryland, Virginia, electronic music, house, techno',
   image = '/og-image.jpg',
   url,
+  schema = null, // Additional JSON-LD schema (MusicEvent, VideoObject, etc.)
+  includeOrgSchema = true, // Include organization schema by default
 }) {
   useEffect(() => {
     // Update document title
@@ -44,7 +47,20 @@ function SEO({
 
   }, [title, description, keywords, image, url])
 
-  return null
+  // Build schema array
+  const schemas = []
+  if (includeOrgSchema) {
+    schemas.push(organizationSchema)
+  }
+  if (schema) {
+    if (Array.isArray(schema)) {
+      schemas.push(...schema)
+    } else {
+      schemas.push(schema)
+    }
+  }
+
+  return schemas.length > 0 ? <JsonLdSchema schema={schemas} /> : null
 }
 
 export default SEO
