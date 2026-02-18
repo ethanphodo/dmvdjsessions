@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import JsonLdSchema, { organizationSchema } from './JsonLdSchema'
+
+const BASE_URL = 'https://dmvdjsessions.com'
 
 function SEO({
   title = 'DMV DJ Sessions',
@@ -10,11 +13,26 @@ function SEO({
   schema = null, // Additional JSON-LD schema (MusicEvent, VideoObject, etc.)
   includeOrgSchema = true, // Include organization schema by default
 }) {
+  const location = useLocation()
+
+  // Generate canonical URL from current path if not provided
+  const canonicalUrl = url || `${BASE_URL}${location.pathname}`
+  const fullImageUrl = image.startsWith('http') ? image : `${BASE_URL}${image}`
+
   useEffect(() => {
     // Update document title
     document.title = title.includes('DMV DJ Sessions')
       ? title
       : `${title} | DMV DJ Sessions`
+
+    // Update or create canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]')
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link')
+      canonicalLink.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonicalLink)
+    }
+    canonicalLink.setAttribute('href', canonicalUrl)
 
     // Update meta tags
     const updateMetaTag = (name, content, isProperty = false) => {
@@ -35,17 +53,17 @@ function SEO({
     // Open Graph tags
     updateMetaTag('og:title', title, true)
     updateMetaTag('og:description', description, true)
-    updateMetaTag('og:image', image, true)
+    updateMetaTag('og:image', fullImageUrl, true)
     updateMetaTag('og:type', 'website', true)
-    if (url) updateMetaTag('og:url', url, true)
+    updateMetaTag('og:url', canonicalUrl, true)
 
     // Twitter tags
     updateMetaTag('twitter:card', 'summary_large_image')
     updateMetaTag('twitter:title', title)
     updateMetaTag('twitter:description', description)
-    updateMetaTag('twitter:image', image)
+    updateMetaTag('twitter:image', fullImageUrl)
 
-  }, [title, description, keywords, image, url])
+  }, [title, description, keywords, fullImageUrl, canonicalUrl])
 
   // Build schema array
   const schemas = []

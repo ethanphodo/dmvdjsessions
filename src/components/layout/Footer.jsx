@@ -60,10 +60,18 @@ function Footer() {
           </a>
         </div>
 
-        {/* Copyright */}
-        <p className="text-xs text-[#666] mt-8 uppercase tracking-wide">
-          © {new Date().getFullYear()} DMV DJ Sessions
-        </p>
+        {/* Copyright & Legal Links */}
+        <div className="mt-8 space-y-2">
+          <p className="text-xs text-[#666] uppercase tracking-wide">
+            © {new Date().getFullYear()} DMV DJ Sessions
+          </p>
+          <Link
+            to="/privacy"
+            className="text-xs text-[#555] hover:text-white transition-colors"
+          >
+            Privacy Policy
+          </Link>
+        </div>
       </div>
     </footer>
   )
