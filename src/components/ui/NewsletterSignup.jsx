@@ -30,19 +30,19 @@ function NewsletterSignup({ variant = 'default' }) {
   const isCompact = variant === 'compact'
 
   return (
-    <form onSubmit={handleSubmit} className={`flex ${isCompact ? 'flex-row' : 'flex-col sm:flex-row'} items-center justify-center gap-3 w-full max-w-md mx-auto`}>
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch justify-center gap-3 w-full max-w-md mx-auto">
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
         required
-        className={`${isCompact ? 'flex-1' : 'w-full sm:flex-1'} px-4 py-3 bg-[#0A0A0A] border border-[#1A1A1A] text-white placeholder:text-[#444] focus:outline-none focus:border-white transition-colors text-sm`}
+        className="flex-1 min-w-0 px-4 py-3 bg-[#0A0A0A] border border-[#1A1A1A] text-white placeholder:text-[#444] focus:outline-none focus:border-white transition-colors text-sm"
       />
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="btn-hover w-full sm:w-auto px-6 py-3 bg-white text-black text-sm font-medium uppercase tracking-wide hover:bg-[#E5E5E5] disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
+        className="btn-hover px-6 py-3 bg-white text-black text-sm font-medium uppercase tracking-wide hover:bg-[#E5E5E5] disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
       >
         {status === 'loading' ? 'Joining...' : 'Join List'}
       </button>
