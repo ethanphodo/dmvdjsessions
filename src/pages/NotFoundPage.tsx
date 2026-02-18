@@ -4,39 +4,25 @@ import SEO from '../components/SEO'
 
 export default function NotFoundPage() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: '#050505' }}>
       <SEO
-        title="404 - Page Not Found | DMV DJ Sessions"
-        description="The page you're looking for doesn't exist."
+        title="Coming Soon | DMV DJ Sessions"
+        description="This page is coming soon. Stay tuned."
       />
 
       <div className="w-full max-w-2xl mx-auto text-center">
-        {/* Glitch 404 */}
+        {/* Coming Soon */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative mb-8"
+          className="relative mb-12"
         >
-          <h1 className="text-[8rem] md:text-[12rem] font-black italic text-white/5 leading-none select-none">
-            404
+          <h1 className="text-6xl md:text-8xl font-bold text-[#F2F0ED] leading-none tracking-tight">
+            Coming
+            <br />
+            <span className="text-[#999591]/60">Soon</span>
           </h1>
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{
-              x: [0, -2, 2, -1, 1, 0],
-              opacity: [1, 0.8, 1, 0.9, 1],
-            }}
-            transition={{
-              duration: 0.5,
-              repeat: Infinity,
-              repeatDelay: 3,
-            }}
-          >
-            <span className="text-[8rem] md:text-[12rem] font-black italic text-[#E8E4E0] leading-none">
-              404
-            </span>
-          </motion.div>
         </motion.div>
 
         {/* Message */}
@@ -45,38 +31,29 @@ export default function NotFoundPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <p className="font-mono text-xs tracking-[0.3em] text-[#666] uppercase mb-4">
-            Track Not Found
+          <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-6">
+            Under Construction
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tight text-white mb-4">
-            This page doesn't exist
-          </h2>
-          <p className="text-[#666] text-center mx-auto max-w-sm mb-8">
-            The session you're looking for might have been moved, deleted, or never existed in the first place.
+          <p className="text-[#999591]/80 text-center mx-auto max-w-sm mb-12 leading-relaxed">
+            We're working on something special. This page will be available soon.
           </p>
         </motion.div>
 
-        {/* Actions */}
+        {/* Action */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
             to="/"
-            className="group inline-flex items-center justify-center px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.1em] hover:bg-[#E8E4E0] transition-colors duration-300"
+            className="group inline-flex items-center justify-center px-10 py-4 rounded-full text-[#050505] text-xs font-medium uppercase tracking-[0.2em] hover:opacity-90 transition-all"
+            style={{ background: 'linear-gradient(135deg, #A68B6A 0%, #8B7355 100%)' }}
           >
             Back Home
-            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </Link>
-          <Link
-            to="/sessions"
-            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-xs font-bold uppercase tracking-[0.1em] hover:border-white hover:bg-white/5 transition-all duration-300"
-          >
-            Browse Sessions
           </Link>
         </motion.div>
 
@@ -85,13 +62,13 @@ export default function NotFoundPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-16 flex items-center justify-center gap-8"
+          className="mt-20 flex items-center justify-center gap-8"
         >
-          <div className="w-24 h-px bg-gradient-to-r from-transparent to-white/20" />
-          <span className="font-mono text-[10px] text-[#444] uppercase tracking-[0.2em]">
+          <div className="w-24 h-px bg-gradient-to-r from-transparent to-[#222]" />
+          <span className="text-[10px] text-[#999591]/40 uppercase tracking-[0.2em]">
             DMV DJ Sessions
           </span>
-          <div className="w-24 h-px bg-gradient-to-l from-transparent to-white/20" />
+          <div className="w-24 h-px bg-gradient-to-l from-transparent to-[#222]" />
         </motion.div>
       </div>
     </div>
