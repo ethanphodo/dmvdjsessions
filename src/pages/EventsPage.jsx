@@ -30,14 +30,14 @@ export default function EventsPage() {
         <PageTitle title="EVENTS" />
 
         {/* Intro */}
-        <p className="text-center text-[#888] text-lg max-w-2xl mx-auto mb-12 animate-fade-in">
+        <p className="text-center text-[#888] text-lg mb-16 animate-fade-in">
           Live recordings, premieres, and exclusive events across the DMV.
           <br />
           Limited capacity. Curated experiences.
         </p>
 
         {/* Filter Tabs */}
-        <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center gap-4 mb-16">
           <button
             onClick={() => setFilter('upcoming')}
             className={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-all ${
