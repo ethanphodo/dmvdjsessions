@@ -29,7 +29,7 @@
   },
   "home": {
     "hero": {
-      "tagline": "Where the Next Wave Plays First",
+      "tagline": "Letting the Underground Shine",
       "subtitle": "High-fidelity sessions from Washington DC, Maryland, and Virginia",
       "watchButton": "Watch Sessions",
       "applyButton": "Apply to Perform"
@@ -122,7 +122,7 @@
     "social": "Social"
   },
   "footer": {
-    "tagline": "Where the Next Wave Plays First",
+    "tagline": "Letting the Underground Shine",
     "copyright": "© {{year}} DMV DJ Sessions. All rights reserved.",
     "links": {
       "privacy": "Privacy Policy",
