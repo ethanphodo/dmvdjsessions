@@ -212,7 +212,7 @@ export function RevealText({
   })
 
   const opacity = useTransform(smoothProgress, [0, 1], [0, 1])
-  const y = useTransform(smoothProgress, [0, 1], [40, 0])
+  const y = useTransform(smoothProgress, [0, 1], [20, 0])
   const fontWeight = useTransform(smoothProgress, [0, 1], [400, 700])
   const skewX = useTransform(smoothProgress, [0, 1], [4, 0])
 
