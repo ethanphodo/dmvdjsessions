@@ -135,7 +135,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-600 text-base md:text-lg max-w-xl mx-auto text-center"
+            className="text-gray-600 text-base md:text-lg text-center"
           >
             High-fidelity sessions from Washington DC, Maryland, and Virginia.
           </motion.p>
