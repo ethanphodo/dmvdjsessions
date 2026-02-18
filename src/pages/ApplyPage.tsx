@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { submitDJApplication } from '../lib/supabase'
 
 interface FormData {
   // Section 1: The Basics
@@ -42,12 +43,33 @@ export default function ApplyPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setSubmitError(null)
+
+    try {
+      await submitDJApplication({
+        legal_name: formData.legalName,
+        artist_alias: formData.artistAlias,
+        primary_genres: formData.primaryGenres,
+        location: formData.location,
+        social_handle: formData.socialHandle || undefined,
+        mix_link: formData.mixLink,
+        opening_track: formData.openingTrack,
+        the_story: formData.theStory,
+        inner_circle: formData.innerCircle || undefined,
+        can_bring_crowd: formData.canBringCrowd,
+      })
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Submission error:', error)
+      setSubmitError('Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const resetForm = () => {

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
+import { validateArtistCode } from '../lib/supabase'
 
 interface Event {
   id: string
@@ -56,33 +57,44 @@ export default function EventsPage() {
   const [artistCode, setArtistCode] = useState('')
   const [codeError, setCodeError] = useState(false)
   const [isValidating, setIsValidating] = useState(false)
+  const [isValidated, setIsValidated] = useState(false)
 
   const handleRetrieveAccess = (event: Event) => {
     if (event.status === 'sold_out') return
     setSelectedEvent(event)
     setArtistCode('')
     setCodeError(false)
+    setIsValidated(false)
   }
 
   const handleCodeSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!artistCode.trim()) return
+    if (!artistCode.trim() || !selectedEvent) return
 
     setIsValidating(true)
     setCodeError(false)
 
-    // Simulate validation
-    await new Promise(resolve => setTimeout(resolve, 800))
+    try {
+      const isValid = await validateArtistCode(artistCode, selectedEvent.id)
 
-    // For now, no valid codes - trigger shake animation
-    setCodeError(true)
-    setIsValidating(false)
+      if (isValid) {
+        setIsValidated(true)
+      } else {
+        setCodeError(true)
+      }
+    } catch (error) {
+      console.error('Validation error:', error)
+      setCodeError(true)
+    } finally {
+      setIsValidating(false)
+    }
   }
 
   const closeModal = () => {
     setSelectedEvent(null)
     setArtistCode('')
     setCodeError(false)
+    setIsValidated(false)
   }
 
   const getStatusBadge = (status: Event['status']) => {
@@ -273,56 +285,83 @@ export default function EventsPage() {
                   </p>
                 </div>
 
-                {/* Code Input with Shake Animation */}
-                <form onSubmit={handleCodeSubmit} className="space-y-5">
-                  <div>
-                    <label className="block text-[10px] tracking-[0.25em] text-[#4A4845] uppercase mb-4 text-center font-mono">
-                      Input Artist Key
-                    </label>
-                    <motion.div animate={shakeAnimation}>
-                      <input
-                        type="text"
-                        value={artistCode}
-                        onChange={(e) => {
-                          setArtistCode(e.target.value.toUpperCase())
-                          setCodeError(false)
-                        }}
-                        placeholder="ARTIST-KEY-2026"
-                        autoFocus
-                        className={`w-full px-5 py-4 bg-[#121212] border text-[#F2F0ED] text-center placeholder:text-[#333] focus:outline-none transition-colors tracking-[0.15em] uppercase font-mono ${
-                          codeError ? 'border-[#8B7355]' : 'border-[#222] focus:border-[#F2F0ED]'
-                        }`}
-                      />
-                    </motion.div>
-                  </div>
-
-                  {codeError && (
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="text-[#8B7355] text-xs text-center tracking-wide font-mono"
-                    >
-                      Invalid key. Contact artist for access.
-                    </motion.p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isValidating || !artistCode.trim()}
-                    className="w-full py-4 bg-[#F2F0ED] text-[#050505] text-xs font-bold uppercase tracking-[0.15em] hover:bg-[#8B7355] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                {isValidated ? (
+                  /* Success State */
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center"
                   >
-                    {isValidating ? 'Validating...' : 'Retrieve Ticket'}
-                  </button>
-                </form>
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-[#8B7355] flex items-center justify-center">
+                      <svg className="w-8 h-8 text-[#8B7355]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p className="text-[#F2F0ED] text-lg font-bold mb-2">You're In</p>
+                    <p className="text-[#666] text-sm mb-6">
+                      Check your email for event details and location.
+                    </p>
+                    <button
+                      onClick={closeModal}
+                      className="px-8 py-3 border border-[#333] text-[#F2F0ED] text-xs font-medium uppercase tracking-[0.15em] hover:border-[#8B7355] transition-colors"
+                    >
+                      Close
+                    </button>
+                  </motion.div>
+                ) : (
+                  <>
+                    {/* Code Input with Shake Animation */}
+                    <form onSubmit={handleCodeSubmit} className="space-y-5">
+                      <div>
+                        <label className="block text-[10px] tracking-[0.25em] text-[#4A4845] uppercase mb-4 text-center font-mono">
+                          Input Artist Key
+                        </label>
+                        <motion.div animate={shakeAnimation}>
+                          <input
+                            type="text"
+                            value={artistCode}
+                            onChange={(e) => {
+                              setArtistCode(e.target.value.toUpperCase())
+                              setCodeError(false)
+                            }}
+                            placeholder="ARTIST-KEY-2026"
+                            autoFocus
+                            className={`w-full px-5 py-4 bg-[#121212] border text-[#F2F0ED] text-center placeholder:text-[#333] focus:outline-none transition-colors tracking-[0.15em] uppercase font-mono ${
+                              codeError ? 'border-[#8B7355]' : 'border-[#222] focus:border-[#F2F0ED]'
+                            }`}
+                          />
+                        </motion.div>
+                      </div>
 
-                {/* Help Text */}
-                <div className="mt-10 pt-6 border-t border-[#1a1a1a] text-center">
-                  <p className="text-[#4A4845] text-[11px] font-mono tracking-wide leading-relaxed">
-                    Keys are distributed through our artist network.
-                    <br />
-                    <span className="text-[#666]">No key? You know someone who does.</span>
-                  </p>
-                </div>
+                      {codeError && (
+                        <motion.p
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="text-[#8B7355] text-xs text-center tracking-wide font-mono"
+                        >
+                          Invalid key. Contact artist for access.
+                        </motion.p>
+                      )}
+
+                      <button
+                        type="submit"
+                        disabled={isValidating || !artistCode.trim()}
+                        className="w-full py-4 bg-[#F2F0ED] text-[#050505] text-xs font-bold uppercase tracking-[0.15em] hover:bg-[#8B7355] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isValidating ? 'Validating...' : 'Retrieve Ticket'}
+                      </button>
+                    </form>
+
+                    {/* Help Text */}
+                    <div className="mt-10 pt-6 border-t border-[#1a1a1a] text-center">
+                      <p className="text-[#4A4845] text-[11px] font-mono tracking-wide leading-relaxed">
+                        Keys are distributed through our artist network.
+                        <br />
+                        <span className="text-[#666]">No key? You know someone who does.</span>
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </motion.div>
           </>

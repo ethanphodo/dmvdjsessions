@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, FormEvent } from 'react'
+import { submitNewsletterSignup } from '../../lib/supabase'
 
 const ROLES = [
   { value: 'dj', label: 'DJ' },
@@ -15,17 +16,26 @@ export default function InnerCircle() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!email || !role) return
 
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setEmail('')
-    setRole('')
+    setSubmitError(null)
+
+    try {
+      await submitNewsletterSignup(email, role)
+      setIsSubmitted(true)
+      setEmail('')
+      setRole('')
+    } catch (error) {
+      console.error('Signup error:', error)
+      setSubmitError('Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -61,7 +71,11 @@ export default function InnerCircle() {
               <p className="text-[#666] text-sm">We'll keep you posted on upcoming sessions and events.</p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <form onSubmit={handleSubmit} className="flex flex-col items-center gap-3">
+              {submitError && (
+                <p className="text-red-400 text-sm mb-2">{submitError}</p>
+              )}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <input
                 type="email"
                 value={email}
@@ -94,6 +108,7 @@ export default function InnerCircle() {
               >
                 {isSubmitting ? '...' : 'Join Us'}
               </button>
+              </div>
             </form>
           )}
         </motion.div>

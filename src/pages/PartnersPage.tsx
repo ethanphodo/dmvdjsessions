@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { submitPartnershipInquiry } from '../lib/supabase'
 
 interface FormData {
   companyName: string
@@ -40,12 +41,30 @@ export default function PartnersPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setSubmitError(null)
+
+    try {
+      await submitPartnershipInquiry({
+        company_name: formData.companyName,
+        partner_type: formData.partnerType,
+        website: formData.website || undefined,
+        contact_name: formData.contactName,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        message: formData.message,
+      })
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Submission error:', error)
+      setSubmitError('Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const resetForm = () => {
