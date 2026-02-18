@@ -1,0 +1,156 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo sali\u00f3 mal",
+    "tryAgain": "Intentar de nuevo",
+    "learnMore": "Saber m\u00e1s",
+    "viewAll": "Ver todo",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "close": "Cerrar",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "back": "Atr\u00e1s",
+    "next": "Siguiente",
+    "previous": "Anterior"
+  },
+  "nav": {
+    "home": "Inicio",
+    "sessions": "Sesiones",
+    "events": "Eventos",
+    "apply": "Aplicar",
+    "about": "Nosotros",
+    "partners": "Socios",
+    "privacy": "Privacidad"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Donde la Pr\u00f3xima Ola Suena Primero",
+      "subtitle": "Sesiones de alta fidelidad desde Washington DC, Maryland y Virginia",
+      "watchButton": "Ver Sesiones",
+      "applyButton": "Aplicar para Tocar"
+    },
+    "featured": {
+      "title": "Sesiones Destacadas",
+      "subtitle": "Presentaciones de DJ cinem\u00e1ticas"
+    },
+    "about": {
+      "title": "Capturando el Sonido",
+      "subtitle": "Del Underground del DMV"
+    },
+    "newsletter": {
+      "title": "Mant\u00e9nte al Tanto",
+      "subtitle": "Recibe notificaciones sobre nuevas sesiones y eventos",
+      "placeholder": "Ingresa tu email",
+      "button": "Suscribirse",
+      "success": "\u00a1Gracias por suscribirte!",
+      "error": "Suscripci\u00f3n fallida. Por favor intenta de nuevo."
+    }
+  },
+  "sessions": {
+    "title": "Sesiones",
+    "subtitle": "Grabaciones en vivo de artistas del DMV",
+    "searchPlaceholder": "Buscar sesiones...",
+    "filters": {
+      "all": "Todos",
+      "series": "Series",
+      "genre": "G\u00e9nero"
+    },
+    "empty": "No se encontraron sesiones",
+    "watchNow": "Ver Ahora",
+    "duration": "{{minutes}} min"
+  },
+  "events": {
+    "title": "Eventos",
+    "subtitle": "Eventos pr\u00f3ximos y pasados",
+    "tabs": {
+      "upcoming": "Pr\u00f3ximos",
+      "past": "Pasados"
+    },
+    "noUpcoming": "No hay eventos pr\u00f3ximos",
+    "noPast": "No hay eventos pasados",
+    "rsvp": "Confirmar",
+    "getTickets": "Obtener Entradas",
+    "freeEntry": "Entrada Gratuita",
+    "soldOut": "Agotado"
+  },
+  "apply": {
+    "title": "Aplicar para Tocar",
+    "subtitle": "\u00danete a la pr\u00f3xima ola de artistas del DMV",
+    "form": {
+      "name": "Nombre Art\u00edstico",
+      "email": "Correo",
+      "genre": "G\u00e9nero Principal",
+      "experience": "A\u00f1os de Experiencia",
+      "links": "Enlaces de Redes / M\u00fasica",
+      "message": "Cu\u00e9ntanos sobre ti",
+      "submit": "Enviar Aplicaci\u00f3n"
+    },
+    "success": {
+      "title": "\u00a1Aplicaci\u00f3n Enviada!",
+      "message": "Revisaremos tu aplicaci\u00f3n y te contactaremos pronto."
+    },
+    "errors": {
+      "required": "Este campo es obligatorio",
+      "invalidEmail": "Por favor ingresa un email v\u00e1lido",
+      "submitFailed": "Error al enviar. Por favor intenta de nuevo."
+    }
+  },
+  "about": {
+    "title": "Nosotros",
+    "subtitle": "La historia de DMV DJ Sessions",
+    "mission": {
+      "title": "Nuestra Misi\u00f3n",
+      "description": "Mostrando talento emergente del underground del DMV"
+    },
+    "stats": {
+      "sessions": "Sesiones",
+      "hours": "Horas de Contenido",
+      "artists": "Artistas Destacados",
+      "series": "Series"
+    }
+  },
+  "dj": {
+    "location": "Ubicaci\u00f3n",
+    "genres": "G\u00e9neros",
+    "sessions": "Sesiones",
+    "bio": "Biograf\u00eda",
+    "social": "Redes Sociales"
+  },
+  "footer": {
+    "tagline": "Donde la Pr\u00f3xima Ola Suena Primero",
+    "copyright": "\u00a9 {{year}} DMV DJ Sessions. Todos los derechos reservados.",
+    "links": {
+      "privacy": "Pol\u00edtica de Privacidad",
+      "terms": "T\u00e9rminos de Servicio",
+      "contact": "Contacto"
+    }
+  },
+  "cookies": {
+    "message": "Usamos cookies para mejorar tu experiencia. Al continuar visitando este sitio aceptas nuestro uso de cookies.",
+    "accept": "Aceptar",
+    "customize": "Personalizar",
+    "preferences": {
+      "title": "Preferencias de Cookies",
+      "necessary": "Necesarias",
+      "necessaryDesc": "Requeridas para que el sitio funcione",
+      "analytics": "An\u00e1lisis",
+      "analyticsDesc": "Nos ayudan a mejorar el sitio",
+      "marketing": "Marketing",
+      "marketingDesc": "Contenido y anuncios personalizados"
+    }
+  },
+  "offline": {
+    "title": "Est\u00e1s Sin Conexi\u00f3n",
+    "message": "Por favor verifica tu conexi\u00f3n e intenta de nuevo."
+  },
+  "notFound": {
+    "title": "P\u00e1gina No Encontrada",
+    "message": "La p\u00e1gina que buscas no existe.",
+    "homeButton": "Ir al Inicio"
+  }
+}

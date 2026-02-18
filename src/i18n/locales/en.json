@@ -1,0 +1,156 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "close": "Close",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "nav": {
+    "home": "Home",
+    "sessions": "Sessions",
+    "events": "Events",
+    "apply": "Apply",
+    "about": "About",
+    "partners": "Partners",
+    "privacy": "Privacy"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Where the Next Wave Plays First",
+      "subtitle": "High-fidelity sessions from Washington DC, Maryland, and Virginia",
+      "watchButton": "Watch Sessions",
+      "applyButton": "Apply to Perform"
+    },
+    "featured": {
+      "title": "Featured Sessions",
+      "subtitle": "Cinematic DJ performances"
+    },
+    "about": {
+      "title": "Capturing the Sound",
+      "subtitle": "Of the DMV Underground"
+    },
+    "newsletter": {
+      "title": "Stay in the Loop",
+      "subtitle": "Get notified about new sessions and events",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing!",
+      "error": "Subscription failed. Please try again."
+    }
+  },
+  "sessions": {
+    "title": "Sessions",
+    "subtitle": "Live recordings from DMV artists",
+    "searchPlaceholder": "Search sessions...",
+    "filters": {
+      "all": "All",
+      "series": "Series",
+      "genre": "Genre"
+    },
+    "empty": "No sessions found",
+    "watchNow": "Watch Now",
+    "duration": "{{minutes}} min"
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Upcoming and past events",
+    "tabs": {
+      "upcoming": "Upcoming",
+      "past": "Past"
+    },
+    "noUpcoming": "No upcoming events",
+    "noPast": "No past events",
+    "rsvp": "RSVP",
+    "getTickets": "Get Tickets",
+    "freeEntry": "Free Entry",
+    "soldOut": "Sold Out"
+  },
+  "apply": {
+    "title": "Apply to Perform",
+    "subtitle": "Join the next wave of DMV artists",
+    "form": {
+      "name": "Artist Name",
+      "email": "Email",
+      "genre": "Primary Genre",
+      "experience": "Years of Experience",
+      "links": "Social / Music Links",
+      "message": "Tell us about yourself",
+      "submit": "Submit Application"
+    },
+    "success": {
+      "title": "Application Submitted!",
+      "message": "We'll review your application and get back to you soon."
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email",
+      "submitFailed": "Failed to submit. Please try again."
+    }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "The DMV DJ Sessions story",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Showcasing emerging talent from the DMV underground"
+    },
+    "stats": {
+      "sessions": "Sessions",
+      "hours": "Hours of Content",
+      "artists": "Featured Artists",
+      "series": "Series"
+    }
+  },
+  "dj": {
+    "location": "Location",
+    "genres": "Genres",
+    "sessions": "Sessions",
+    "bio": "Bio",
+    "social": "Social"
+  },
+  "footer": {
+    "tagline": "Where the Next Wave Plays First",
+    "copyright": "© {{year}} DMV DJ Sessions. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact"
+    }
+  },
+  "cookies": {
+    "message": "We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.",
+    "accept": "Accept",
+    "customize": "Customize",
+    "preferences": {
+      "title": "Cookie Preferences",
+      "necessary": "Necessary",
+      "necessaryDesc": "Required for the website to function",
+      "analytics": "Analytics",
+      "analyticsDesc": "Help us improve our website",
+      "marketing": "Marketing",
+      "marketingDesc": "Personalized content and ads"
+    }
+  },
+  "offline": {
+    "title": "You're Offline",
+    "message": "Please check your connection and try again."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you're looking for doesn't exist.",
+    "homeButton": "Go Home"
+  }
+}

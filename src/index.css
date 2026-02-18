@@ -35,6 +35,109 @@
 }
 
 /* ========================================
+   LIGHT MODE THEME
+   ======================================== */
+:root.light {
+  /* Backgrounds */
+  --black: #FFFFFF;
+  --charcoal: #FAFAFA;
+  --dark-gray: #F0F0F0;
+  --mid-gray: #E0E0E0;
+  --light-gray: #999999;
+  --muted: #777777;
+
+  /* Text */
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+}
+
+/* Light mode specific overrides */
+:root.light body {
+  background-color: var(--black);
+  color: var(--text-primary);
+}
+
+:root.light .bg-black {
+  background-color: var(--black);
+}
+
+:root.light .bg-\[\#0A0A0A\] {
+  background-color: var(--charcoal);
+}
+
+:root.light .bg-\[\#1A1A1A\] {
+  background-color: var(--dark-gray);
+}
+
+:root.light .text-white {
+  color: var(--text-primary);
+}
+
+:root.light .text-gray-400,
+:root.light .text-gray-500,
+:root.light .text-\[\#888\] {
+  color: var(--text-secondary);
+}
+
+:root.light .text-gray-600,
+:root.light .text-\[\#666\] {
+  color: var(--text-muted);
+}
+
+:root.light .border-white\/10,
+:root.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root.light .border-\[\#1A1A1A\] {
+  border-color: var(--dark-gray);
+}
+
+/* Light mode cards and surfaces */
+:root.light .glass {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root.light .glass-dark {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Light mode form inputs */
+:root.light input,
+:root.light textarea,
+:root.light select {
+  background-color: var(--charcoal);
+  border-color: var(--dark-gray);
+  color: var(--text-primary);
+}
+
+:root.light input::placeholder,
+:root.light textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Light mode buttons */
+:root.light .bg-white {
+  background-color: #111111;
+  color: #FFFFFF;
+}
+
+:root.light .bg-white:hover {
+  background-color: #333333;
+}
+
+/* Light mode scrollbar */
+:root.light::-webkit-scrollbar-track {
+  background: var(--charcoal);
+}
+
+:root.light::-webkit-scrollbar-thumb {
+  background: var(--mid-gray);
+}
+
+/* ========================================
    FONTS - Neue Montreal Typography System
    Premium music platform aesthetic
    ======================================== */

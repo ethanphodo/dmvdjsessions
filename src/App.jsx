@@ -5,6 +5,7 @@ import BottomNav from './components/layout/BottomNav'
 import EventPopup from './components/ui/EventPopup'
 import CookieConsent from './components/ui/CookieConsent'
 import { ToastProvider } from './components/ui/Toast'
+import { ThemeProvider } from './contexts/ThemeContext'
 import AmbientBackground from './components/ui/AmbientBackground'
 import { usePageTracking } from './hooks/useAnalytics'
 import HomePage from './pages/HomePage'
@@ -58,9 +59,11 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
-      <ToastProvider>
-        <AppContent />
-      </ToastProvider>
+      <ThemeProvider defaultTheme="dark">
+        <ToastProvider>
+          <AppContent />
+        </ToastProvider>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
