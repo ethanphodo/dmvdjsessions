@@ -54,23 +54,23 @@ export default function PartnersPage() {
   }
 
   const inputClasses = "w-full px-5 py-4 bg-[#121212] border border-[#222] text-[#F2F0ED] placeholder:text-[#999591]/50 focus:outline-none focus:border-[#F2F0ED] transition-colors tracking-[0.02em]"
-  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-4"
+  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-6"
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-[#050505] pt-32">
+      <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: '#050505', paddingTop: '10vh', paddingBottom: '15vh' }}>
         <SEO
           title="Inquiry Submitted | DMV DJ Sessions"
           description="Your partnership inquiry has been submitted."
         />
-        <div className="container-narrow section-padding text-center">
+        <div className="w-full max-w-[720px] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-6">Inquiry Received</p>
             <h1 className="text-3xl md:text-4xl font-bold text-[#F2F0ED] mb-8 tracking-tight">We'll Be In Touch</h1>
-            <p className="text-[#999591]/80 mb-12 max-w-md mx-auto leading-relaxed">
+            <p className="text-[#C4C0BC] mb-12 leading-relaxed text-base text-center" style={{ lineHeight: '1.6' }}>
               Our partnerships team will review your inquiry and respond within 3-5 business days.
             </p>
             <button
@@ -86,32 +86,29 @@ export default function PartnersPage() {
   }
 
   return (
-    <div className="min-h-screen pt-40 pb-40" style={{ backgroundColor: '#050505' }}>
+    <div className="min-h-screen flex flex-col items-center" style={{ backgroundColor: '#050505', paddingTop: '10vh', paddingBottom: '15vh' }}>
       <SEO
         title="Partners | DMV DJ Sessions"
         description="Partner with DMV DJ Sessions. We work with venues, sponsors, and media partners who share our vision."
       />
 
       {/* Header */}
-      <div className="container-narrow text-center mb-24">
+      <div className="w-full max-w-[720px] mx-auto px-6 text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-8">
-            Partnerships
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F2F0ED] mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F2F0ED] mb-8 tracking-tight">
             Work With Us
           </h1>
-          <p className="text-[#999591]/80 max-w-lg mx-auto leading-relaxed text-base">
+          <p className="text-[#C4C0BC] w-full leading-relaxed text-base text-center" style={{ marginBottom: '64px', lineHeight: '1.6' }}>
             We partner with venues, sponsors, and media who share our vision for showcasing DMV talent.
           </p>
         </motion.div>
       </div>
 
       {/* Partnership Types */}
-      <div className="container-main mb-32">
+      <div className="w-full max-w-[1000px] mx-auto px-6 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -190,7 +187,7 @@ export default function PartnersPage() {
       </div>
 
       {/* Form */}
-      <div className="container-narrow">
+      <div className="w-full max-w-[720px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
