@@ -13,11 +13,12 @@ import Skeleton from './components/ui/Skeleton'
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'))
-// WatchPage and EventsPage removed for pre-launch
+const SessionsPage = lazy(() => import('./pages/SessionsPage'))
+const EventsPage = lazy(() => import('./pages/EventsPage'))
+const DJsPage = lazy(() => import('./pages/DJsPage'))
 const ApplyPage = lazy(() => import('./pages/ApplyPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const PartnersPage = lazy(() => import('./pages/PartnersPage'))
-// DJProfilePage and SessionDetailPage removed for pre-launch
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -53,6 +54,9 @@ function AppContent() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/sessions" element={<SessionsPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/djs" element={<DJsPage />} />
             <Route path="/apply" element={<ApplyPage />} />
             <Route path="/submit" element={<ApplyPage />} />
             <Route path="/about" element={<AboutPage />} />

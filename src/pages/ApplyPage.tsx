@@ -85,37 +85,32 @@ export default function ApplyPage() {
   }
 
   const inputClasses = "w-full px-5 py-4 bg-[#121212] border border-[#222] text-[#F2F0ED] placeholder:text-[#999591]/50 focus:outline-none focus:border-[#F2F0ED] transition-colors tracking-[0.02em]"
-  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-4"
+  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-6"
 
   return (
-    <div className="min-h-screen pt-40 pb-40" style={{ backgroundColor: '#050505' }}>
+    <div className="min-h-screen flex flex-col items-center" style={{ backgroundColor: '#050505', paddingTop: '10vh', paddingBottom: '15vh' }}>
       <SEO
         title="Apply | DMV DJ Sessions"
         description="Apply to be featured on DMV DJ Sessions. We provide the cinema. You provide the energy."
       />
 
       {/* Header */}
-      <div className="container-narrow text-center mb-20">
+      <div className="w-full max-w-[720px] mx-auto px-6 text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-8">
-            DMV DJ Sessions
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F2F0ED] mb-6 tracking-tight leading-tight">
-            The Sound of the DMV,
-            <br />
-            <span className="text-[#999591]/80">Documented.</span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F2F0ED] mb-8 tracking-tight">
+            DJ Application
           </h1>
-          <p className="text-[#999591]/80 max-w-md mx-auto leading-relaxed text-base">
-            We provide the cinema. You provide the energy. No professional footage required—just a distinct sonic identity.
+          <p className="text-[#C4C0BC] w-full leading-relaxed text-base text-center" style={{ marginBottom: '64px', lineHeight: '1.6' }}>
+            Apply to be featured on DMV DJ Sessions. We provide the cinema, you provide the energy. No professional footage required—just a distinct sonic identity.
           </p>
         </motion.div>
       </div>
 
       {/* Form */}
-      <div className="container-form">
+      <div className="w-full max-w-[720px] mx-auto px-6">
         <form onSubmit={handleSubmit} className="space-y-24">
 
           {/* Section 1: The Basics */}

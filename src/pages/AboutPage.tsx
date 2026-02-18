@@ -31,7 +31,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Content */}
-      <section className="min-h-[calc(100vh-280px)] md:min-h-[calc(100vh-380px)] flex items-center justify-center" style={{ backgroundColor: '#050505' }}>
+      <section className="min-h-[calc(100vh-280px)] md:min-h-[calc(100vh-380px)] flex items-center justify-center pb-40 md:pb-52" style={{ backgroundColor: '#050505' }}>
         <div className="w-full max-w-3xl mx-auto px-6 text-center flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

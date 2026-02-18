@@ -30,11 +30,12 @@ export default function InnerCircle() {
 
   return (
     <section id="inner-circle" className="section-padding" style={{ backgroundColor: 'var(--charcoal)' }}>
-      <div className="container-narrow text-center">
+      <div className="container-narrow flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center w-full"
         >
           <p className="text-xs tracking-[0.2em] text-[#666] uppercase mb-6">
             The Family
@@ -44,9 +45,11 @@ export default function InnerCircle() {
             Join the Movement
           </h2>
 
-          <p className="text-[#666] mb-10 max-w-md mx-auto leading-relaxed">
-            DJs, dancers, photographers, creatives, music lovers — everyone's welcome. Sign up to stay in the loop.
-          </p>
+          <div className="space-y-1 max-w-2xl mx-auto mb-10">
+            <p className="text-[#666] leading-relaxed">
+              DJs, dancers, photographers, creatives, music lovers — everyone's welcome. Sign up to stay in the loop and learn how you can be a part of the family.
+            </p>
+          </div>
 
           {isSubmitted ? (
             <motion.div

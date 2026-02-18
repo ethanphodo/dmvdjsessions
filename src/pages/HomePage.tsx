@@ -215,12 +215,6 @@ export default function HomePage() {
           >
             Ready?
           </motion.p>
-          <RevealText
-            as="h2"
-            className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6 text-[#E8E4E0]"
-          >
-            Play First.
-          </RevealText>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
