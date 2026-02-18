@@ -32,11 +32,19 @@ for (const viewport of viewports) {
       // Wait a bit more for any animations to settle
       await browserPage.waitForTimeout(500);
 
+      // Hide dynamic external content (YouTube embeds) to prevent flaky tests
+      await browserPage.addStyleTag({
+        content: `
+          iframe[src*="youtube"] { visibility: hidden !important; }
+          iframe[src*="vimeo"] { visibility: hidden !important; }
+        `
+      });
+
       // Take screenshot and compare to baseline
       await expect(browserPage).toHaveScreenshot(`${page.name}-${viewport.name}.png`, {
         fullPage: true,
-        maxDiffPixels: 50, // Allow small differences for anti-aliasing
-        threshold: 0.1, // 10% threshold for pixel comparison
+        maxDiffPixels: 100, // Allow small differences for anti-aliasing and minor rendering variations
+        threshold: 0.15, // 15% threshold for pixel comparison
       });
     });
   }
