@@ -87,7 +87,7 @@ export default function WatchPage() {
         <PageTitle title="SESSIONS" />
 
         {/* Intro */}
-        <p className="text-center text-[#888] text-lg max-w-2xl mx-auto mb-12 animate-fade-in">
+        <p className="text-center text-[#888] text-lg mb-16 animate-fade-in">
           Cinematic DJ performances from the DMV's rising talent.
           <br />
           Curated. High-quality. Built to last.

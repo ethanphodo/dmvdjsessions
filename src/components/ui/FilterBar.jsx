@@ -13,9 +13,9 @@ export default function FilterBar({
   const { genres = [], series = [], moods = [] } = filterOptions
 
   return (
-    <div className={`${className}`}>
+    <div className={`w-full ${className}`}>
       {/* Filter Controls - Centered Layout */}
-      <div className="space-y-4 max-w-3xl mx-auto">
+      <div className="space-y-4 max-w-2xl mx-auto">
         {/* Search - Full Width on Mobile */}
         <div className="w-full">
           <input
