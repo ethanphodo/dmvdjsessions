@@ -1,6 +1,20 @@
 import { motion } from 'framer-motion'
 import { SERIES_COLORS } from '../../utils/constants'
 import OptimizedImage from '../ui/OptimizedImage'
+import type { KeyboardEvent } from 'react'
+
+interface SessionCardProps {
+  title: string
+  djName?: string
+  date?: string
+  series?: string
+  thumbnail?: string
+  status?: string
+  isNew?: boolean
+  isFeatured?: boolean
+  genres?: string[]
+  onClick?: () => void
+}
 
 function SessionCard({
   title,
@@ -13,8 +27,9 @@ function SessionCard({
   isFeatured,
   genres = [],
   onClick,
-}) {
-  const seriesColor = SERIES_COLORS[series] || SERIES_COLORS.studio
+}: SessionCardProps) {
+  const seriesColors = SERIES_COLORS as Record<string, string>
+  const seriesColor = seriesColors[series] || seriesColors['studio'] || '#E21D1D'
 
   // Build accessible label
   const ariaLabel = [
@@ -27,7 +42,7 @@ function SessionCard({
     .filter(Boolean)
     .join(' ')
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (onClick && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault()
       onClick()
@@ -58,9 +73,8 @@ function SessionCard({
             <OptimizedImage
               src={thumbnail}
               alt={title}
-              className="grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 group-hover:scale-100"
               wrapperClassName="absolute inset-0"
-              aspectRatio="16/9"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-black">
@@ -113,7 +127,7 @@ function SessionCard({
               className="w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20"
               style={{ backgroundColor: `${seriesColor}80` }}
             >
-              <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
