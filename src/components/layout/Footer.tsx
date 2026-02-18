@@ -1,76 +1,111 @@
 import { Link } from 'react-router-dom'
 
+const FOOTER_LINKS = [
+  { path: '/about', label: 'ABOUT' },
+  { path: '/sessions', label: 'SESSIONS' },
+  { path: '/events', label: 'EVENTS' },
+  { path: '/djs', label: 'DJS' },
+  { path: '/apply', label: 'APPLY' },
+  { path: '/partners', label: 'PARTNERSHIPS' },
+]
+
+const SOCIAL_LINKS = [
+  { href: 'https://youtube.com/@dmvdjsessions', label: 'YOUTUBE' },
+  { href: 'https://instagram.com/dmvdjsessions', label: 'INSTAGRAM' },
+  { href: 'https://tiktok.com/@dmvdjsessions', label: 'TIKTOK' },
+]
+
 function Footer() {
   return (
-    <footer className="bg-black border-t border-[#1C1C1C]" itemScope itemType="https://schema.org/Organization">
-      <div className="container-main py-16 md:py-20 text-center">
-        {/* Brand - NAP Info for Local SEO */}
-        <Link
-          to="/"
-          className="text-white text-sm font-medium uppercase tracking-wide hover:text-[#6B6865] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
-        >
-          <span itemProp="name">DMV DJ Sessions</span>
-        </Link>
+    <footer className="bg-black border-t border-[#1A1A1A]" itemScope itemType="https://schema.org/Organization">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          {/* Column 1: Brand + Navigation */}
+          <div>
+            <Link
+              to="/"
+              className="text-white text-sm font-bold uppercase tracking-[0.15em] hover:opacity-70 transition-opacity"
+            >
+              <span itemProp="name">DMV DJ SESSIONS</span>
+            </Link>
 
-        {/* Tagline */}
-        <p className="text-xs text-[#6B6865] mt-3 uppercase tracking-wide" itemProp="description">
-          Letting the Underground Shine
-        </p>
+            <nav className="mt-8 flex flex-col space-y-4" aria-label="Footer navigation">
+              {FOOTER_LINKS.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="text-[#666] text-sm font-medium uppercase tracking-[0.1em] hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-        {/* NAP - Location for Local SEO */}
-        <address
-          className="text-xs text-[#4A4845] mt-4 not-italic uppercase tracking-wide"
-          itemProp="address"
-          itemScope
-          itemType="https://schema.org/PostalAddress"
-        >
-          <span itemProp="addressLocality">Washington DC</span> · <span itemProp="addressRegion">Maryland</span> · <span itemProp="addressRegion">Virginia</span>
-        </address>
-        <a
-          href="mailto:hello@dmvdjsessions.com"
-          className="text-xs text-[#4A4845] mt-2 inline-block hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
-          itemProp="email"
-        >
-          hello@dmvdjsessions.com
-        </a>
+          {/* Column 2: Where to Find Us */}
+          <div>
+            <h3 className="text-white text-sm font-bold uppercase tracking-[0.15em]">
+              WHERE TO FIND US
+            </h3>
 
-        {/* Social */}
-        <div className="flex items-center justify-center gap-6 mt-8">
-          <a
-            href="https://instagram.com/dmvdjsessions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#4A4845] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
-            aria-label="Follow us on Instagram"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
-          </a>
-          <a
-            href="https://youtube.com/@dmvdjsessions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#4A4845] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
-            aria-label="Subscribe on YouTube"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-          </a>
+            <div className="mt-8 flex flex-col space-y-4">
+              {SOCIAL_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#666] text-sm font-medium uppercase tracking-[0.1em] hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 3: Logo/Graphic */}
+          <div className="flex justify-start md:justify-end items-start">
+            <div className="text-white/10">
+              {/* DMV Logo Mark */}
+              <svg
+                viewBox="0 0 120 60"
+                className="w-32 h-16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <text x="0" y="45" className="text-4xl font-black" style={{ fontFamily: 'system-ui' }}>
+                  DMV
+                </text>
+              </svg>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Copyright & Legal Links */}
-        <div className="mt-8 space-y-2">
-          <p className="text-xs text-[#4A4845] uppercase tracking-wide">
-            © {new Date().getFullYear()} DMV DJ Sessions
-          </p>
-          <Link
-            to="/privacy"
-            className="text-xs text-[#4A4845] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
-          >
-            Privacy Policy
-          </Link>
+      {/* Bottom Bar */}
+      <div className="border-t border-[#1A1A1A]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center">
+            <span className="text-[#444] text-xs uppercase tracking-[0.1em]">
+              © {new Date().getFullYear()}, DMV DJ SESSIONS
+            </span>
+            <span className="hidden md:inline text-[#333]">·</span>
+            <Link
+              to="/privacy"
+              className="text-[#444] text-xs uppercase tracking-[0.1em] hover:text-white transition-colors"
+            >
+              PRIVACY POLICY
+            </Link>
+            <span className="hidden md:inline text-[#333]">·</span>
+            <a
+              href="mailto:hello@dmvdjsessions.com"
+              className="text-[#444] text-xs uppercase tracking-[0.1em] hover:text-white transition-colors"
+              itemProp="email"
+            >
+              CONTACT
+            </a>
+          </div>
         </div>
       </div>
     </footer>

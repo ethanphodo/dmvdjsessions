@@ -13,7 +13,7 @@ export default function Skeleton({
   height,
   animate = true,
 }: SkeletonProps) {
-  const baseClasses = 'bg-[#1A1A1A]'
+  const baseClasses = 'bg-[#1C1C1C]'
 
   const variantClasses = {
     text: 'rounded',
@@ -54,7 +54,7 @@ export function SkeletonText({ lines = 3, className = '' }: { lines?: number; cl
 
 export function SkeletonCard({ className = '' }: { className?: string }) {
   return (
-    <div className={`border border-[#1A1A1A] bg-[#0A0A0A] ${className}`}>
+    <div className={`border border-[#1C1C1C] bg-[#141414] ${className}`}>
       <Skeleton className="aspect-video w-full" />
       <div className="p-4 space-y-3">
         <Skeleton className="h-5 w-3/4" />

@@ -15,7 +15,7 @@ export default function FormField({
           className="block font-mono text-xs uppercase tracking-tight text-[#888]"
         >
           {label}
-          {required && <span className="text-[#E21D1D] ml-1">*</span>}
+          {required && <span className="text-[#E8E4E0] ml-1">*</span>}
         </label>
       )}
       {children}
@@ -25,7 +25,7 @@ export default function FormField({
         </p>
       )}
       {error && (
-        <p className="font-mono text-xs text-[#E21D1D] uppercase">
+        <p className="font-mono text-xs text-[#E8E4E0] uppercase">
           {error}
         </p>
       )}

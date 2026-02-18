@@ -27,10 +27,10 @@ export default function Input({
       {label && (
         <label
           htmlFor={name}
-          className="block font-mono text-xs uppercase tracking-tight text-[#888]"
+          className="block font-mono text-xs uppercase tracking-tight text-[#6B6865]"
         >
           {label}
-          {required && <span className="text-[#E21D1D] ml-1">*</span>}
+          {required && <span className="text-[#E8E4E0] ml-1">*</span>}
         </label>
       )}
       <input
@@ -47,18 +47,18 @@ export default function Input({
         aria-describedby={error ? `${name}-error` : undefined}
         className={`
           w-full px-4 py-3
-          bg-[#0A0A0A] border border-[#1A1A1A]
+          bg-[#141414] border border-[#1C1C1C]
           text-white text-sm font-mono
-          placeholder:text-[#888]/50
-          focus:outline-none focus:border-[#E21D1D] focus:ring-2 focus:ring-[#E21D1D]/20
+          placeholder:text-[#6B6865]/50
+          focus:outline-none focus:border-[#E8E4E0] focus:ring-2 focus:ring-[#E8E4E0]/20
           disabled:opacity-50 disabled:cursor-not-allowed
           transition-colors duration-75
-          ${error ? 'border-[#E21D1D]' : ''}
+          ${error ? 'border-[#E8E4E0]' : ''}
         `}
         {...props}
       />
       {error && (
-        <p id={`${name}-error`} className="font-mono text-xs text-[#E21D1D] uppercase" role="alert">
+        <p id={`${name}-error`} className="font-mono text-xs text-[#E8E4E0] uppercase" role="alert">
           {error}
         </p>
       )}

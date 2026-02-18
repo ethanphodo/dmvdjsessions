@@ -23,7 +23,7 @@ export default function Textarea({
           className="block font-mono text-xs uppercase tracking-tight text-[#888]"
         >
           {label}
-          {required && <span className="text-[#E21D1D] ml-1">*</span>}
+          {required && <span className="text-[#E8E4E0] ml-1">*</span>}
         </label>
       )}
       <textarea
@@ -39,19 +39,19 @@ export default function Textarea({
         maxLength={maxLength}
         className={`
           w-full px-4 py-3
-          bg-[#0A0A0A] border border-[#1A1A1A]
+          bg-[#141414] border border-[#1C1C1C]
           text-white text-sm font-mono
           placeholder:text-[#888]/50
-          focus:outline-none focus:border-[#E21D1D]
+          focus:outline-none focus:border-[#E8E4E0]
           disabled:opacity-50 disabled:cursor-not-allowed
           transition-colors duration-75 resize-none
-          ${error ? 'border-[#E21D1D]' : ''}
+          ${error ? 'border-[#E8E4E0]' : ''}
         `}
         {...props}
       />
       <div className="flex justify-between items-center">
         {error ? (
-          <p className="font-mono text-xs text-[#E21D1D] uppercase">
+          <p className="font-mono text-xs text-[#E8E4E0] uppercase">
             {error}
           </p>
         ) : (

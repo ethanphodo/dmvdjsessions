@@ -37,7 +37,7 @@ export default function Select({
           className="block font-mono text-xs uppercase tracking-tight text-[#888]"
         >
           {label}
-          {required && <span className="text-[#E21D1D] ml-1">*</span>}
+          {required && <span className="text-[#E8E4E0] ml-1">*</span>}
         </label>
       )}
       <div className="relative">
@@ -53,13 +53,13 @@ export default function Select({
           aria-describedby={error ? `${name}-error` : undefined}
           className={`
             w-full px-4 py-3 pr-10
-            bg-[#0A0A0A] border border-[#1A1A1A]
+            bg-[#141414] border border-[#1C1C1C]
             text-white text-sm font-mono
             appearance-none cursor-pointer
-            focus:outline-none focus:border-[#E21D1D] focus:ring-2 focus:ring-[#E21D1D]/20
+            focus:outline-none focus:border-[#E8E4E0] focus:ring-2 focus:ring-[#E8E4E0]/20
             disabled:opacity-50 disabled:cursor-not-allowed
             transition-colors duration-75
-            ${error ? 'border-[#E21D1D]' : ''}
+            ${error ? 'border-[#E8E4E0]' : ''}
             ${!value ? 'text-[#888]/50' : ''}
           `}
           {...props}
@@ -91,7 +91,7 @@ export default function Select({
         </div>
       </div>
       {error && (
-        <p id={`${name}-error`} className="font-mono text-xs text-[#E21D1D] uppercase" role="alert">
+        <p id={`${name}-error`} className="font-mono text-xs text-[#E8E4E0] uppercase" role="alert">
           {error}
         </p>
       )}

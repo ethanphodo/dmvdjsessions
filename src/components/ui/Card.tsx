@@ -17,22 +17,22 @@ export default function Card({
   ...props
 }: CardProps) {
   const hoverClasses = hoverable
-    ? 'hover:border-[#E21D1D] hover:shadow-[4px_4px_0_0_#E21D1D] transition-all duration-75 cursor-cross'
+    ? 'hover:border-[#E8E4E0] hover:shadow-[4px_4px_0_0_#E8E4E0] transition-all duration-75 cursor-cross'
     : ''
 
   return (
     <div
-      className={`border border-[#1A1A1A] bg-[#0A0A0A] ${hoverClasses} ${className}`}
+      className={`border border-[#1C1C1C] bg-[#141414] ${hoverClasses} ${className}`}
       {...props}
     >
       {header && (
-        <div className="border-b border-[#1A1A1A] px-4 py-3 flex items-center justify-between">
+        <div className="border-b border-[#1C1C1C] px-4 py-3 flex items-center justify-between">
           {header}
         </div>
       )}
       {children}
       {footer && (
-        <div className="border-t border-[#1A1A1A] px-4 py-3">
+        <div className="border-t border-[#1C1C1C] px-4 py-3">
           {footer}
         </div>
       )}
@@ -47,7 +47,7 @@ interface CardSectionProps {
 
 export function CardHeader({ children, className = '' }: CardSectionProps) {
   return (
-    <div className={`border-b border-[#1A1A1A] px-4 py-3 flex items-center justify-between ${className}`}>
+    <div className={`border-b border-[#1C1C1C] px-4 py-3 flex items-center justify-between ${className}`}>
       {children}
     </div>
   )
@@ -63,7 +63,7 @@ export function CardContent({ children, className = '' }: CardSectionProps) {
 
 export function CardFooter({ children, className = '' }: CardSectionProps) {
   return (
-    <div className={`border-t border-[#1A1A1A] px-4 py-3 ${className}`}>
+    <div className={`border-t border-[#1C1C1C] px-4 py-3 ${className}`}>
       {children}
     </div>
   )

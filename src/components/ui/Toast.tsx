@@ -41,9 +41,9 @@ const TOAST_TYPES: Record<ToastType, { bg: string; border: string; text: string;
     ),
   },
   warning: {
-    bg: 'bg-[#D6A756]/10',
-    border: 'border-[#D6A756]/30',
-    text: 'text-[#D6A756]',
+    bg: 'bg-[#E8E4E0]/10',
+    border: 'border-[#E8E4E0]/30',
+    text: 'text-[#E8E4E0]',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -51,9 +51,9 @@ const TOAST_TYPES: Record<ToastType, { bg: string; border: string; text: string;
     ),
   },
   info: {
-    bg: 'bg-[#7FAFD4]/10',
-    border: 'border-[#7FAFD4]/30',
-    text: 'text-[#7FAFD4]',
+    bg: 'bg-[#C4C0BC]/10',
+    border: 'border-[#C4C0BC]/30',
+    text: 'text-[#C4C0BC]',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

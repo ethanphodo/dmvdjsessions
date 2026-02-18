@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { NAV_LINKS } from '../../utils/constants'
-import ThemeToggle from '../ui/ThemeToggle'
 
-interface NavLink {
-  path: string
-  label: string
-}
+const NAV_LINKS = [
+  { path: '/about', label: 'ABOUT' },
+  { path: '/sessions', label: 'SESSIONS' },
+  { path: '/events', label: 'EVENTS' },
+  { path: '/djs', label: 'DJS' },
+  { path: '/apply', label: 'APPLY' },
+  { path: '/partners', label: 'PARTNERSHIPS' },
+]
 
 function Navbar() {
   const location = useLocation()
@@ -31,151 +33,134 @@ function Navbar() {
   // Lock body scroll when drawer is open
   useEffect(() => {
     if (drawerOpen) {
-      document.body.classList.add('drawer-open')
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.classList.remove('drawer-open')
+      document.body.style.overflow = ''
     }
     return () => {
-      document.body.classList.remove('drawer-open')
+      document.body.style.overflow = ''
     }
   }, [drawerOpen])
 
   return (
     <>
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 px-4 md:px-6 py-4">
-        <nav
-          className={`max-w-6xl mx-auto flex items-center justify-between transition-all duration-500 ${
-            scrolled
-              ? 'bg-black/80 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3'
-              : 'bg-transparent px-2 py-4'
-          }`}
-          aria-label="Main navigation"
-        >
-          {/* Left - Location Tag (Desktop) / Hamburger (Mobile) */}
-          <div className="flex-1">
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="md:hidden p-2 -ml-2 text-white hover:text-[#888] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
-              aria-label="Open menu"
-              aria-expanded={drawerOpen}
-              aria-controls="mobile-menu"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-            <span className="hidden md:block font-mono text-[10px] tracking-[0.2em] text-gray-500 uppercase">
-              DMV // DC · MD · VA
-            </span>
-          </div>
-
-          {/* Center - Logo */}
-          <Link
-            to="/"
-            className="flex-1 flex justify-center hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D] rounded"
-            aria-label="DMV DJ Sessions - Home"
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6">
+          <nav
+            className="flex items-center justify-between"
+            aria-label="Main navigation"
           >
-            <h1 className="text-base md:text-lg font-medium tracking-tight text-white">
-              DMV DJ Sessions
-            </h1>
-          </Link>
-
-          {/* Right - Nav Links (Desktop) */}
-          <div className="flex-1 flex justify-end">
-            <div className="hidden md:flex items-center gap-6">
-              {(NAV_LINKS as NavLink[]).map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D] rounded px-1 ${
-                    location.pathname === link.path
-                      ? 'text-[#D6A756]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                  aria-current={location.pathname === link.path ? 'page' : undefined}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <ThemeToggle />
-            </div>
-            {/* Spacer for mobile */}
-            <div className="md:hidden w-9" />
-          </div>
-        </nav>
-      </header>
-
-      {/* Overlay */}
-      <AnimatePresence>
-        {drawerOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-45 bg-black/80 backdrop-blur-sm"
-            onClick={() => setDrawerOpen(false)}
-            aria-hidden="true"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Drawer Panel */}
-      <AnimatePresence>
-        {drawerOpen && (
-          <motion.nav
-            id="mobile-menu"
-            initial={{ x: '-100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 left-0 z-50 w-full max-w-[400px] h-dvh bg-black border-r border-white/10"
-            aria-label="Mobile navigation"
-          >
-            <div className="flex flex-col h-full px-8 py-6">
-              {/* Close button */}
+            {/* Left - Menu Button */}
+            <div className="flex-1">
               <button
-                onClick={() => setDrawerOpen(false)}
-                className="self-start p-2 -ml-2 text-white hover:text-[#888] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
-                aria-label="Close menu"
+                onClick={() => setDrawerOpen(true)}
+                className="p-2 -ml-2 text-white hover:opacity-70 transition-opacity"
+                aria-label="Open menu"
+                aria-expanded={drawerOpen}
+                aria-controls="mobile-menu"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
+            </div>
 
-              {/* Nav Links */}
-              <nav className="flex-1 flex flex-col justify-center space-y-6">
-                {(NAV_LINKS as NavLink[]).map((link, i) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <Link
-                      to={link.path}
-                      className={`block text-4xl md:text-5xl font-black italic uppercase tracking-tighter transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D] ${
-                        location.pathname === link.path
-                          ? 'text-white'
-                          : 'text-gray-600 hover:text-white'
-                      }`}
-                      aria-current={location.pathname === link.path ? 'page' : undefined}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
+            {/* Center - Logo */}
+            <Link
+              to="/"
+              className="flex-1 flex justify-center hover:opacity-70 transition-opacity"
+              aria-label="DMV DJ Sessions - Home"
+            >
+              <span className="text-white text-sm font-bold uppercase tracking-[0.15em]">
+                DMV DJ SESSIONS
+              </span>
+            </Link>
 
-              {/* Social Icons & Theme Toggle */}
-              <div className="flex items-center justify-between pt-8 border-t border-white/10">
-                <div className="flex items-center gap-6">
+            {/* Right - Placeholder for balance */}
+            <div className="flex-1 flex justify-end">
+              {/* Could add search/cart icons here like Syber */}
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Full Screen Drawer */}
+      <AnimatePresence>
+        {drawerOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-50 bg-black/60"
+              onClick={() => setDrawerOpen(false)}
+              aria-hidden="true"
+            />
+
+            {/* Drawer Panel */}
+            <motion.div
+              id="mobile-menu"
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+              className="fixed top-0 left-0 z-50 w-full max-w-md h-dvh bg-[#111] overflow-auto"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
+            >
+              <div className="flex flex-col min-h-full p-6 md:p-10">
+                {/* Close Button */}
+                <button
+                  onClick={() => setDrawerOpen(false)}
+                  className="self-start p-2 -ml-2 text-white hover:opacity-70 transition-opacity"
+                  aria-label="Close menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Navigation Links */}
+                <nav className="flex-1 flex flex-col justify-center py-12" aria-label="Main menu">
+                  <ul className="space-y-2">
+                    {NAV_LINKS.map((link, index) => (
+                      <motion.li
+                        key={link.path}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 + 0.1 }}
+                      >
+                        <Link
+                          to={link.path}
+                          className={`block py-2 text-2xl md:text-3xl font-medium uppercase tracking-[0.05em] transition-colors ${
+                            location.pathname === link.path
+                              ? 'text-white'
+                              : 'text-[#666] hover:text-white'
+                          }`}
+                          aria-current={location.pathname === link.path ? 'page' : undefined}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </nav>
+
+                {/* Bottom Social Icons */}
+                <div className="flex items-center gap-6 pt-8 border-t border-white/10">
                   <a
                     href="https://instagram.com/dmvdjsessions"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+                    className="text-[#666] hover:text-white transition-colors"
                     aria-label="Instagram"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -183,10 +168,21 @@ function Navbar() {
                     </svg>
                   </a>
                   <a
+                    href="https://tiktok.com/@dmvdjsessions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#666] hover:text-white transition-colors"
+                    aria-label="TikTok"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                    </svg>
+                  </a>
+                  <a
                     href="https://youtube.com/@dmvdjsessions"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+                    className="text-[#666] hover:text-white transition-colors"
                     aria-label="YouTube"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -194,10 +190,9 @@ function Navbar() {
                     </svg>
                   </a>
                 </div>
-                <ThemeToggle />
               </div>
-            </div>
-          </motion.nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

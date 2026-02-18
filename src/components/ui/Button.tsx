@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import type { ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 
 const variants = {
-  primary: 'bg-white text-black border-white/20 hover:bg-[#E21D1D] hover:border-[#E21D1D] hover:text-white',
-  secondary: 'bg-transparent text-white border-white/20 hover:border-[#E21D1D] hover:text-[#E21D1D]',
-  danger: 'bg-[#E21D1D] text-white border-[#E21D1D] hover:bg-white hover:text-black hover:border-white',
-  ghost: 'bg-transparent text-[#888] border-transparent hover:text-[#E21D1D]',
+  primary: 'bg-white text-black border-white/20 hover:bg-[#E8E4E0] hover:border-[#E8E4E0] hover:text-white',
+  secondary: 'bg-transparent text-white border-white/20 hover:border-[#E8E4E0] hover:text-[#E8E4E0]',
+  danger: 'bg-[#E8E4E0] text-white border-[#E8E4E0] hover:bg-white hover:text-black hover:border-white',
+  ghost: 'bg-transparent text-[#6B6865] border-transparent hover:text-[#E8E4E0]',
 } as const
 
 const sizes = {

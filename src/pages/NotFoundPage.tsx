@@ -4,13 +4,13 @@ import SEO from '../components/SEO'
 
 export default function NotFoundPage() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center pt-28 pb-20">
+    <div className="min-h-screen bg-black flex items-center justify-center px-6">
       <SEO
         title="404 - Page Not Found | DMV DJ Sessions"
         description="The page you're looking for doesn't exist."
       />
 
-      <div className="container-main text-center">
+      <div className="w-full max-w-2xl mx-auto text-center">
         {/* Glitch 404 */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -33,7 +33,7 @@ export default function NotFoundPage() {
               repeatDelay: 3,
             }}
           >
-            <span className="text-[8rem] md:text-[12rem] font-black italic text-[#D6A756] leading-none">
+            <span className="text-[8rem] md:text-[12rem] font-black italic text-[#E8E4E0] leading-none">
               404
             </span>
           </motion.div>
@@ -45,13 +45,13 @@ export default function NotFoundPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <p className="font-mono text-xs tracking-[0.3em] text-[#D6A756] uppercase mb-4">
+          <p className="font-mono text-xs tracking-[0.3em] text-[#666] uppercase mb-4">
             Track Not Found
           </p>
           <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tight text-white mb-4">
             This page doesn't exist
           </h2>
-          <p className="text-gray-500 mb-8 max-w-md mx-auto">
+          <p className="text-[#666] text-center mx-auto max-w-sm mb-8">
             The session you're looking for might have been moved, deleted, or never existed in the first place.
           </p>
         </motion.div>
@@ -65,7 +65,7 @@ export default function NotFoundPage() {
         >
           <Link
             to="/"
-            className="group inline-flex items-center justify-center px-8 py-4 bg-white text-black text-xs font-black italic uppercase tracking-widest hover:bg-[#D6A756] transition-colors duration-300"
+            className="group inline-flex items-center justify-center px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.1em] hover:bg-[#E8E4E0] transition-colors duration-300"
           >
             Back Home
             <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@ export default function NotFoundPage() {
           </Link>
           <Link
             to="/sessions"
-            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-xs font-black italic uppercase tracking-widest hover:border-white hover:bg-white/5 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-xs font-bold uppercase tracking-[0.1em] hover:border-white hover:bg-white/5 transition-all duration-300"
           >
             Browse Sessions
           </Link>
@@ -88,7 +88,7 @@ export default function NotFoundPage() {
           className="mt-16 flex items-center justify-center gap-8"
         >
           <div className="w-24 h-px bg-gradient-to-r from-transparent to-white/20" />
-          <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+          <span className="font-mono text-[10px] text-[#444] uppercase tracking-[0.2em]">
             DMV DJ Sessions
           </span>
           <div className="w-24 h-px bg-gradient-to-l from-transparent to-white/20" />
