@@ -1,11 +1,19 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import {
+  optimizedImageUrl,
+  generateSrcSet,
+  generatePlaceholder,
+  isCdnConfigured,
+} from '../../utils/imageCdn'
 
 /**
  * Optimized image component with:
+ * - CDN integration (Cloudinary/Imgix) for automatic optimization
  * - Lazy loading via Intersection Observer
  * - Progressive loading with blur-up effect
- * - WebP support detection
+ * - Responsive srcset generation
+ * - WebP/AVIF automatic format selection
  * - Error fallback
  * - Priority loading option for LCP
  */
@@ -17,14 +25,39 @@ function OptimizedImage({
   priority = false,
   aspectRatio = '16/9',
   objectFit = 'cover',
+  width,
+  height,
+  quality,
+  sizes,
+  widths = [320, 640, 768, 1024, 1280],
   onLoad,
   fallback = null,
+  useCdn = true,
+  placeholder = 'blur', // 'blur' | 'skeleton' | 'none'
 }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isInView, setIsInView] = useState(priority)
   const [hasError, setHasError] = useState(false)
   const imgRef = useRef(null)
   const observerRef = useRef(null)
+
+  // Generate CDN URLs if configured
+  const cdnEnabled = useCdn && isCdnConfigured()
+
+  const optimizedSrc = useMemo(() => {
+    if (!cdnEnabled) return src
+    return optimizedImageUrl(src, { width, height, quality })
+  }, [src, width, height, quality, cdnEnabled])
+
+  const srcSet = useMemo(() => {
+    if (!cdnEnabled) return ''
+    return generateSrcSet(src, { height, quality }, widths)
+  }, [src, height, quality, widths, cdnEnabled])
+
+  const placeholderSrc = useMemo(() => {
+    if (placeholder !== 'blur' || !cdnEnabled) return null
+    return generatePlaceholder(src)
+  }, [src, placeholder, cdnEnabled])
 
   // Intersection Observer for lazy loading
   useEffect(() => {
@@ -63,9 +96,37 @@ function OptimizedImage({
       className={`relative overflow-hidden ${wrapperClassName}`}
       style={{ aspectRatio }}
     >
+      {/* Blur placeholder (if CDN provides it) */}
+      {placeholder === 'blur' && placeholderSrc && !isLoaded && !hasError && (
+        <img
+          src={placeholderSrc}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Skeleton placeholder */}
       <AnimatePresence>
-        {!isLoaded && !hasError && (
+        {placeholder === 'skeleton' && !isLoaded && !hasError && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-[#1A1A1A]"
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+              animate={{ x: ['-100%', '100%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Default skeleton when no placeholder specified or CDN not configured */}
+      <AnimatePresence>
+        {!placeholderSrc && placeholder !== 'none' && !isLoaded && !hasError && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -95,7 +156,9 @@ function OptimizedImage({
       {/* Actual image */}
       {isInView && !hasError && (
         <motion.img
-          src={src}
+          src={optimizedSrc}
+          srcSet={srcSet || undefined}
+          sizes={sizes}
           alt={alt}
           className={`w-full h-full ${className}`}
           style={{ objectFit }}
@@ -132,6 +195,12 @@ export function OptimizedVideo({
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const videoRef = useRef(null)
 
+  // Optimize poster image if CDN is configured
+  const optimizedPoster = useMemo(() => {
+    if (!poster || !isCdnConfigured()) return poster
+    return optimizedImageUrl(poster, { width: 1920, quality: 80 })
+  }, [poster])
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.addEventListener('loadeddata', () => {
@@ -144,9 +213,9 @@ export function OptimizedVideo({
     <div className="relative overflow-hidden">
       {/* Poster image for fast LCP */}
       <AnimatePresence>
-        {!isVideoLoaded && poster && (
+        {!isVideoLoaded && optimizedPoster && (
           <motion.img
-            src={poster}
+            src={optimizedPoster}
             alt=""
             className={`absolute inset-0 w-full h-full object-cover ${className}`}
             initial={{ opacity: 1 }}
@@ -162,7 +231,7 @@ export function OptimizedVideo({
       <video
         ref={videoRef}
         src={src}
-        poster={poster}
+        poster={optimizedPoster}
         autoPlay={autoPlay}
         loop={loop}
         muted={muted}
