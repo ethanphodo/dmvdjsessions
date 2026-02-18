@@ -59,7 +59,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-gray-600 mb-12 max-w-lg mx-auto text-center"
+          className="text-base md:text-lg text-gray-600 mb-12 mx-auto text-center"
         >
           Curated DJ sessions from Washington DC, Maryland, and Virginia.
         </motion.p>
@@ -88,24 +88,25 @@ function Hero() {
           </Link>
         </motion.div>
 
-        {/* Scroll indicator */}
+      </motion.div>
+
+      {/* Scroll indicator - positioned relative to section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.6 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2"
+      >
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center p-1"
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            className="w-1 h-2 bg-white/40 rounded-full"
+            animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center p-1"
-          >
-            <motion.div
-              className="w-1 h-2 bg-white/40 rounded-full"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            />
-          </motion.div>
+          />
         </motion.div>
       </motion.div>
 
