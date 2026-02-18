@@ -11,6 +11,7 @@ const initialValues = {
   bio: '',
   mixLink: '',
   instagram: '',
+  vibeWords: '',
 }
 
 const validationRules = {
@@ -50,21 +51,21 @@ export default function TalentForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#0A0A0A] p-12 text-center">
-        <div className="w-16 h-16 mx-auto mb-6 bg-[#E21D1D] rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-[#141414] p-12 text-center">
+        <div className="w-16 h-16 mx-auto mb-6 bg-[#E8E4E0] rounded-full flex items-center justify-center">
+          <svg className="w-8 h-8 text-[#0A0A0A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
         <h3 className="text-2xl font-bold text-white mb-2">
           Application Received
         </h3>
-        <p className="text-[#888] mb-8">
+        <p className="text-[#6B6865] mb-8">
           We'll review your submission and get back to you within 48-72 hours.
         </p>
         <button
           onClick={resetForm}
-          className="text-[#E21D1D] hover:text-white transition-colors"
+          className="text-[#E8E4E0] hover:text-white transition-colors"
         >
           Submit Another
         </button>
@@ -73,16 +74,16 @@ export default function TalentForm() {
   }
 
   const inputClass = (field) => `
-    w-full px-4 py-3 bg-[#1A1A1A] border-none text-white text-sm
-    placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-[#E21D1D]
+    w-full px-4 py-3 bg-[#1C1C1C] border-none text-white text-sm
+    placeholder:text-[#4A4845] focus:outline-none focus:ring-2 focus:ring-[#E8E4E0]
     rounded-sm transition-all
-    ${touched[field] && errors[field] ? 'ring-2 ring-[#E21D1D]' : ''}
+    ${touched[field] && errors[field] ? 'ring-2 ring-[#E8E4E0]' : ''}
   `
 
   return (
     <form onSubmit={onFormSubmit} className="space-y-8">
       {/* Basic Info */}
-      <div className="bg-[#0A0A0A] p-6 md:p-8">
+      <div className="bg-[#141414] p-6 md:p-8">
         <h3 className="text-lg font-bold text-white mb-6">Basic Info</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <div>
@@ -95,7 +96,7 @@ export default function TalentForm() {
               className={inputClass('name')}
             />
             {touched.name && errors.name && (
-              <p className="text-xs text-[#E21D1D] mt-1">{errors.name}</p>
+              <p className="text-xs text-[#E8E4E0] mt-1">{errors.name}</p>
             )}
           </div>
           <div>
@@ -109,14 +110,14 @@ export default function TalentForm() {
               className={inputClass('email')}
             />
             {touched.email && errors.email && (
-              <p className="text-xs text-[#E21D1D] mt-1">{errors.email}</p>
+              <p className="text-xs text-[#E8E4E0] mt-1">{errors.email}</p>
             )}
           </div>
         </div>
       </div>
 
       {/* DJ Info */}
-      <div className="bg-[#0A0A0A] p-6 md:p-8">
+      <div className="bg-[#141414] p-6 md:p-8">
         <h3 className="text-lg font-bold text-white mb-6">DJ Info</h3>
         <div className="grid md:grid-cols-2 gap-4 mb-4">
           <div>
@@ -129,7 +130,7 @@ export default function TalentForm() {
               className={inputClass('djName')}
             />
             {touched.djName && errors.djName && (
-              <p className="text-xs text-[#E21D1D] mt-1">{errors.djName}</p>
+              <p className="text-xs text-[#E8E4E0] mt-1">{errors.djName}</p>
             )}
           </div>
           <div>
@@ -138,7 +139,7 @@ export default function TalentForm() {
               value={values.location}
               onChange={handleChange}
               onBlur={handleBlur}
-              className={`${inputClass('location')} ${!values.location ? 'text-[#666]' : ''}`}
+              className={`${inputClass('location')} ${!values.location ? 'text-[#4A4845]' : ''}`}
             >
               <option value="">Location *</option>
               {LOCATIONS.map((loc) => (
@@ -146,7 +147,7 @@ export default function TalentForm() {
               ))}
             </select>
             {touched.location && errors.location && (
-              <p className="text-xs text-[#E21D1D] mt-1">{errors.location}</p>
+              <p className="text-xs text-[#E8E4E0] mt-1">{errors.location}</p>
             )}
           </div>
         </div>
@@ -156,7 +157,7 @@ export default function TalentForm() {
             value={values.genre}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`${inputClass('genre')} ${!values.genre ? 'text-[#666]' : ''}`}
+            className={`${inputClass('genre')} ${!values.genre ? 'text-[#4A4845]' : ''}`}
           >
             <option value="">Primary Genre *</option>
             {GENRES.map((g) => (
@@ -164,13 +165,13 @@ export default function TalentForm() {
             ))}
           </select>
           {touched.genre && errors.genre && (
-            <p className="text-xs text-[#E21D1D] mt-1">{errors.genre}</p>
+            <p className="text-xs text-[#E8E4E0] mt-1">{errors.genre}</p>
           )}
         </div>
       </div>
 
       {/* Links */}
-      <div className="bg-[#0A0A0A] p-6 md:p-8">
+      <div className="bg-[#141414] p-6 md:p-8">
         <h3 className="text-lg font-bold text-white mb-6">Your Mix</h3>
         <div className="space-y-4">
           <div>
@@ -183,7 +184,7 @@ export default function TalentForm() {
               className={inputClass('mixLink')}
             />
             {touched.mixLink && errors.mixLink && (
-              <p className="text-xs text-[#E21D1D] mt-1">{errors.mixLink}</p>
+              <p className="text-xs text-[#E8E4E0] mt-1">{errors.mixLink}</p>
             )}
           </div>
           <input
@@ -197,29 +198,44 @@ export default function TalentForm() {
         </div>
       </div>
 
-      {/* Bio */}
-      <div className="bg-[#0A0A0A] p-6 md:p-8">
+      {/* Bio & Vibe */}
+      <div className="bg-[#141414] p-6 md:p-8">
         <h3 className="text-lg font-bold text-white mb-6">About You</h3>
-        <textarea
-          name="bio"
-          value={values.bio}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Tell us about your sound (optional)"
-          rows={4}
-          className={`${inputClass('bio')} resize-none`}
-        />
+        <div className="space-y-4">
+          <textarea
+            name="bio"
+            value={values.bio}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="Tell us about your sound (optional)"
+            rows={4}
+            className={`${inputClass('bio')} resize-none`}
+          />
+          <div>
+            <label className="block text-sm text-gray-400 mb-2">
+              In three words, describe the energy of your 3 AM set.
+            </label>
+            <input
+              name="vibeWords"
+              value={values.vibeWords}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="e.g., Dark, Hypnotic, Relentless"
+              className={inputClass('vibeWords')}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Submit */}
       {submitError && (
-        <p className="text-sm text-[#E21D1D]">{submitError}</p>
+        <p className="text-sm text-[#E8E4E0]">{submitError}</p>
       )}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 bg-[#E21D1D] text-white font-medium hover:bg-white hover:text-black disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
+        className="w-full py-4 bg-[#E8E4E0] text-[#0A0A0A] font-medium hover:bg-white hover:text-black disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
       >
         {isSubmitting ? 'Submitting...' : 'Submit Application'}
       </button>

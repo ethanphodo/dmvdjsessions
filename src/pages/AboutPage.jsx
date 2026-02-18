@@ -30,21 +30,21 @@ const SERIES = [
   {
     name: 'Studio',
     location: 'Washington, DC',
-    color: '#D6A756',
+    color: '#E8E4E0',
     vibe: 'Controlled lighting. Focused sound. Pure performance.',
     image: '/images/studio-session.jpg',
   },
   {
     name: 'Warehouse',
     location: 'Maryland',
-    color: '#8B1E2D',
+    color: '#8B7355',
     vibe: 'Industrial energy. Dark textures. Harder sounds.',
     image: '/images/warehouse-session.jpg',
   },
   {
     name: 'Rooftop',
     location: 'Virginia',
-    color: '#7FAFD4',
+    color: '#C4C0BC',
     vibe: 'Golden hour. Open air. Elevated atmosphere.',
     image: '/images/rooftop-session.jpg',
   },
@@ -74,7 +74,7 @@ export default function AboutPage() {
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--black)' }}>
       <SEO
         title="About | DMV DJ Sessions"
         description="Capturing the sonic evolution of the DMV through high-fidelity live broadcasts. Curated sessions from Washington DC, Maryland, and Virginia's finest selectors."
@@ -87,20 +87,21 @@ export default function AboutPage() {
       <section
         ref={heroRef}
         className="relative h-screen flex items-center justify-center overflow-hidden"
+        style={{ backgroundColor: 'var(--black)' }}
       >
-        {/* Video/Image Background with Grain */}
+        {/* Static background that doesn't fade */}
+        <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(to bottom right, var(--charcoal), var(--dark-gray), var(--black))' }} />
+
+        {/* Video/Image Background with Grain - fades on scroll */}
         <motion.div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-1"
           style={{ scale: heroScale, opacity: heroOpacity }}
         >
           {/* Gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black z-10" />
+          <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(var(--black-rgb, 0,0,0), 0.6), rgba(var(--black-rgb, 0,0,0), 0.4), var(--black))' }} />
 
           {/* Grainy texture overlay */}
           <div className="absolute inset-0 z-20 opacity-20 mix-blend-overlay bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
-
-          {/* Background gradient (placeholder for video) */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#111] to-black" />
         </motion.div>
 
         {/* Hero Content */}
@@ -173,7 +174,7 @@ export default function AboutPage() {
       {/* ============================================
           SECTION C: THE PILLARS
           ============================================ */}
-      <section className="py-24 md:py-32 bg-black">
+      <section className="py-24 md:py-32" style={{ backgroundColor: 'var(--black)' }}>
         <div className="container-narrow">
           {/* Section Label */}
           <motion.p

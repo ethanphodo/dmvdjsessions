@@ -15,37 +15,46 @@
   --space-2xl: 4rem;
   --space-3xl: 6rem;
 
-  /* Colors */
-  --black: #000000;
-  --charcoal: #0A0A0A;
-  --dark-gray: #1A1A1A;
-  --mid-gray: #333333;
-  --light-gray: #666666;
-  --muted: #888888;
+  /* Brand Palette - Industrial, Cinematic, Midnight */
+  --brand-void: #0A0A0A;
+  --brand-charcoal: #141414;
+  --brand-bone: #E8E4E0;
+  --brand-stone: #C4C0BC;
+  --brand-ash: #6B6865;
+  --brand-bronze: #8B7355;
+
+  /* RGB values for gradients */
+  --black-rgb: 10, 10, 10;
+
+  /* Colors (mapped to brand) */
+  --black: #0A0A0A;
+  --charcoal: #141414;
+  --dark-gray: #1C1C1C;
+  --mid-gray: #6B6865;
+  --light-gray: #C4C0BC;
+  --muted: #6B6865;
 
   /* Series Accents */
-  --studio-amber: #D6A756;
-  --warehouse-red: #8B1E2D;
-  --rooftop-blue: #7FAFD4;
+  --studio-amber: #E8E4E0;
+  --warehouse-red: #8B7355;
+  --rooftop-blue: #C4C0BC;
 
-  /* 2026 Vibrant Palette */
-  --color-electric-violet: #8B5CF6;
-  --color-cyber-pink: #EC4899;
-  --color-neon-lime: #84CC16;
-  --color-aurora-cyan: #22D3EE;
-  --color-sunset-orange: #F97316;
-  --color-deep-purple: #7C3AED;
+  /* Accent Colors */
+  --color-accent-primary: #E8E4E0;
+  --color-accent-secondary: #8B7355;
+  --color-accent-muted: #6B6865;
 
-  /* Gradients */
-  --gradient-hero: linear-gradient(135deg, var(--color-electric-violet), var(--color-cyber-pink));
-  --gradient-accent: linear-gradient(135deg, var(--color-aurora-cyan), var(--color-electric-violet));
-  --gradient-warm: linear-gradient(135deg, var(--color-sunset-orange), var(--color-cyber-pink));
-  --gradient-neon: linear-gradient(135deg, var(--color-neon-lime), var(--color-aurora-cyan));
+  /* Gradients - Cinematic */
+  --gradient-hero: linear-gradient(135deg, #E8E4E0, #C4C0BC);
+  --gradient-accent: linear-gradient(135deg, #8B7355, #6B6865);
+  --gradient-warm: linear-gradient(135deg, #E8E4E0, #8B7355);
+  --gradient-subtle: linear-gradient(135deg, rgba(232, 228, 224, 0.08), rgba(139, 115, 85, 0.04));
 
   /* Text */
-  --text-primary: #FFFFFF;
-  --text-secondary: #888888;
-  --text-muted: #666666;
+  --text-primary: #E8E4E0;
+  --text-secondary: #C4C0BC;
+  --text-muted: #6B6865;
+  --text-subtle: #4A4845;
 }
 
 /* ========================================
@@ -53,17 +62,20 @@
    ======================================== */
 :root.light {
   /* Backgrounds */
-  --black: #FFFFFF;
-  --charcoal: #FAFAFA;
-  --dark-gray: #F0F0F0;
-  --mid-gray: #E0E0E0;
-  --light-gray: #999999;
-  --muted: #777777;
+  --black: #E8E4E0;
+  --charcoal: #DCD8D4;
+  --dark-gray: #D0CCC8;
+  --mid-gray: #C4C0BC;
+  --light-gray: #6B6865;
+  --muted: #4A4845;
+
+  /* RGB values for gradients */
+  --black-rgb: 232, 228, 224;
 
   /* Text */
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-muted: #888888;
+  --text-primary: #0A0A0A;
+  --text-secondary: #4A4845;
+  --text-muted: #6B6865;
 }
 
 /* Light mode specific overrides */
@@ -277,13 +289,13 @@ body {
 
 /* Selection Color - Brand accent */
 ::selection {
-  background: var(--studio-amber);
-  color: #000;
+  background: var(--brand-bone);
+  color: var(--brand-void);
 }
 
 ::-moz-selection {
-  background: var(--studio-amber);
-  color: #000;
+  background: var(--brand-bone);
+  color: var(--brand-void);
 }
 
 /* Mono font utility - Technical labels */
@@ -406,9 +418,9 @@ body {
   width: 200%;
   height: 200%;
   background:
-    radial-gradient(circle at 20% 80%, rgba(214, 167, 86, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(139, 30, 45, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 40% 40%, rgba(127, 175, 212, 0.05) 0%, transparent 30%);
+    radial-gradient(circle at 20% 80%, rgba(139, 115, 85, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(232, 228, 224, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(107, 104, 101, 0.04) 0%, transparent 30%);
   animation: meshMove 20s ease-in-out infinite;
 }
 
@@ -517,20 +529,20 @@ body {
 /* ========================================
    GLOW EFFECTS
    ======================================== */
-.glow-amber {
-  box-shadow: 0 0 40px rgba(214, 167, 86, 0.15);
+.glow-cream {
+  box-shadow: 0 0 40px rgba(242, 233, 228, 0.15);
 }
 
-.glow-red {
-  box-shadow: 0 0 40px rgba(139, 30, 45, 0.15);
+.glow-warm {
+  box-shadow: 0 0 40px rgba(191, 188, 186, 0.15);
 }
 
-.glow-blue {
-  box-shadow: 0 0 40px rgba(127, 175, 212, 0.15);
+.glow-subtle {
+  box-shadow: 0 0 40px rgba(140, 137, 135, 0.15);
 }
 
-.text-glow-amber {
-  text-shadow: 0 0 30px rgba(214, 167, 86, 0.5);
+.text-glow-cream {
+  text-shadow: 0 0 30px rgba(242, 233, 228, 0.5);
 }
 
 /* ========================================
@@ -557,7 +569,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--studio-amber);
+  background: var(--brand-cream);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -703,7 +715,7 @@ select option {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 20px rgba(214, 167, 86, 0.2);
+  box-shadow: 0 0 20px rgba(242, 233, 228, 0.2);
 }
 
 /* Button hover */
@@ -752,7 +764,7 @@ select option {
 
 /* Visible focus ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid var(--studio-amber);
+  outline: 2px solid var(--brand-cream);
   outline-offset: 2px;
 }
 
@@ -768,8 +780,8 @@ select option {
   left: 50%;
   transform: translateX(-50%);
   padding: 1rem 2rem;
-  background: var(--studio-amber);
-  color: black;
+  background: var(--brand-cream);
+  color: var(--brand-black);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -784,7 +796,7 @@ select option {
 /* Button focus states */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid var(--studio-amber);
+  outline: 2px solid var(--brand-cream);
   outline-offset: 2px;
 }
 
@@ -793,13 +805,13 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: none;
-  ring: 2px solid var(--studio-amber);
-  border-color: var(--studio-amber);
+  ring: 2px solid var(--brand-cream);
+  border-color: var(--brand-cream);
 }
 
 /* Card focus states */
 .card-focusable:focus-visible {
-  outline: 2px solid var(--studio-amber);
+  outline: 2px solid var(--brand-cream);
   outline-offset: 4px;
 }
 
@@ -1142,25 +1154,25 @@ img {
   background: var(--gradient-warm);
 }
 
-/* Glow Effects - 2026 */
-.glow-violet {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+/* Glow Effects - Brand */
+.glow-primary {
+  box-shadow: 0 0 40px rgba(242, 233, 228, 0.2);
 }
 
-.glow-pink {
-  box-shadow: 0 0 40px rgba(236, 72, 153, 0.25);
+.glow-secondary {
+  box-shadow: 0 0 40px rgba(191, 188, 186, 0.2);
 }
 
-.glow-cyan {
-  box-shadow: 0 0 40px rgba(34, 211, 238, 0.25);
+.glow-muted {
+  box-shadow: 0 0 40px rgba(140, 137, 135, 0.2);
 }
 
-.text-glow-violet {
-  text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+.text-glow-primary {
+  text-shadow: 0 0 30px rgba(242, 233, 228, 0.4);
 }
 
-.text-glow-pink {
-  text-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+.text-glow-secondary {
+  text-shadow: 0 0 30px rgba(191, 188, 186, 0.4);
 }
 
 /* Magnetic Cursor Effect */
@@ -1182,9 +1194,9 @@ img {
   width: 200%;
   height: 200%;
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(34, 211, 238, 0.08) 0%, transparent 40%);
+    radial-gradient(ellipse at 30% 20%, rgba(139, 115, 85, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(232, 228, 224, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(107, 104, 101, 0.04) 0%, transparent 40%);
   animation: liquidMorph 15s ease-in-out infinite;
   pointer-events: none;
 }
@@ -1242,11 +1254,11 @@ img {
   transform: translateY(0) scale(0.98);
 }
 
-/* Focus Ring - 2026 Style */
+/* Focus Ring - Brand Style */
 .focus-ring:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--black),
-              0 0 0 4px var(--color-electric-violet);
+              0 0 0 4px var(--brand-cream);
 }
 
 /* Smooth Scroll Container (for Lenis) */
@@ -1262,16 +1274,16 @@ html.lenis {
   overscroll-behavior: contain;
 }
 
-/* Card Hover - 2026 */
-.card-hover-2026 {
+/* Card Hover - Brand */
+.card-hover-brand {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-hover-2026:hover {
+.card-hover-brand:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15),
-              0 0 0 1px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 20px 40px rgba(242, 233, 228, 0.1),
+              0 0 0 1px rgba(242, 233, 228, 0.08);
 }
 
 /* Button Shimmer Effect */
@@ -1339,32 +1351,32 @@ html.lenis {
 
 /* AAA Focus States */
 :focus-visible {
-  outline: 3px solid var(--color-electric-violet);
+  outline: 3px solid var(--brand-cream);
   outline-offset: 3px;
 }
 
 button:focus-visible,
 a:focus-visible,
 [role="button"]:focus-visible {
-  outline: 3px solid var(--color-electric-violet);
+  outline: 3px solid var(--brand-cream);
   outline-offset: 3px;
 }
 
 /* Improved Link Accessibility */
 a:not([class]) {
-  color: var(--color-aurora-cyan);
+  color: var(--brand-gray-light);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 a:not([class]):hover {
-  color: var(--color-electric-violet);
+  color: var(--brand-cream);
 }
 
 /* Skip Link Enhancement */
 .skip-link:focus {
   top: 1rem;
-  outline: 3px solid var(--color-electric-violet);
+  outline: 3px solid var(--brand-cream);
 }
 
 /* Screen Reader Only */

@@ -1,156 +1,167 @@
-import PageHeader from '../components/layout/PageHeader'
+import { motion } from 'framer-motion'
 import PartnerForm from '../components/forms/PartnerForm'
 import SEO from '../components/SEO'
 
-const partnerBenefits = {
-  venue: [
-    'Premium exposure to the DMV music community',
-    'Professional video content featuring your space',
-    'Social media promotion and tagging',
-    'Association with quality underground music',
-    'Potential recurring session bookings',
-  ],
-  sponsor: [
-    'Brand visibility in all session content',
-    'Logo placement in video intros/outros',
-    'Social media mentions and stories',
-    'Access to engaged music audience',
-    'Custom branded content opportunities',
-  ],
-  media: [
-    'Exclusive behind-the-scenes access',
-    'Early access to session releases',
-    'Cross-promotion opportunities',
-    'Interview and feature opportunities',
-    'Joint content creation',
-  ],
-}
+// Icons for value proposition cards
+const VenueIcon = () => (
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+  </svg>
+)
+
+const SponsorIcon = () => (
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+)
+
+const MediaIcon = () => (
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+  </svg>
+)
+
+const valueProps = [
+  {
+    id: 'venue',
+    icon: VenueIcon,
+    title: 'Venues',
+    description: 'Your space, captured cinematically. Premium content you own.',
+    benefits: ['Professional video featuring your space', 'Global audience exposure', 'Recurring session opportunities'],
+  },
+  {
+    id: 'sponsor',
+    icon: SponsorIcon,
+    title: 'Sponsors',
+    description: 'Get in front of the tastemakers shaping the culture.',
+    benefits: ['Brand placement in all content', 'Logo in video intros/outros', 'Direct access to DMV music scene'],
+  },
+  {
+    id: 'media',
+    icon: MediaIcon,
+    title: 'Media',
+    description: 'Tell the story with us. First access to everything.',
+    benefits: ['Exclusive behind-the-scenes', 'Early session releases', 'Co-branded content opportunities'],
+  },
+]
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-black pt-28">
+    <div className="min-h-screen pt-28 bg-white dark:bg-black">
       <SEO
         title="Partners | DMV DJ Sessions"
         description="Partner with DMV DJ Sessions. We work with venues, sponsors, and media partners who share our vision for showcasing DMV talent."
         keywords="DJ partnerships, venue partnerships, music sponsors, DMV music, Washington DC events"
       />
+
       <div className="container-main">
-        <PageHeader
-          sectionNumber="01"
-          sectionLabel="PARTNERS"
-          title="Work With Us"
-          subtitle="We're always looking for venues, sponsors, and media partners who share our vision for showcasing DMV talent."
-        />
+        {/* Header */}
+        <div className="pt-8 md:pt-16 pb-12 md:pb-16">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-xs tracking-widest text-[#6B6865] uppercase mb-6"
+          >
+            Partners
+          </motion.p>
 
-        <div className="grid lg:grid-cols-3 gap-8 pb-24">
-          {/* Form Column */}
-          <div className="lg:col-span-2">
-            <PartnerForm />
-          </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-black dark:text-[#E8E4E0] mb-4"
+          >
+            Work With Us
+          </motion.h1>
 
-          {/* Info Column */}
-          <div className="space-y-6">
-            {/* Venue Partners */}
-            <div className="border border-[#1A1A1A] bg-[#0A0A0A]">
-              <div className="border-b border-[#1A1A1A] px-4 py-3">
-                <span className="font-mono text-xs uppercase tracking-tight text-white">
-                  VENUE_PARTNERS
-                </span>
-              </div>
-              <div className="p-6">
-                <p className="text-sm text-[#888] mb-4">
-                  Have a unique space in DC, Maryland, or Virginia? We're looking for:
-                </p>
-                <ul className="space-y-2 font-mono text-xs text-[#888] uppercase">
-                  {partnerBenefits.venue.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#D6A756]">→</span>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Sponsors */}
-            <div className="border border-[#1A1A1A] bg-[#0A0A0A]">
-              <div className="border-b border-[#1A1A1A] px-4 py-3">
-                <span className="font-mono text-xs uppercase tracking-tight text-white">
-                  BRAND_SPONSORS
-                </span>
-              </div>
-              <div className="p-6">
-                <p className="text-sm text-[#888] mb-4">
-                  Reach an engaged audience of music lovers:
-                </p>
-                <ul className="space-y-2 font-mono text-xs text-[#888] uppercase">
-                  {partnerBenefits.sponsor.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#D6A756]">→</span>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Media */}
-            <div className="border border-[#1A1A1A] bg-[#0A0A0A]">
-              <div className="border-b border-[#1A1A1A] px-4 py-3">
-                <span className="font-mono text-xs uppercase tracking-tight text-white">
-                  MEDIA_PARTNERS
-                </span>
-              </div>
-              <div className="p-6">
-                <p className="text-sm text-[#888] mb-4">
-                  Music blogs, podcasts, and publications:
-                </p>
-                <ul className="space-y-2 font-mono text-xs text-[#888] uppercase">
-                  {partnerBenefits.media.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#D6A756]">→</span>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Current Partners */}
-            <div className="border border-[#D6A756] bg-[#0A0A0A]">
-              <div className="border-b border-[#1A1A1A] px-4 py-3 flex items-center justify-between">
-                <span className="font-mono text-xs uppercase tracking-tight text-white">
-                  CURRENT_PARTNERS
-                </span>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#D6A756]" />
-                  <span className="font-mono text-[10px] uppercase text-[#888]">ACTIVE</span>
-                </div>
-              </div>
-              <div className="p-6 text-center">
-                <p className="font-mono text-xs text-[#888] uppercase">
-                  Partner logos coming soon
-                </p>
-              </div>
-            </div>
-
-            {/* Direct Contact */}
-            <div className="border border-[#1A1A1A] bg-[#0A0A0A] p-6">
-              <div className="font-mono text-xs uppercase tracking-tight text-[#888] mb-4">
-                DIRECT_CONTACT
-              </div>
-              <p className="text-sm text-[#888] mb-4">
-                Prefer to reach out directly?
-              </p>
-              <a
-                href="mailto:partners@dmvdjsessions.com"
-                className="inline-block border border-white/20 px-4 py-2 bg-transparent text-white font-mono text-xs uppercase tracking-tight hover:border-[#D6A756] hover:text-[#D6A756] transition-all duration-75"
-              >
-                partners@dmvdjsessions.com
-              </a>
-            </div>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-[#6B6865] max-w-xl text-base"
+          >
+            We partner with venues, sponsors, and media who share our vision for showcasing DMV talent.
+          </motion.p>
         </div>
+
+        {/* Value Proposition Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="grid md:grid-cols-3 gap-6 mb-16"
+        >
+          {valueProps.map((prop, index) => (
+            <motion.div
+              key={prop.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
+              className="p-6 bg-[#F5F5F5] dark:bg-[#141414] border border-[#E0E0E0] dark:border-[#333] hover:border-[#999] dark:hover:border-[#555] transition-colors"
+            >
+              {/* Icon */}
+              <div className="w-14 h-14 border border-black dark:border-[#E8E4E0] flex items-center justify-center mb-5 text-black dark:text-[#E8E4E0]">
+                <prop.icon />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-black dark:text-[#E8E4E0] mb-2 tracking-tight">
+                {prop.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-[#555] dark:text-[#6B6865] mb-4">
+                {prop.description}
+              </p>
+
+              {/* Benefits */}
+              <ul className="space-y-2">
+                {prop.benefits.map((benefit, i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs text-[#555] dark:text-[#6B6865]">
+                    <span className="text-black dark:text-[#E8E4E0] mt-0.5">+</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Form Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="max-w-2xl mx-auto pb-24"
+        >
+          {/* Section Label */}
+          <div className="text-center mb-8">
+            <p className="text-xs tracking-widest text-[#6B6865] uppercase mb-3">
+              Get Started
+            </p>
+            <h2 className="text-2xl font-semibold text-black dark:text-[#E8E4E0] tracking-tight">
+              Tell us about your partnership
+            </h2>
+          </div>
+
+          <PartnerForm />
+
+          {/* Direct Contact */}
+          <div className="mt-12 text-center border-t border-[#E0E0E0] dark:border-[#1C1C1C] pt-8">
+            <p className="text-sm text-[#6B6865] mb-3">
+              Prefer to reach out directly?
+            </p>
+            <a
+              href="mailto:partners@dmvdjsessions.com"
+              className="inline-flex items-center gap-2 text-black dark:text-[#E8E4E0] hover:opacity-70 transition-opacity text-sm"
+            >
+              partners@dmvdjsessions.com
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </motion.div>
       </div>
     </div>
   )

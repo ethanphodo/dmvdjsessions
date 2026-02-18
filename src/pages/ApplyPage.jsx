@@ -60,12 +60,12 @@ export default function ApplyPage() {
       <div className="min-h-screen bg-black pt-28">
         <div className="container-form section-padding text-center">
           <PageTitle title="SUBMITTED" />
-          <p className="text-[#888] text-lg animate-fade-in mb-8">
+          <p className="text-[#6B6865] text-lg animate-fade-in mb-8">
             We'll review your submission and reach out if it's a fit.
           </p>
           <button
             onClick={resetForm}
-            className="text-white hover:text-gray-400 transition-colors text-sm uppercase tracking-wide"
+            className="text-[#C4C0BC] hover:text-[#E8E4E0] transition-colors text-sm uppercase tracking-wide"
           >
             Submit Another
           </button>
@@ -85,7 +85,7 @@ export default function ApplyPage() {
       <div className="container-form text-center">
         <PageTitle title="SUBMIT" />
 
-        <p className="text-[#888] text-lg mb-12 animate-fade-in">
+        <p className="text-[#6B6865] text-lg mb-12 animate-fade-in">
           We curate emerging DJs across the DMV.<br />
           Submit your mix and tell us your sound.
         </p>
@@ -103,7 +103,7 @@ export default function ApplyPage() {
           <div>
             <label
               htmlFor="djName"
-              className="block text-sm font-medium uppercase tracking-wide text-[#666] mb-3"
+              className="block text-sm font-medium uppercase tracking-wide text-[#6B6865] mb-3"
             >
               DJ Name <span className="text-red-500">*</span>
             </label>
@@ -116,10 +116,10 @@ export default function ApplyPage() {
               onBlur={handleBlur}
               aria-invalid={getFieldError('djName') ? 'true' : 'false'}
               aria-describedby={getFieldError('djName') ? 'djName-error' : undefined}
-              className={`w-full px-4 py-4 bg-[#0A0A0A] border text-white focus:outline-none transition-colors ${
+              className={`w-full px-4 py-4 bg-[#141414] border text-white focus:outline-none transition-colors ${
                 getFieldError('djName')
                   ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#1A1A1A] focus:border-white'
+                  : 'border-[#1C1C1C] focus:border-white'
               }`}
             />
             {getFieldError('djName') && (
@@ -132,7 +132,7 @@ export default function ApplyPage() {
           <div>
             <label
               htmlFor="genre"
-              className="block text-sm font-medium uppercase tracking-wide text-[#666] mb-3"
+              className="block text-sm font-medium uppercase tracking-wide text-[#6B6865] mb-3"
             >
               Genre <span className="text-red-500">*</span>
             </label>
@@ -146,10 +146,10 @@ export default function ApplyPage() {
               placeholder="House, Afrobeats, Amapiano, Techno..."
               aria-invalid={getFieldError('genre') ? 'true' : 'false'}
               aria-describedby={getFieldError('genre') ? 'genre-error' : undefined}
-              className={`w-full px-4 py-4 bg-[#0A0A0A] border text-white placeholder:text-[#444] focus:outline-none transition-colors ${
+              className={`w-full px-4 py-4 bg-[#141414] border text-white placeholder:text-[#444] focus:outline-none transition-colors ${
                 getFieldError('genre')
                   ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#1A1A1A] focus:border-white'
+                  : 'border-[#1C1C1C] focus:border-white'
               }`}
             />
             {getFieldError('genre') && (
@@ -162,7 +162,7 @@ export default function ApplyPage() {
           <div>
             <label
               htmlFor="instagram"
-              className="block text-sm font-medium uppercase tracking-wide text-[#666] mb-3"
+              className="block text-sm font-medium uppercase tracking-wide text-[#6B6865] mb-3"
             >
               Instagram
             </label>
@@ -176,10 +176,10 @@ export default function ApplyPage() {
               placeholder="@handle"
               aria-invalid={getFieldError('instagram') ? 'true' : 'false'}
               aria-describedby={getFieldError('instagram') ? 'instagram-error' : undefined}
-              className={`w-full px-4 py-4 bg-[#0A0A0A] border text-white placeholder:text-[#444] focus:outline-none transition-colors ${
+              className={`w-full px-4 py-4 bg-[#141414] border text-white placeholder:text-[#444] focus:outline-none transition-colors ${
                 getFieldError('instagram')
                   ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#1A1A1A] focus:border-white'
+                  : 'border-[#1C1C1C] focus:border-white'
               }`}
             />
             {getFieldError('instagram') && (
@@ -192,7 +192,7 @@ export default function ApplyPage() {
           <div>
             <label
               htmlFor="mixLink"
-              className="block text-sm font-medium uppercase tracking-wide text-[#666] mb-3"
+              className="block text-sm font-medium uppercase tracking-wide text-[#6B6865] mb-3"
             >
               SoundCloud / Mix Link <span className="text-red-500">*</span>
             </label>
@@ -206,10 +206,10 @@ export default function ApplyPage() {
               placeholder="https://"
               aria-invalid={getFieldError('mixLink') ? 'true' : 'false'}
               aria-describedby={getFieldError('mixLink') ? 'mixLink-error' : undefined}
-              className={`w-full px-4 py-4 bg-[#0A0A0A] border text-white placeholder:text-[#444] focus:outline-none transition-colors ${
+              className={`w-full px-4 py-4 bg-[#141414] border text-white placeholder:text-[#444] focus:outline-none transition-colors ${
                 getFieldError('mixLink')
                   ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#1A1A1A] focus:border-white'
+                  : 'border-[#1C1C1C] focus:border-white'
               }`}
             />
             {getFieldError('mixLink') && (
@@ -222,7 +222,7 @@ export default function ApplyPage() {
           <div>
             <label
               htmlFor="description"
-              className="block text-sm font-medium uppercase tracking-wide text-[#666] mb-3"
+              className="block text-sm font-medium uppercase tracking-wide text-[#6B6865] mb-3"
             >
               Tell Us About Your Sound
             </label>
@@ -235,10 +235,10 @@ export default function ApplyPage() {
               rows={4}
               aria-invalid={getFieldError('description') ? 'true' : 'false'}
               aria-describedby={getFieldError('description') ? 'description-error' : undefined}
-              className={`w-full px-4 py-4 bg-[#0A0A0A] border text-white focus:outline-none transition-colors resize-none ${
+              className={`w-full px-4 py-4 bg-[#141414] border text-white focus:outline-none transition-colors resize-none ${
                 getFieldError('description')
                   ? 'border-red-500 focus:border-red-500'
-                  : 'border-[#1A1A1A] focus:border-white'
+                  : 'border-[#1C1C1C] focus:border-white'
               }`}
             />
             {getFieldError('description') && (
@@ -257,7 +257,7 @@ export default function ApplyPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn-hover w-full py-4 bg-white text-black text-sm font-medium uppercase tracking-wide hover:bg-[#E5E5E5] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+            className="btn-hover w-full py-4 bg-[#E8E4E0] text-[#0A0A0A] text-sm font-medium uppercase tracking-wide hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>

@@ -1,38 +1,17 @@
 import { lazy, Suspense } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Hero from '../components/Hero'
 import SEO from '../components/SEO'
 import { ScrubText, RevealText } from '../components/ui/ScrubText'
 import NewsletterSignup from '../components/ui/NewsletterSignup'
-import { RecommendedSessions } from '../components/sessions'
-import Skeleton from '../components/ui/Skeleton'
-import { getUpcomingEvents } from '../data/events'
-import { SERIES_COLORS } from '../utils/constants'
-import type { Session, Event } from '../types'
+import ProductionStandards from '../components/sections/ProductionStandards'
+import InnerCircle from '../components/sections/InnerCircle'
 
 // Lazy load 3D scene for performance
 const HeroScene = lazy(() => import('../components/3d/HeroScene'))
 
-function formatEventDate(dateStr: string): string {
-  const d = new Date(dateStr)
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-}
-
-function getEventAccent(event: Event): string {
-  const address = event.address.toLowerCase()
-  if (address.includes('dc')) return SERIES_COLORS.studio
-  if (address.includes('md')) return SERIES_COLORS.warehouse
-  if (address.includes('va')) return SERIES_COLORS.rooftop
-  return SERIES_COLORS.studio
-}
-
 export default function HomePage() {
-  const navigate = useNavigate()
-
-  const handleSessionSelect = (session: Session) => {
-    navigate(`/sessions/${session.id}`)
-  }
 
   return (
     <>
@@ -49,34 +28,29 @@ export default function HomePage() {
         <Hero />
       </div>
 
-      {/* Recommended Sessions */}
-      <RecommendedSessions
-        title="Recommended For You"
-        subtitle="Sessions picked just for you based on your preferences"
-        limit={6}
-        onSessionSelect={handleSessionSelect}
-        className="bg-black"
-      />
+      {/* Production Standards */}
+      <ProductionStandards />
 
       <div className="divider" />
 
       {/* Why We Exist */}
       <section className="bg-black section-padding liquid-bg">
-        <div className="container-narrow relative z-10">
+        <div className="container-narrow relative z-10 text-center">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10"
+            className="text-xs tracking-widest text-[#6B6865] uppercase mb-8 md:mb-10"
           >
             Why We Exist
           </motion.h2>
 
-          <div className="space-y-6 text-lg md:text-xl leading-relaxed">
+          <div className="space-y-6 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="text-[#E8E4E0]"
             >
               The DMV has no shortage of talent. What it lacks is a consistent stage.
             </motion.p>
@@ -85,7 +59,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-gray-500"
+              className="text-[#6B6865]"
             >
               We built this platform to give emerging DJs a space to perform with intention — in a curated environment where the music leads.
             </motion.p>
@@ -95,55 +69,22 @@ export default function HomePage() {
 
       <div className="divider" />
 
-      {/* What Makes Us Different */}
-      <section className="bg-black section-padding">
-        <div className="container-narrow">
-          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
-            What Makes Us Different
-          </h2>
-
-          <ul className="space-y-3 text-gray-400">
-            {[
-              'Curated talent only',
-              'Cinematic performance format',
-              'Series-based identity',
-              'Quality over quantity',
-            ].map((item, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-3"
-              >
-                <span className="text-[#8B5CF6]" aria-hidden="true">—</span>
-                <span>{item}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <div className="divider" />
-
       {/* The Series */}
       <section className="bg-black section-padding">
-        <div className="container-narrow">
-          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-10 md:mb-12">
+        <div className="container-narrow text-center">
+          <h2 className="text-xs tracking-widest text-[#6B6865] uppercase mb-10 md:mb-12">
             The Series
           </h2>
 
-          <div className="space-y-12 md:space-y-14">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
             {/* Studio */}
             <motion.div
-              className="group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="w-12 h-px bg-[#D6A756] mb-5 group-hover:w-20 transition-all duration-500" />
+              <div className="w-12 h-px bg-[#E8E4E0] mb-5 mx-auto" />
               <ScrubText
                 as="h3"
                 className="text-xl md:text-2xl tracking-tight mb-2"
@@ -153,20 +94,19 @@ export default function HomePage() {
               >
                 Studio Sessions
               </ScrubText>
-              <p className="text-gray-500">
+              <p className="text-[#6B6865] text-sm">
                 Controlled lighting. Focused sound. Pure performance.
               </p>
             </motion.div>
 
             {/* Warehouse */}
             <motion.div
-              className="group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="w-12 h-px bg-[#8B1E2D] mb-5 group-hover:w-20 transition-all duration-500" />
+              <div className="w-12 h-px bg-[#8B7355] mb-5 mx-auto" />
               <ScrubText
                 as="h3"
                 className="text-xl md:text-2xl tracking-tight mb-2"
@@ -176,20 +116,19 @@ export default function HomePage() {
               >
                 Warehouse Series
               </ScrubText>
-              <p className="text-gray-500">
+              <p className="text-[#6B6865] text-sm">
                 Industrial energy. Dark textures. Harder sounds.
               </p>
             </motion.div>
 
             {/* Rooftop */}
             <motion.div
-              className="group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="w-12 h-px bg-[#7FAFD4] mb-5 group-hover:w-20 transition-all duration-500" />
+              <div className="w-12 h-px bg-[#C4C0BC] mb-5 mx-auto" />
               <ScrubText
                 as="h3"
                 className="text-xl md:text-2xl tracking-tight mb-2"
@@ -199,7 +138,7 @@ export default function HomePage() {
               >
                 Rooftop Sessions
               </ScrubText>
-              <p className="text-gray-500">
+              <p className="text-[#6B6865] text-sm">
                 Golden hour. Open air. Elevated atmosphere.
               </p>
             </motion.div>
@@ -209,71 +148,21 @@ export default function HomePage() {
 
       <div className="divider" />
 
-      {/* Upcoming Events Teaser */}
-      <section className="bg-black section-padding">
-        <div className="container-narrow">
-          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
-            Upcoming Events
-          </h2>
-
-          <div className="space-y-6 mb-8">
-            {getUpcomingEvents().slice(0, 2).map((event, index) => (
-              <motion.div
-                key={event.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4"
-              >
-                <div
-                  className="w-1 h-12 rounded-full flex-shrink-0 mt-1"
-                  style={{ backgroundColor: getEventAccent(event) }}
-                  aria-hidden="true"
-                />
-                <div>
-                  <p className="text-xs text-gray-600 mb-1">
-                    {formatEventDate(event.date)} · {event.time}
-                  </p>
-                  <h3 className="text-lg font-medium text-white mb-1">
-                    {event.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">{event.location}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <Link
-            to="/events"
-            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors group"
-          >
-            View all events
-            <svg
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      {/* Inner Circle Waitlist */}
+      <InnerCircle />
 
       <div className="divider" />
 
-      {/* For the Artists */}
+      {/* For Artists */}
       <section className="bg-black section-padding">
-        <div className="container-narrow">
-          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
+        <div className="container-narrow text-center">
+          <h2 className="text-xs tracking-widest text-[#6B6865] uppercase mb-8 md:mb-10">
             For Artists
           </h2>
 
-          <p className="text-lg mb-6">We provide:</p>
+          <p className="text-lg text-[#E8E4E0] mb-8">We provide:</p>
 
-          <ul className="space-y-3 text-gray-500">
+          <ul className="space-y-3 text-[#6B6865]">
             {[
               'Professional multi-angle video',
               'High-quality audio capture',
@@ -282,14 +171,13 @@ export default function HomePage() {
             ].map((item, i) => (
               <motion.li
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-3"
+                className="text-center"
               >
-                <span className="text-[#EC4899]" aria-hidden="true">—</span>
-                <span>{item}</span>
+                {item}
               </motion.li>
             ))}
           </ul>
@@ -298,36 +186,16 @@ export default function HomePage() {
 
       <div className="divider" />
 
-      {/* Our Vision */}
-      <section className="bg-black section-padding">
-        <div className="container-narrow">
-          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-8 md:mb-10">
-            Vision
-          </h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-lg md:text-xl leading-relaxed text-gray-400"
-          >
-            To build a recognizable performance platform rooted in the DMV that grows into a nationally respected stage for emerging electronic artists.
-          </motion.p>
-        </div>
-      </section>
-
-      <div className="divider" />
-
       {/* Newsletter */}
       <section className="bg-black section-padding">
         <div className="container-narrow text-center">
-          <h2 className="text-xs tracking-widest text-gray-600 uppercase mb-6">
+          <h2 className="text-xs tracking-widest text-[#6B6865] uppercase mb-6">
             Stay Connected
           </h2>
-          <p className="text-xl md:text-2xl font-medium mb-4">
+          <p className="text-xl md:text-2xl font-medium text-[#E8E4E0] mb-4">
             Get updates
           </p>
-          <p className="text-gray-500 mb-8">
+          <p className="text-[#6B6865] mb-8">
             Early access to events, new sessions, and behind-the-scenes content.
           </p>
           <NewsletterSignup />
@@ -337,19 +205,19 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* CTA */}
-      <section className="bg-black section-padding">
+      <section className="section-padding" style={{ backgroundColor: 'var(--charcoal)' }}>
         <div className="container-narrow text-center">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xs tracking-widest text-gray-600 uppercase mb-6"
+            className="text-xs tracking-widest text-[#6B6865] uppercase mb-6"
           >
             Ready?
           </motion.p>
           <RevealText
             as="h2"
-            className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-8 text-gradient-hero"
+            className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6 text-[#E8E4E0]"
           >
             Play First.
           </RevealText>
@@ -358,7 +226,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-500 mb-10"
+            className="text-[#6B6865] mb-10"
           >
             Submit your mix and tell us your sound.
           </motion.p>
@@ -370,7 +238,7 @@ export default function HomePage() {
           >
             <Link
               to="/submit"
-              className="inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors btn-shimmer"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#E8E4E0] text-[#0A0A0A] text-sm font-medium tracking-wide uppercase hover:bg-white transition-colors"
             >
               Submit a Set
             </Link>

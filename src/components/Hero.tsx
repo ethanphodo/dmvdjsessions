@@ -28,7 +28,7 @@ function Hero() {
     >
       {/* Content */}
       <motion.div
-        className="relative container-main py-32 md:py-40 lg:py-48 text-center"
+        className="relative container-main py-32 md:py-40 lg:py-48 text-center flex flex-col items-center justify-center"
         style={{ y: headlineY, opacity: headlineOpacity }}
       >
         {/* Label */}
@@ -36,7 +36,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-xs tracking-widest text-gray-500 uppercase mb-8"
+          className="text-xs tracking-widest text-[#6B6865] uppercase mb-8 text-center w-full"
         >
           DMV DJ Sessions
         </motion.p>
@@ -46,12 +46,12 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl uppercase leading-[0.95] mb-8 tracking-tight"
+          className="text-4xl md:text-6xl lg:text-7xl uppercase leading-[0.95] mb-8 tracking-tight text-center w-full"
           style={{ fontWeight: headlineWeight }}
         >
           Where the next wave
           <br />
-          <span className="text-gray-500">plays first.</span>
+          <span className="text-[#6B6865]">plays first.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -59,7 +59,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-gray-600 mb-12 mx-auto text-center"
+          className="text-base md:text-lg text-[#6B6865] mb-12 text-center w-full"
         >
           Curated DJ sessions from Washington DC, Maryland, and Virginia.
         </motion.p>
@@ -69,15 +69,15 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
         >
           <Link
             to="/submit"
-            className="group inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
+            className="group inline-flex items-center justify-center px-8 py-4 bg-[#E8E4E0] text-[#0A0A0A] text-sm font-medium tracking-wide hover:bg-white transition-colors"
           >
             Submit a Set
             <svg
-              className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+              className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -86,12 +86,12 @@ function Hero() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
-          <Link
-            to="/sessions"
-            className="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-white text-sm hover:border-white/40 transition-colors"
+          <a
+            href="#sessions"
+            className="inline-flex items-center justify-center px-8 py-4 border border-[#6B6865] text-[#C4C0BC] text-sm tracking-wide hover:border-[#E8E4E0] hover:text-[#E8E4E0] transition-colors"
           >
             Watch Sessions
-          </Link>
+          </a>
         </motion.div>
 
       </motion.div>

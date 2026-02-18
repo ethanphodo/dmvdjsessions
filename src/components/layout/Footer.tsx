@@ -2,24 +2,24 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <footer className="bg-black border-t border-[#1A1A1A]" itemScope itemType="https://schema.org/Organization">
+    <footer className="bg-black border-t border-[#1C1C1C]" itemScope itemType="https://schema.org/Organization">
       <div className="container-main py-16 md:py-20 text-center">
         {/* Brand - NAP Info for Local SEO */}
         <Link
           to="/"
-          className="text-white text-sm font-medium uppercase tracking-wide hover:text-[#888] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+          className="text-white text-sm font-medium uppercase tracking-wide hover:text-[#6B6865] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
         >
           <span itemProp="name">DMV DJ Sessions</span>
         </Link>
 
         {/* Tagline */}
-        <p className="text-xs text-[#666] mt-3 uppercase tracking-wide" itemProp="description">
+        <p className="text-xs text-[#6B6865] mt-3 uppercase tracking-wide" itemProp="description">
           Letting the Underground Shine
         </p>
 
         {/* NAP - Location for Local SEO */}
         <address
-          className="text-xs text-[#444] mt-4 not-italic uppercase tracking-wide"
+          className="text-xs text-[#4A4845] mt-4 not-italic uppercase tracking-wide"
           itemProp="address"
           itemScope
           itemType="https://schema.org/PostalAddress"
@@ -28,7 +28,7 @@ function Footer() {
         </address>
         <a
           href="mailto:hello@dmvdjsessions.com"
-          className="text-xs text-[#555] mt-2 inline-block hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+          className="text-xs text-[#4A4845] mt-2 inline-block hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
           itemProp="email"
         >
           hello@dmvdjsessions.com
@@ -40,7 +40,7 @@ function Footer() {
             href="https://instagram.com/dmvdjsessions"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#666] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+            className="text-[#4A4845] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
             aria-label="Follow us on Instagram"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -51,7 +51,7 @@ function Footer() {
             href="https://youtube.com/@dmvdjsessions"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#666] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+            className="text-[#4A4845] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
             aria-label="Subscribe on YouTube"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,12 +62,12 @@ function Footer() {
 
         {/* Copyright & Legal Links */}
         <div className="mt-8 space-y-2">
-          <p className="text-xs text-[#666] uppercase tracking-wide">
+          <p className="text-xs text-[#4A4845] uppercase tracking-wide">
             © {new Date().getFullYear()} DMV DJ Sessions
           </p>
           <Link
             to="/privacy"
-            className="text-xs text-[#555] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21D1D]"
+            className="text-xs text-[#4A4845] hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8E4E0]"
           >
             Privacy Policy
           </Link>
