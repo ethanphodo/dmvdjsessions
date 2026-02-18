@@ -45,7 +45,6 @@ export default function ApplyPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate API submission
     await new Promise(resolve => setTimeout(resolve, 1500))
     setIsSubmitting(false)
     setIsSubmitted(true)
@@ -58,7 +57,7 @@ export default function ApplyPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black pt-28">
+      <div className="min-h-screen bg-black pt-32">
         <SEO
           title="Application Submitted | DMV DJ Sessions"
           description="Your application has been submitted to DMV DJ Sessions."
@@ -68,14 +67,14 @@ export default function ApplyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <p className="text-xs tracking-[0.2em] text-[#666] uppercase mb-4">Application Received</p>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">We've Got Your Submission</h1>
-            <p className="text-[#666] mb-8 max-w-md mx-auto">
+            <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-6">Application Received</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">We've Got Your Submission</h1>
+            <p className="text-white/40 mb-12 max-w-md mx-auto leading-relaxed">
               We review every application personally. If your sound fits the vision, we'll reach out within 2 weeks.
             </p>
             <button
               onClick={resetForm}
-              className="text-[#666] hover:text-white transition-colors text-sm uppercase tracking-[0.1em]"
+              className="text-white/40 hover:text-white transition-colors text-xs uppercase tracking-[0.15em]"
             >
               Submit Another Application
             </button>
@@ -85,30 +84,31 @@ export default function ApplyPage() {
     )
   }
 
-  const inputClasses = "w-full px-4 py-4 bg-[#0A0A0A] border border-[#222] text-white placeholder:text-[#444] focus:outline-none focus:border-white transition-colors"
-  const labelClasses = "block text-xs font-medium uppercase tracking-[0.15em] text-[#666] mb-3"
-  const sectionClasses = "border-t border-[#1A1A1A] pt-12"
+  const inputClasses = "w-full px-5 py-4 bg-black border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors tracking-[0.02em]"
+  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-white/60 mb-4"
 
   return (
-    <div className="min-h-screen bg-black pt-28 pb-24">
+    <div className="min-h-screen bg-black pt-32 pb-32">
       <SEO
         title="Apply | DMV DJ Sessions"
         description="Apply to be featured on DMV DJ Sessions. We provide the cinema. You provide the energy."
       />
 
       {/* Header */}
-      <div className="container-narrow text-center mb-16">
+      <div className="container-narrow text-center mb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-xs tracking-[0.2em] text-[#666] uppercase mb-6">
-            DMV DJ Sessions: Artist Application
+          <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-8">
+            DMV DJ Sessions
           </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
-            The Sound of the DMV, Documented.
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+            The Sound of the DMV,
+            <br />
+            <span className="text-white/40">Documented.</span>
           </h1>
-          <p className="text-[#666] max-w-lg mx-auto leading-relaxed">
+          <p className="text-white/40 max-w-md mx-auto leading-relaxed text-base">
             We provide the cinema. You provide the energy. No professional footage required—just a distinct sonic identity.
           </p>
         </motion.div>
@@ -116,7 +116,7 @@ export default function ApplyPage() {
 
       {/* Form */}
       <div className="container-form">
-        <form onSubmit={handleSubmit} className="space-y-12">
+        <form onSubmit={handleSubmit} className="space-y-24">
 
           {/* Section 1: The Basics */}
           <motion.section
@@ -124,16 +124,16 @@ export default function ApplyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-white mb-8">
-              Section 1: The Basics
-              <span className="text-[#666] font-normal ml-2">(Identity)</span>
-            </h2>
+            <div className="mb-10">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                The Basics
+              </h2>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Identity</p>
+            </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
-                <label htmlFor="legalName" className={labelClasses}>
-                  Legal Name <span className="text-red-500">*</span>
-                </label>
+                <label htmlFor="legalName" className={labelClasses}>Legal Name</label>
                 <input
                   type="text"
                   id="legalName"
@@ -146,9 +146,7 @@ export default function ApplyPage() {
               </div>
 
               <div>
-                <label htmlFor="artistAlias" className={labelClasses}>
-                  Artist Alias <span className="text-red-500">*</span>
-                </label>
+                <label htmlFor="artistAlias" className={labelClasses}>Artist Alias</label>
                 <input
                   type="text"
                   id="artistAlias"
@@ -161,32 +159,28 @@ export default function ApplyPage() {
               </div>
 
               <div>
-                <label htmlFor="primaryGenres" className={labelClasses}>
-                  Primary Genre(s) <span className="text-red-500">*</span>
-                </label>
+                <label htmlFor="primaryGenres" className={labelClasses}>Primary Genre(s)</label>
                 <input
                   type="text"
                   id="primaryGenres"
                   name="primaryGenres"
                   value={formData.primaryGenres}
                   onChange={handleChange}
-                  placeholder="e.g., Deep House, GhettoTech, Minimal, Amapiano"
+                  placeholder="Deep House, GhettoTech, Minimal, Amapiano..."
                   required
                   className={inputClasses}
                 />
               </div>
 
               <div>
-                <label htmlFor="location" className={labelClasses}>
-                  Location <span className="text-red-500">*</span>
-                </label>
+                <label htmlFor="location" className={labelClasses}>Location</label>
                 <input
                   type="text"
                   id="location"
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  placeholder="Must be DMV-based or frequent flyer"
+                  placeholder="DMV-based or frequent flyer"
                   required
                   className={inputClasses}
                 />
@@ -194,7 +188,7 @@ export default function ApplyPage() {
 
               <div>
                 <label htmlFor="socialHandle" className={labelClasses}>
-                  Social Handle (@)
+                  Social Handle <span className="text-white/30 font-normal">(Optional)</span>
                 </label>
                 <input
                   type="text"
@@ -202,32 +196,37 @@ export default function ApplyPage() {
                   name="socialHandle"
                   value={formData.socialHandle}
                   onChange={handleChange}
-                  placeholder="Instagram/TikTok—we're looking for aesthetic potential, not follower count"
+                  placeholder="@username"
                   className={inputClasses}
                 />
+                <p className="mt-3 text-[11px] text-white/30 tracking-wide">
+                  We're looking for aesthetic potential, not follower count.
+                </p>
               </div>
             </div>
           </motion.section>
+
+          {/* Divider */}
+          <div className="h-px bg-white/5" />
 
           {/* Section 2: The Raw Signal */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className={sectionClasses}
           >
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-white mb-8">
-              Section 2: The "Raw Signal"
-              <span className="text-[#666] font-normal ml-2">(Musicality)</span>
-            </h2>
+            <div className="mb-10">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                The Raw Signal
+              </h2>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Musicality</p>
+            </div>
 
-            <div className="space-y-6">
+            <div className="space-y-10">
               <div>
-                <label htmlFor="mixLink" className={labelClasses}>
-                  The Sound <span className="text-red-500">*</span>
-                </label>
-                <p className="text-[#444] text-sm mb-3">
-                  Provide a link to a recent mix (SoundCloud/Mixcloud). Min 30 minutes.
+                <label htmlFor="mixLink" className={labelClasses}>The Sound</label>
+                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                  Link to a recent mix. Minimum 30 minutes.
                 </p>
                 <input
                   type="url"
@@ -235,60 +234,59 @@ export default function ApplyPage() {
                   name="mixLink"
                   value={formData.mixLink}
                   onChange={handleChange}
-                  placeholder="https://soundcloud.com/..."
+                  placeholder="soundcloud.com/... or mixcloud.com/..."
                   required
                   className={inputClasses}
                 />
               </div>
 
-              <div className="p-6 border border-[#222] bg-[#0A0A0A]">
+              <div>
                 <label className={labelClasses}>
-                  The "Vibe Check" (Phone Video)
+                  The Vibe Check <span className="text-white/30 font-normal">(Optional)</span>
                 </label>
-                <p className="text-[#666] text-sm mb-4 leading-relaxed">
-                  Upload a 2-3 minute video of you behind the decks. This can be filmed on a phone in your bedroom or at a basement party.
+                <p className="text-white/30 text-sm mb-6 leading-relaxed">
+                  2-3 minute video of you behind the decks. Phone quality is fine—we're watching your hands, not your camera.
                 </p>
-                <p className="text-[#444] text-xs mb-4 italic">
-                  What we look for: We aren't looking for lighting or camera quality; we are looking for physical presence, hand technique, and track selection.
-                </p>
-                <div className="border-2 border-dashed border-[#333] p-8 text-center hover:border-[#444] transition-colors cursor-pointer">
+                <div className="border border-dashed border-white/10 p-10 text-center hover:border-white/20 transition-colors cursor-pointer group">
                   <input
                     type="file"
                     accept="video/*"
                     className="hidden"
                     id="vibeCheckVideo"
                   />
-                  <label htmlFor="vibeCheckVideo" className="cursor-pointer">
-                    <svg className="w-8 h-8 mx-auto mb-3 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <label htmlFor="vibeCheckVideo" className="cursor-pointer block">
+                    <svg className="w-6 h-6 mx-auto mb-4 text-white/20 group-hover:text-white/40 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
-                    <p className="text-[#666] text-sm">Click to upload or drag and drop</p>
-                    <p className="text-[#444] text-xs mt-1">Max 500MB</p>
+                    <p className="text-white/30 text-sm group-hover:text-white/50 transition-colors">Drop file or click to upload</p>
+                    <p className="text-white/20 text-xs mt-2">Max 500MB</p>
                   </label>
                 </div>
               </div>
             </div>
           </motion.section>
 
+          {/* Divider */}
+          <div className="h-px bg-white/5" />
+
           {/* Section 3: The Curation */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className={sectionClasses}
           >
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-white mb-8">
-              Section 3: The Curation
-              <span className="text-[#666] font-normal ml-2">(Intentionality)</span>
-            </h2>
+            <div className="mb-10">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                The Curation
+              </h2>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Intentionality</p>
+            </div>
 
-            <div className="space-y-6">
+            <div className="space-y-10">
               <div>
-                <label htmlFor="openingTrack" className={labelClasses}>
-                  The "Opening Statement" <span className="text-red-500">*</span>
-                </label>
-                <p className="text-[#444] text-sm mb-3">
-                  If you had the first 10 minutes of a 4 AM warehouse set, what is the first track you drop?
+                <label htmlFor="openingTrack" className={labelClasses}>The Opening Statement</label>
+                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                  First 10 minutes of a 4 AM warehouse set. What track do you drop?
                 </p>
                 <input
                   type="text"
@@ -296,18 +294,16 @@ export default function ApplyPage() {
                   name="openingTrack"
                   value={formData.openingTrack}
                   onChange={handleChange}
-                  placeholder="Artist - Track Name"
+                  placeholder="Artist — Track Name"
                   required
                   className={inputClasses}
                 />
               </div>
 
               <div>
-                <label htmlFor="theStory" className={labelClasses}>
-                  The Story <span className="text-red-500">*</span>
-                </label>
-                <p className="text-[#444] text-sm mb-3">
-                  In 2 sentences, what "feeling" are you trying to leave the crowd with?
+                <label htmlFor="theStory" className={labelClasses}>The Story</label>
+                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                  In two sentences, what feeling are you leaving the crowd with?
                 </p>
                 <textarea
                   id="theStory"
@@ -315,7 +311,7 @@ export default function ApplyPage() {
                   value={formData.theStory}
                   onChange={handleChange}
                   rows={3}
-                  placeholder='e.g., "Industrial grit mixed with soulful vocals" or "High-speed hypnotic energy"'
+                  placeholder="Industrial grit with soulful vocals... High-speed hypnotic energy..."
                   required
                   className={`${inputClasses} resize-none`}
                 />
@@ -323,25 +319,29 @@ export default function ApplyPage() {
             </div>
           </motion.section>
 
+          {/* Divider */}
+          <div className="h-px bg-white/5" />
+
           {/* Section 4: The Ecosystem */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className={sectionClasses}
           >
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-white mb-8">
-              Section 4: The Ecosystem
-              <span className="text-[#666] font-normal ml-2">(Vouching)</span>
-            </h2>
+            <div className="mb-10">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                The Ecosystem
+              </h2>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Vouching</p>
+            </div>
 
-            <div className="space-y-6">
+            <div className="space-y-10">
               <div>
                 <label htmlFor="innerCircle" className={labelClasses}>
-                  The Inner Circle
+                  The Inner Circle <span className="text-white/30 font-normal">(Optional)</span>
                 </label>
-                <p className="text-[#444] text-sm mb-3">
-                  List 2-3 local DJs, dancers, or creators who can vouch for your energy in a room.
+                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                  2-3 local DJs, dancers, or creators who can vouch for your energy.
                 </p>
                 <textarea
                   id="innerCircle"
@@ -349,19 +349,17 @@ export default function ApplyPage() {
                   value={formData.innerCircle}
                   onChange={handleChange}
                   rows={3}
-                  placeholder="Names and their roles/handles"
+                  placeholder="Names and handles..."
                   className={`${inputClasses} resize-none`}
                 />
               </div>
 
               <div>
-                <label className={labelClasses}>
-                  The Crowd <span className="text-red-500">*</span>
-                </label>
-                <p className="text-[#444] text-sm mb-4">
-                  Can you bring 5-10 people who embody the "Dancers &gt; Talkers" rule to fill your booth?
+                <label className={labelClasses}>The Crowd</label>
+                <p className="text-white/30 text-sm mb-6 leading-relaxed">
+                  Can you bring 5-10 people who embody "Dancers &gt; Talkers"?
                 </p>
-                <div className="flex gap-4">
+                <div className="flex gap-6">
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <input
                       type="radio"
@@ -372,15 +370,17 @@ export default function ApplyPage() {
                       required
                       className="sr-only"
                     />
-                    <span className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-colors ${
-                      formData.canBringCrowd === 'yes' ? 'border-white' : 'border-[#333] group-hover:border-[#444]'
+                    <span className={`w-4 h-4 border rounded-full flex items-center justify-center transition-all ${
+                      formData.canBringCrowd === 'yes'
+                        ? 'border-white'
+                        : 'border-white/20 group-hover:border-white/40'
                     }`}>
                       {formData.canBringCrowd === 'yes' && (
-                        <span className="w-2.5 h-2.5 bg-white rounded-full" />
+                        <span className="w-2 h-2 bg-white rounded-full" />
                       )}
                     </span>
-                    <span className={`text-sm uppercase tracking-[0.1em] transition-colors ${
-                      formData.canBringCrowd === 'yes' ? 'text-white' : 'text-[#666] group-hover:text-white'
+                    <span className={`text-sm tracking-[0.05em] transition-colors ${
+                      formData.canBringCrowd === 'yes' ? 'text-white' : 'text-white/40 group-hover:text-white/60'
                     }`}>
                       Yes
                     </span>
@@ -394,15 +394,17 @@ export default function ApplyPage() {
                       onChange={handleChange}
                       className="sr-only"
                     />
-                    <span className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-colors ${
-                      formData.canBringCrowd === 'no' ? 'border-white' : 'border-[#333] group-hover:border-[#444]'
+                    <span className={`w-4 h-4 border rounded-full flex items-center justify-center transition-all ${
+                      formData.canBringCrowd === 'no'
+                        ? 'border-white'
+                        : 'border-white/20 group-hover:border-white/40'
                     }`}>
                       {formData.canBringCrowd === 'no' && (
-                        <span className="w-2.5 h-2.5 bg-white rounded-full" />
+                        <span className="w-2 h-2 bg-white rounded-full" />
                       )}
                     </span>
-                    <span className={`text-sm uppercase tracking-[0.1em] transition-colors ${
-                      formData.canBringCrowd === 'no' ? 'text-white' : 'text-[#666] group-hover:text-white'
+                    <span className={`text-sm tracking-[0.05em] transition-colors ${
+                      formData.canBringCrowd === 'no' ? 'text-white' : 'text-white/40 group-hover:text-white/60'
                     }`}>
                       No
                     </span>
@@ -422,7 +424,7 @@ export default function ApplyPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 bg-white text-black text-sm font-medium uppercase tracking-[0.1em] hover:bg-[#E8E4E0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+              className="w-full py-5 bg-white text-black text-xs font-medium uppercase tracking-[0.2em] hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3"
             >
               {isSubmitting ? (
                 <>
@@ -442,7 +444,7 @@ export default function ApplyPage() {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     />
                   </svg>
-                  Submitting...
+                  Submitting
                 </>
               ) : (
                 'Submit Application'

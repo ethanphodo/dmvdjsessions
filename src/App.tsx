@@ -53,6 +53,7 @@ function AppContent() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/apply" element={<ApplyPage />} />
             <Route path="/submit" element={<ApplyPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/partners" element={<PartnersPage />} />
