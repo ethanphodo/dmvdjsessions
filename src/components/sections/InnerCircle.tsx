@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 
 const ROLES = [
+  { value: 'dj', label: 'DJ' },
   { value: 'dancer', label: 'Dancer' },
   { value: 'photographer', label: 'Photographer' },
   { value: 'creative', label: 'Creative' },
@@ -14,7 +15,7 @@ export default function InnerCircle() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!email || !role) return
 
@@ -29,23 +30,22 @@ export default function InnerCircle() {
 
   return (
     <section id="inner-circle" className="section-padding" style={{ backgroundColor: 'var(--charcoal)' }}>
-      <div className="container-narrow">
+      <div className="container-narrow text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
         >
-          <p className="text-xs tracking-widest text-[#6B6865] uppercase mb-6">
-            The Inner Circle
+          <p className="text-xs tracking-[0.2em] text-[#666] uppercase mb-6">
+            The Family
           </p>
 
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#E8E4E0] mb-4 tracking-tight">
-            Request an invite
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight">
+            Join the Movement
           </h2>
 
-          <p className="text-[#6B6865] mb-8 max-w-lg mx-auto leading-relaxed">
-            Our sessions are invite-only. Dancers, photographers, and creatives—request access to be in the room.
+          <p className="text-[#666] mb-10 max-w-md leading-relaxed">
+            DJs, dancers, photographers, creatives, music lovers — everyone's welcome. Sign up to stay in the loop.
           </p>
 
           {isSubmitted ? (
@@ -54,26 +54,26 @@ export default function InnerCircle() {
               animate={{ opacity: 1 }}
               className="text-center"
             >
-              <p className="text-[#E8E4E0] mb-2">Request received.</p>
-              <p className="text-[#6B6865] text-sm">We'll reach out when there's a session that fits.</p>
+              <p className="text-white mb-2">You're in.</p>
+              <p className="text-[#666] text-sm">We'll keep you posted on upcoming sessions and events.</p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="w-full sm:w-auto sm:min-w-[200px] px-4 py-3 bg-[#0A0A0A] border border-[#333] text-white text-sm placeholder:text-[#6B6865] focus:outline-none focus:border-[#E8E4E0] transition-colors"
+                className="w-full sm:w-auto sm:min-w-[200px] px-4 py-3 bg-black border border-[#333] text-white text-sm placeholder:text-[#666] focus:outline-none focus:border-white transition-colors text-center sm:text-left"
               />
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 required
-                className="w-full sm:w-auto px-4 py-3 bg-[#0A0A0A] border border-[#333] text-white text-sm focus:outline-none focus:border-[#E8E4E0] transition-colors appearance-none sm:min-w-[140px]"
+                className="w-full sm:w-auto px-4 py-3 pr-10 bg-black border border-[#333] text-white text-sm focus:outline-none focus:border-white transition-colors appearance-none sm:min-w-[140px] text-center sm:text-left"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B6865'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'right 10px center',
                   backgroundSize: '14px',
@@ -87,9 +87,9 @@ export default function InnerCircle() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto px-6 py-3 bg-[#E8E4E0] text-[#0A0A0A] text-sm font-medium uppercase tracking-wide hover:bg-white disabled:opacity-50 transition-colors whitespace-nowrap"
+                className="w-full sm:w-auto px-6 py-3 bg-white text-black text-sm font-medium uppercase tracking-[0.1em] hover:bg-[#E8E4E0] disabled:opacity-50 transition-colors whitespace-nowrap"
               >
-                {isSubmitting ? '...' : 'Request Access'}
+                {isSubmitting ? '...' : 'Join Us'}
               </button>
             </form>
           )}
