@@ -67,14 +67,14 @@ export default function ApplyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-6">Application Received</p>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">We've Got Your Submission</h1>
-            <p className="text-white/40 mb-12 max-w-md mx-auto leading-relaxed">
+            <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-6">Application Received</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#F2F0ED] mb-8 tracking-tight">We've Got Your Submission</h1>
+            <p className="text-[#999591]/80 mb-12 max-w-md mx-auto leading-relaxed">
               We review every application personally. If your sound fits the vision, we'll reach out within 2 weeks.
             </p>
             <button
               onClick={resetForm}
-              className="text-white/40 hover:text-white transition-colors text-xs uppercase tracking-[0.15em]"
+              className="text-[#999591]/80 hover:text-[#F2F0ED] transition-colors text-xs uppercase tracking-[0.15em]"
             >
               Submit Another Application
             </button>
@@ -84,11 +84,11 @@ export default function ApplyPage() {
     )
   }
 
-  const inputClasses = "w-full px-5 py-4 bg-black border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors tracking-[0.02em]"
-  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-white/60 mb-4"
+  const inputClasses = "w-full px-5 py-4 bg-[#121212] border border-[#222] text-[#F2F0ED] placeholder:text-[#999591]/50 focus:outline-none focus:border-[#F2F0ED] transition-colors tracking-[0.02em]"
+  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-4"
 
   return (
-    <div className="min-h-screen bg-black pt-32 pb-32">
+    <div className="min-h-screen pt-32 pb-32" style={{ backgroundColor: '#050505' }}>
       <SEO
         title="Apply | DMV DJ Sessions"
         description="Apply to be featured on DMV DJ Sessions. We provide the cinema. You provide the energy."
@@ -100,15 +100,15 @@ export default function ApplyPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-8">
+          <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-8">
             DMV DJ Sessions
           </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F2F0ED] mb-6 tracking-tight leading-tight">
             The Sound of the DMV,
             <br />
-            <span className="text-white/40">Documented.</span>
+            <span className="text-[#999591]/80">Documented.</span>
           </h1>
-          <p className="text-white/40 max-w-md mx-auto leading-relaxed text-base">
+          <p className="text-[#999591]/80 max-w-md mx-auto leading-relaxed text-base">
             We provide the cinema. You provide the energy. No professional footage required—just a distinct sonic identity.
           </p>
         </motion.div>
@@ -125,10 +125,10 @@ export default function ApplyPage() {
             transition={{ delay: 0.1 }}
           >
             <div className="mb-10">
-              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                 The Basics
               </h2>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Identity</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">Identity</p>
             </div>
 
             <div className="space-y-8">
@@ -188,7 +188,7 @@ export default function ApplyPage() {
 
               <div>
                 <label htmlFor="socialHandle" className={labelClasses}>
-                  Social Handle <span className="text-white/30 font-normal">(Optional)</span>
+                  Social Handle <span className="text-[#999591]/60 font-normal">(Optional)</span>
                 </label>
                 <input
                   type="text"
@@ -199,7 +199,7 @@ export default function ApplyPage() {
                   placeholder="@username"
                   className={inputClasses}
                 />
-                <p className="mt-3 text-[11px] text-white/30 tracking-wide">
+                <p className="mt-3 text-[11px] text-[#999591]/60 tracking-wide">
                   We're looking for aesthetic potential, not follower count.
                 </p>
               </div>
@@ -207,7 +207,7 @@ export default function ApplyPage() {
           </motion.section>
 
           {/* Divider */}
-          <div className="h-px bg-white/5" />
+          <div className="h-px bg-[#222]" />
 
           {/* Section 2: The Raw Signal */}
           <motion.section
@@ -216,16 +216,16 @@ export default function ApplyPage() {
             transition={{ delay: 0.2 }}
           >
             <div className="mb-10">
-              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                 The Raw Signal
               </h2>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Musicality</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">Musicality</p>
             </div>
 
             <div className="space-y-10">
               <div>
                 <label htmlFor="mixLink" className={labelClasses}>The Sound</label>
-                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-4 leading-relaxed">
                   Link to a recent mix. Minimum 30 minutes.
                 </p>
                 <input
@@ -242,12 +242,12 @@ export default function ApplyPage() {
 
               <div>
                 <label className={labelClasses}>
-                  The Vibe Check <span className="text-white/30 font-normal">(Optional)</span>
+                  The Vibe Check <span className="text-[#999591]/60 font-normal">(Optional)</span>
                 </label>
-                <p className="text-white/30 text-sm mb-6 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-6 leading-relaxed">
                   2-3 minute video of you behind the decks. Phone quality is fine—we're watching your hands, not your camera.
                 </p>
-                <div className="border border-dashed border-white/10 p-10 text-center hover:border-white/20 transition-colors cursor-pointer group">
+                <div className="border border-dashed border-[#222] p-10 text-center hover:border-[#333] transition-colors cursor-pointer group">
                   <input
                     type="file"
                     accept="video/*"
@@ -255,11 +255,11 @@ export default function ApplyPage() {
                     id="vibeCheckVideo"
                   />
                   <label htmlFor="vibeCheckVideo" className="cursor-pointer block">
-                    <svg className="w-6 h-6 mx-auto mb-4 text-white/20 group-hover:text-white/40 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 mx-auto mb-4 text-[#999591]/40 group-hover:text-[#999591]/80 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
-                    <p className="text-white/30 text-sm group-hover:text-white/50 transition-colors">Drop file or click to upload</p>
-                    <p className="text-white/20 text-xs mt-2">Max 500MB</p>
+                    <p className="text-[#999591]/60 text-sm group-hover:text-[#999591] transition-colors">Drop file or click to upload</p>
+                    <p className="text-[#999591]/40 text-xs mt-2">Max 500MB</p>
                   </label>
                 </div>
               </div>
@@ -267,7 +267,7 @@ export default function ApplyPage() {
           </motion.section>
 
           {/* Divider */}
-          <div className="h-px bg-white/5" />
+          <div className="h-px bg-[#222]" />
 
           {/* Section 3: The Curation */}
           <motion.section
@@ -276,16 +276,16 @@ export default function ApplyPage() {
             transition={{ delay: 0.3 }}
           >
             <div className="mb-10">
-              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                 The Curation
               </h2>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Intentionality</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">Intentionality</p>
             </div>
 
             <div className="space-y-10">
               <div>
                 <label htmlFor="openingTrack" className={labelClasses}>The Opening Statement</label>
-                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-4 leading-relaxed">
                   First 10 minutes of a 4 AM warehouse set. What track do you drop?
                 </p>
                 <input
@@ -302,7 +302,7 @@ export default function ApplyPage() {
 
               <div>
                 <label htmlFor="theStory" className={labelClasses}>The Story</label>
-                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-4 leading-relaxed">
                   In two sentences, what feeling are you leaving the crowd with?
                 </p>
                 <textarea
@@ -320,7 +320,7 @@ export default function ApplyPage() {
           </motion.section>
 
           {/* Divider */}
-          <div className="h-px bg-white/5" />
+          <div className="h-px bg-[#222]" />
 
           {/* Section 4: The Ecosystem */}
           <motion.section
@@ -329,18 +329,18 @@ export default function ApplyPage() {
             transition={{ delay: 0.4 }}
           >
             <div className="mb-10">
-              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+              <h2 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                 The Ecosystem
               </h2>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Vouching</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">Vouching</p>
             </div>
 
             <div className="space-y-10">
               <div>
                 <label htmlFor="innerCircle" className={labelClasses}>
-                  The Inner Circle <span className="text-white/30 font-normal">(Optional)</span>
+                  The Inner Circle <span className="text-[#999591]/60 font-normal">(Optional)</span>
                 </label>
-                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-4 leading-relaxed">
                   2-3 local DJs, dancers, or creators who can vouch for your energy.
                 </p>
                 <textarea
@@ -356,7 +356,7 @@ export default function ApplyPage() {
 
               <div>
                 <label className={labelClasses}>The Crowd</label>
-                <p className="text-white/30 text-sm mb-6 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-6 leading-relaxed">
                   Can you bring 5-10 people who embody "Dancers &gt; Talkers"?
                 </p>
                 <div className="flex gap-6">
@@ -373,14 +373,14 @@ export default function ApplyPage() {
                     <span className={`w-4 h-4 border rounded-full flex items-center justify-center transition-all ${
                       formData.canBringCrowd === 'yes'
                         ? 'border-white'
-                        : 'border-white/20 group-hover:border-white/40'
+                        : 'border-[#333] group-hover:border-white/40'
                     }`}>
                       {formData.canBringCrowd === 'yes' && (
                         <span className="w-2 h-2 bg-white rounded-full" />
                       )}
                     </span>
                     <span className={`text-sm tracking-[0.05em] transition-colors ${
-                      formData.canBringCrowd === 'yes' ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                      formData.canBringCrowd === 'yes' ? 'text-[#F2F0ED]' : 'text-[#999591]/80 group-hover:text-[#F2F0ED]/60'
                     }`}>
                       Yes
                     </span>
@@ -397,14 +397,14 @@ export default function ApplyPage() {
                     <span className={`w-4 h-4 border rounded-full flex items-center justify-center transition-all ${
                       formData.canBringCrowd === 'no'
                         ? 'border-white'
-                        : 'border-white/20 group-hover:border-white/40'
+                        : 'border-[#333] group-hover:border-white/40'
                     }`}>
                       {formData.canBringCrowd === 'no' && (
                         <span className="w-2 h-2 bg-white rounded-full" />
                       )}
                     </span>
                     <span className={`text-sm tracking-[0.05em] transition-colors ${
-                      formData.canBringCrowd === 'no' ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                      formData.canBringCrowd === 'no' ? 'text-[#F2F0ED]' : 'text-[#999591]/80 group-hover:text-[#F2F0ED]/60'
                     }`}>
                       No
                     </span>
@@ -424,7 +424,8 @@ export default function ApplyPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-5 bg-white text-black text-xs font-medium uppercase tracking-[0.2em] hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3"
+              className="w-full py-5 rounded-full text-[#050505] text-xs font-medium uppercase tracking-[0.2em] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3"
+              style={{ background: 'linear-gradient(135deg, #A68B6A 0%, #8B7355 100%)' }}
             >
               {isSubmitting ? (
                 <>

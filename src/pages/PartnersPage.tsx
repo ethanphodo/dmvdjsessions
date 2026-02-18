@@ -53,12 +53,12 @@ export default function PartnersPage() {
     setIsSubmitted(false)
   }
 
-  const inputClasses = "w-full px-5 py-4 bg-black border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors tracking-[0.02em]"
-  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-white/60 mb-4"
+  const inputClasses = "w-full px-5 py-4 bg-[#121212] border border-[#222] text-[#F2F0ED] placeholder:text-[#999591]/50 focus:outline-none focus:border-[#F2F0ED] transition-colors tracking-[0.02em]"
+  const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-4"
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black pt-32">
+      <div className="min-h-screen bg-[#050505] pt-32">
         <SEO
           title="Inquiry Submitted | DMV DJ Sessions"
           description="Your partnership inquiry has been submitted."
@@ -68,14 +68,14 @@ export default function PartnersPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-6">Inquiry Received</p>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">We'll Be In Touch</h1>
-            <p className="text-white/40 mb-12 max-w-md mx-auto leading-relaxed">
+            <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-6">Inquiry Received</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#F2F0ED] mb-8 tracking-tight">We'll Be In Touch</h1>
+            <p className="text-[#999591]/80 mb-12 max-w-md mx-auto leading-relaxed">
               Our partnerships team will review your inquiry and respond within 3-5 business days.
             </p>
             <button
               onClick={resetForm}
-              className="text-white/40 hover:text-white transition-colors text-xs uppercase tracking-[0.15em]"
+              className="text-[#999591]/80 hover:text-[#F2F0ED] transition-colors text-xs uppercase tracking-[0.15em]"
             >
               Submit Another Inquiry
             </button>
@@ -86,7 +86,7 @@ export default function PartnersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-32 pb-32">
+    <div className="min-h-screen pt-32 pb-32" style={{ backgroundColor: '#050505' }}>
       <SEO
         title="Partners | DMV DJ Sessions"
         description="Partner with DMV DJ Sessions. We work with venues, sponsors, and media partners who share our vision."
@@ -98,13 +98,13 @@ export default function PartnersPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-8">
+          <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-8">
             Partnerships
           </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F2F0ED] mb-6 tracking-tight leading-tight">
             Work With Us
           </h1>
-          <p className="text-white/40 max-w-lg mx-auto leading-relaxed text-base">
+          <p className="text-[#999591]/80 max-w-lg mx-auto leading-relaxed text-base">
             We partner with venues, sponsors, and media who share our vision for showcasing DMV talent.
           </p>
         </motion.div>
@@ -116,72 +116,72 @@ export default function PartnersPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid md:grid-cols-3 gap-px bg-white/5"
+          className="grid md:grid-cols-3 gap-px bg-[#222]"
         >
           {/* Venues */}
-          <div className="bg-black p-10">
-            <p className="text-[10px] tracking-[0.3em] text-white/30 uppercase mb-6">01</p>
-            <h3 className="text-lg font-medium text-white mb-3 tracking-tight">Venues</h3>
-            <p className="text-white/40 text-sm leading-relaxed mb-8">
+          <div className="bg-[#050505] p-10">
+            <p className="text-[10px] tracking-[0.3em] text-[#999591]/60 uppercase mb-6">01</p>
+            <h3 className="text-lg font-medium text-[#F2F0ED] mb-3 tracking-tight">Venues</h3>
+            <p className="text-[#999591]/80 text-sm leading-relaxed mb-8">
               Your space, captured cinematically. Premium content you own.
             </p>
             <div className="space-y-3">
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Professional video featuring your space
               </p>
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Global audience exposure
               </p>
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Recurring session opportunities
               </p>
             </div>
           </div>
 
           {/* Sponsors */}
-          <div className="bg-black p-10">
-            <p className="text-[10px] tracking-[0.3em] text-white/30 uppercase mb-6">02</p>
-            <h3 className="text-lg font-medium text-white mb-3 tracking-tight">Sponsors</h3>
-            <p className="text-white/40 text-sm leading-relaxed mb-8">
+          <div className="bg-[#050505] p-10">
+            <p className="text-[10px] tracking-[0.3em] text-[#999591]/60 uppercase mb-6">02</p>
+            <h3 className="text-lg font-medium text-[#F2F0ED] mb-3 tracking-tight">Sponsors</h3>
+            <p className="text-[#999591]/80 text-sm leading-relaxed mb-8">
               Get in front of the tastemakers shaping the culture.
             </p>
             <div className="space-y-3">
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Brand placement in all content
               </p>
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Logo in video intros/outros
               </p>
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Direct access to DMV music scene
               </p>
             </div>
           </div>
 
           {/* Media */}
-          <div className="bg-black p-10">
-            <p className="text-[10px] tracking-[0.3em] text-white/30 uppercase mb-6">03</p>
-            <h3 className="text-lg font-medium text-white mb-3 tracking-tight">Media</h3>
-            <p className="text-white/40 text-sm leading-relaxed mb-8">
+          <div className="bg-[#050505] p-10">
+            <p className="text-[10px] tracking-[0.3em] text-[#999591]/60 uppercase mb-6">03</p>
+            <h3 className="text-lg font-medium text-[#F2F0ED] mb-3 tracking-tight">Media</h3>
+            <p className="text-[#999591]/80 text-sm leading-relaxed mb-8">
               Tell the story with us. First access to everything.
             </p>
             <div className="space-y-3">
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Exclusive behind-the-scenes
               </p>
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Early session releases
               </p>
-              <p className="text-white/50 text-xs flex items-start gap-3">
-                <span className="text-white/20">+</span>
+              <p className="text-[#999591] text-xs flex items-start gap-3">
+                <span className="text-[#999591]/40">+</span>
                 Co-branded content opportunities
               </p>
             </div>
@@ -190,15 +190,15 @@ export default function PartnersPage() {
       </div>
 
       {/* Form */}
-      <div className="container-form">
+      <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           <div className="text-center mb-16">
-            <p className="text-[10px] tracking-[0.3em] text-white/50 uppercase mb-4">Get Started</p>
-            <h2 className="text-2xl font-bold text-white tracking-tight">Tell Us About Your Partnership</h2>
+            <p className="text-[10px] tracking-[0.3em] text-[#999591] uppercase mb-4">Get Started</p>
+            <h2 className="text-2xl font-bold text-[#F2F0ED] tracking-tight">Tell Us About Your Partnership</h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-20">
@@ -206,10 +206,10 @@ export default function PartnersPage() {
             {/* Company Info */}
             <section>
               <div className="mb-10">
-                <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                   Company Info
                 </h3>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">About Your Organization</p>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">About Your Organization</p>
               </div>
 
               <div className="space-y-8">
@@ -251,7 +251,7 @@ export default function PartnersPage() {
                 </div>
                 <div>
                   <label htmlFor="website" className={labelClasses}>
-                    Website <span className="text-white/30 font-normal">(Optional)</span>
+                    Website <span className="text-[#999591]/60 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="url"
@@ -267,15 +267,15 @@ export default function PartnersPage() {
             </section>
 
             {/* Divider */}
-            <div className="h-px bg-white/5" />
+            <div className="h-px bg-[#222]" />
 
             {/* Contact Info */}
             <section>
               <div className="mb-10">
-                <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                   Contact Info
                 </h3>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">Who Should We Reach</p>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">Who Should We Reach</p>
               </div>
 
               <div className="space-y-8">
@@ -307,7 +307,7 @@ export default function PartnersPage() {
                 </div>
                 <div>
                   <label htmlFor="phone" className={labelClasses}>
-                    Phone <span className="text-white/30 font-normal">(Optional)</span>
+                    Phone <span className="text-[#999591]/60 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="tel"
@@ -323,20 +323,20 @@ export default function PartnersPage() {
             </section>
 
             {/* Divider */}
-            <div className="h-px bg-white/5" />
+            <div className="h-px bg-[#222]" />
 
             {/* Partnership Details */}
             <section>
               <div className="mb-10">
-                <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-white mb-2">
+                <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-[#F2F0ED] mb-2">
                   Partnership Details
                 </h3>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">The Opportunity</p>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#999591]/60">The Opportunity</p>
               </div>
 
               <div>
                 <label htmlFor="message" className={labelClasses}>Tell Us About The Opportunity</label>
-                <p className="text-white/30 text-sm mb-4 leading-relaxed">
+                <p className="text-[#999591]/60 text-sm mb-4 leading-relaxed">
                   What are you looking to achieve? How can we work together?
                 </p>
                 <textarea
@@ -356,7 +356,8 @@ export default function PartnersPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-5 bg-white text-black text-xs font-medium uppercase tracking-[0.2em] hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3"
+                className="w-full py-5 rounded-full text-[#050505] text-xs font-medium uppercase tracking-[0.2em] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3"
+                style={{ background: 'linear-gradient(135deg, #A68B6A 0%, #8B7355 100%)' }}
               >
                 {isSubmitting ? (
                   <>
@@ -375,11 +376,11 @@ export default function PartnersPage() {
 
           {/* Direct Contact */}
           <div className="mt-20 text-center">
-            <div className="h-px bg-white/5 mb-12" />
-            <p className="text-white/30 text-sm mb-4">Prefer to reach out directly?</p>
+            <div className="h-px bg-[#222] mb-12" />
+            <p className="text-[#999591]/60 text-sm mb-4">Prefer to reach out directly?</p>
             <a
               href="mailto:partners@dmvdjsessions.com"
-              className="inline-flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm tracking-[0.05em]"
+              className="inline-flex items-center gap-3 text-[#F2F0ED]/60 hover:text-[#F2F0ED] transition-colors text-sm tracking-[0.05em]"
             >
               partners@dmvdjsessions.com
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

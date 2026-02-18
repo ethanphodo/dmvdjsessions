@@ -15,46 +15,49 @@
   --space-2xl: 4rem;
   --space-3xl: 6rem;
 
-  /* Brand Palette - Industrial, Cinematic, Midnight */
-  --brand-void: #0A0A0A;
-  --brand-charcoal: #141414;
-  --brand-bone: #E8E4E0;
-  --brand-stone: #C4C0BC;
-  --brand-ash: #6B6865;
-  --brand-bronze: #8B7355;
+  /* Brand Palette - Industrial Premiere */
+  --brand-void: #050505;
+  --brand-charcoal: #121212;
+  --brand-edge: #222222;
+  --brand-bone: #F2F0ED;
+  --brand-stone: #999591;
+  --brand-bronze: #A68B6A;
+  --brand-bronze-dark: #8B7355;
 
   /* RGB values for gradients */
-  --black-rgb: 10, 10, 10;
+  --black-rgb: 5, 5, 5;
 
   /* Colors (mapped to brand) */
-  --black: #0A0A0A;
-  --charcoal: #141414;
-  --dark-gray: #1C1C1C;
-  --mid-gray: #6B6865;
-  --light-gray: #C4C0BC;
-  --muted: #6B6865;
+  --black: #050505;
+  --charcoal: #121212;
+  --dark-gray: #222222;
+  --mid-gray: #999591;
+  --light-gray: #F2F0ED;
+  --muted: #999591;
+  --edge: #222222;
 
   /* Series Accents */
-  --studio-amber: #E8E4E0;
-  --warehouse-red: #8B7355;
-  --rooftop-blue: #C4C0BC;
+  --studio-amber: #F2F0ED;
+  --warehouse-red: #A68B6A;
+  --rooftop-blue: #999591;
 
   /* Accent Colors */
-  --color-accent-primary: #E8E4E0;
-  --color-accent-secondary: #8B7355;
-  --color-accent-muted: #6B6865;
+  --color-accent-primary: #F2F0ED;
+  --color-accent-secondary: #A68B6A;
+  --color-accent-muted: #999591;
 
   /* Gradients - Cinematic */
-  --gradient-hero: linear-gradient(135deg, #E8E4E0, #C4C0BC);
-  --gradient-accent: linear-gradient(135deg, #8B7355, #6B6865);
-  --gradient-warm: linear-gradient(135deg, #E8E4E0, #8B7355);
-  --gradient-subtle: linear-gradient(135deg, rgba(232, 228, 224, 0.08), rgba(139, 115, 85, 0.04));
+  --gradient-hero: linear-gradient(135deg, #F2F0ED, #999591);
+  --gradient-accent: linear-gradient(135deg, #A68B6A, #8B7355);
+  --gradient-warm: linear-gradient(135deg, #F2F0ED, #A68B6A);
+  --gradient-bronze: linear-gradient(135deg, #A68B6A 0%, #8B7355 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(242, 240, 237, 0.08), rgba(166, 139, 106, 0.04));
 
   /* Text */
-  --text-primary: #E8E4E0;
-  --text-secondary: #C4C0BC;
-  --text-muted: #6B6865;
-  --text-subtle: #4A4845;
+  --text-primary: #F2F0ED;
+  --text-secondary: #999591;
+  --text-muted: #999591;
+  --text-subtle: #666663;
 }
 
 /* ========================================
