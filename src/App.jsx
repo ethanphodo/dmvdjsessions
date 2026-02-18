@@ -11,6 +11,8 @@ import EventsPage from './pages/EventsPage'
 import ApplyPage from './pages/ApplyPage'
 import AboutPage from './pages/AboutPage'
 import PartnersPage from './pages/PartnersPage'
+import DJProfilePage from './pages/DJProfilePage'
+import SessionDetailPage from './pages/SessionDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/sessions" element={<WatchPage />} />
+              <Route path="/sessions/:id" element={<SessionDetailPage />} />
+              <Route path="/dj/:slug" element={<DJProfilePage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/submit" element={<ApplyPage />} />
               <Route path="/about" element={<AboutPage />} />

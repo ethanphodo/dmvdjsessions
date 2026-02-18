@@ -136,3 +136,50 @@ export const getVideosByGenre = (genre) => videos.filter((video) => video.genres
 export const getVideosByMood = (mood) => videos.filter((video) => video.mood.includes(mood))
 export const getLatestVideos = (count = 4) =>
   [...videos].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, count)
+
+// Get computed statistics from video data
+export const getStats = () => {
+  const totalMinutes = videos.reduce((acc, video) => {
+    const [mins, secs] = video.duration.split(':').map(Number)
+    return acc + mins + (secs || 0) / 60
+  }, 0)
+
+  const uniqueDJs = new Set(videos.map((video) => video.djId))
+  const uniqueSeries = new Set(videos.map((video) => video.series))
+
+  return {
+    sessions: videos.length,
+    totalMinutes: Math.round(totalMinutes),
+    totalHours: Math.round(totalMinutes / 60),
+    artistCount: uniqueDJs.size,
+    seriesCount: uniqueSeries.size,
+  }
+}
+
+// Get related videos by DJ, series, or genre
+export const getRelatedVideos = (videoId, limit = 4) => {
+  const video = getVideoById(videoId)
+  if (!video) return []
+
+  const related = videos
+    .filter((v) => v.id !== videoId)
+    .map((v) => {
+      let score = 0
+      // Same DJ gets highest priority
+      if (v.djId === video.djId) score += 3
+      // Same series
+      if (v.series === video.series) score += 2
+      // Shared genres
+      const sharedGenres = v.genres.filter((g) => video.genres.includes(g))
+      score += sharedGenres.length
+      // Shared moods
+      const sharedMoods = v.mood.filter((m) => video.mood.includes(m))
+      score += sharedMoods.length * 0.5
+      return { ...v, score }
+    })
+    .filter((v) => v.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+
+  return related.map(({ score, ...v }) => v)
+}

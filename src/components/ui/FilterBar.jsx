@@ -14,8 +14,8 @@ export default function FilterBar({
 
   return (
     <div className={`${className}`}>
-      {/* Filter Controls - Responsive Grid */}
-      <div className="space-y-4">
+      {/* Filter Controls - Centered Layout */}
+      <div className="space-y-4 max-w-3xl mx-auto">
         {/* Search - Full Width on Mobile */}
         <div className="w-full">
           <input
@@ -27,7 +27,7 @@ export default function FilterBar({
           />
         </div>
 
-        {/* Filter Dropdowns - Grid on Mobile */}
+        {/* Filter Dropdowns - Centered Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {/* Genre */}
           <select
@@ -81,8 +81,8 @@ export default function FilterBar({
           )}
         </div>
 
-        {/* Results Count */}
-        <div className="flex items-center justify-between pt-2">
+        {/* Results Count - Centered */}
+        <div className="flex items-center justify-center gap-4 pt-2">
           <span className="text-xs font-mono text-[#666] uppercase tracking-wide">
             Showing {resultCount} of {totalCount} sessions
           </span>

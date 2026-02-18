@@ -1,10 +1,13 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /**
  * Video Modal for playing YouTube/Vimeo videos
  */
 function VideoModal({ isOpen, onClose, video }) {
+  const closeButtonRef = useRef(null)
+  const previousActiveElement = useRef(null)
+
   // Close on escape key
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') onClose()
@@ -12,13 +15,26 @@ function VideoModal({ isOpen, onClose, video }) {
 
   useEffect(() => {
     if (isOpen) {
+      // Store the previously focused element
+      previousActiveElement.current = document.activeElement
+
       document.addEventListener('keydown', handleKeyDown)
       document.body.style.overflow = 'hidden'
+
+      // Focus the close button when modal opens
+      setTimeout(() => {
+        closeButtonRef.current?.focus()
+      }, 100)
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
+
+      // Restore focus to the previously focused element
+      if (previousActiveElement.current && typeof previousActiveElement.current.focus === 'function') {
+        previousActiveElement.current.focus()
+      }
     }
   }, [isOpen, handleKeyDown])
 
@@ -41,6 +57,9 @@ function VideoModal({ isOpen, onClose, video }) {
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
           onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="video-modal-title"
         >
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
@@ -56,6 +75,7 @@ function VideoModal({ isOpen, onClose, video }) {
           >
             {/* Close Button */}
             <button
+              ref={closeButtonRef}
               onClick={onClose}
               className="absolute -top-12 right-0 md:-right-12 md:top-0 p-2 text-white/60 hover:text-white transition-colors"
               aria-label="Close video"
@@ -99,7 +119,10 @@ function VideoModal({ isOpen, onClose, video }) {
                 className="mt-4 flex items-start justify-between gap-4"
               >
                 <div>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-white italic">
+                  <h3
+                    id="video-modal-title"
+                    className="text-xl font-black uppercase tracking-tight text-white italic"
+                  >
                     {video.title}
                   </h3>
                   {video.djName && (

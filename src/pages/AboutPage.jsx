@@ -1,15 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useMemo } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-
-// Live metadata stats
-const PULSE_DATA = {
-  sessions: 72,
-  minutes: 4200,
-  collective: 'DMV Local Collective',
-  established: 2024,
-}
+import { getStats } from '../data/videos'
+import { djs } from '../data/djs'
+import { seriesData } from '../data/series'
 
 // Core pillars
 const PILLARS = [
@@ -57,6 +52,17 @@ const SERIES = [
 
 export default function AboutPage() {
   const heroRef = useRef(null)
+
+  // Compute stats from actual data
+  const stats = useMemo(() => {
+    const videoStats = getStats()
+    return {
+      sessions: videoStats.sessions,
+      hours: videoStats.totalHours,
+      artists: djs.length,
+      series: seriesData.length,
+    }
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -129,7 +135,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-600 text-base md:text-lg max-w-lg mx-auto"
+            className="text-gray-600 text-base md:text-lg max-w-xl mx-auto text-center"
           >
             High-fidelity sessions from Washington DC, Maryland, and Virginia.
           </motion.p>
@@ -156,10 +162,10 @@ export default function AboutPage() {
       <section className="py-12 border-y border-white/5">
         <div className="container-main">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <PulseItem label="Sessions" value={PULSE_DATA.sessions} suffix="+" />
-            <PulseItem label="Hours" value={`${Math.round(PULSE_DATA.minutes / 60)}`} suffix="+" />
-            <PulseItem label="Artists" value="32" suffix="+" />
-            <PulseItem label="Series" value="3" />
+            <PulseItem label="Sessions" value={stats.sessions} suffix="+" />
+            <PulseItem label="Hours" value={stats.hours} suffix="+" />
+            <PulseItem label="Artists" value={stats.artists} suffix="+" />
+            <PulseItem label="Series" value={stats.series} />
           </div>
         </div>
       </section>

@@ -16,14 +16,34 @@ function SessionCard({
 }) {
   const seriesColor = SERIES_COLORS[series] || SERIES_COLORS.studio
 
+  // Build accessible label
+  const ariaLabel = [
+    title,
+    djName && `by ${djName}`,
+    status && `(${status})`,
+    isNew && 'New',
+    isFeatured && 'Featured',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  const handleKeyDown = (e) => {
+    if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault()
+      onClick()
+    }
+  }
+
   return (
     <motion.div
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="relative group cursor-pointer"
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
+      aria-label={onClick ? ariaLabel : undefined}
     >
       {/* Dynamic Glow Background */}
       <div

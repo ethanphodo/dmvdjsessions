@@ -109,19 +109,14 @@ export default function WatchPage() {
           className="mb-12"
         />
 
-        {/* Session Grid - Bento Layout */}
-        <div className="bento-grid pb-16 animate-fade-in">
-          {filteredVideos.map((video, index) => {
+        {/* Session Grid - Uniform Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-16 animate-fade-in">
+          {filteredVideos.map((video) => {
             const isNew = latestVideos.some((v) => v.id === video.id)
             const isFeatured = video.views > 10000
-            // First item is featured (spans 2 columns on desktop)
-            const isFirstFeatured = index === 0 && isFeatured
 
             return (
-              <div
-                key={video.id}
-                className={isFirstFeatured ? 'bento-wide' : ''}
-              >
+              <div key={video.id}>
                 <SessionCard
                   title={video.title}
                   djName={video.djName}

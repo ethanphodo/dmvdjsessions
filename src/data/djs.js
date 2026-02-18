@@ -98,3 +98,6 @@ export const getDJById = (id) => djs.find((dj) => dj.id === id)
 export const getDJBySlug = (slug) => djs.find((dj) => dj.slug === slug)
 export const getDJsByGenre = (genre) => djs.filter((dj) => dj.genres.includes(genre))
 export const getDJsByLocation = (location) => djs.filter((dj) => dj.location === location)
+
+// Get all unique DJs from the djs array
+export const getAllDJs = () => djs
