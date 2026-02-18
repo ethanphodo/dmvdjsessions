@@ -88,14 +88,14 @@ export default function ApplyPage() {
   const labelClasses = "block text-[11px] font-medium uppercase tracking-[0.2em] text-[#999591] mb-4"
 
   return (
-    <div className="min-h-screen pt-32 pb-32" style={{ backgroundColor: '#050505' }}>
+    <div className="min-h-screen pt-40 pb-40" style={{ backgroundColor: '#050505' }}>
       <SEO
         title="Apply | DMV DJ Sessions"
         description="Apply to be featured on DMV DJ Sessions. We provide the cinema. You provide the energy."
       />
 
       {/* Header */}
-      <div className="container-narrow text-center mb-24">
+      <div className="container-narrow text-center mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -419,7 +419,7 @@ export default function ApplyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="pt-8"
+            className="pt-12"
           >
             <button
               type="submit"

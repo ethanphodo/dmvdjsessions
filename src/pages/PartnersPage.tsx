@@ -86,7 +86,7 @@ export default function PartnersPage() {
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-32" style={{ backgroundColor: '#050505' }}>
+    <div className="min-h-screen pt-40 pb-40" style={{ backgroundColor: '#050505' }}>
       <SEO
         title="Partners | DMV DJ Sessions"
         description="Partner with DMV DJ Sessions. We work with venues, sponsors, and media partners who share our vision."
