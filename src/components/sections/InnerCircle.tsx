@@ -44,7 +44,7 @@ export default function InnerCircle() {
             Join the Movement
           </h2>
 
-          <p className="text-[#666] mb-10 max-w-md leading-relaxed">
+          <p className="text-[#666] mb-10 max-w-md mx-auto leading-relaxed">
             DJs, dancers, photographers, creatives, music lovers — everyone's welcome. Sign up to stay in the loop.
           </p>
 
