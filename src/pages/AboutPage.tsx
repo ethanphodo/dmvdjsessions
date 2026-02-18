@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import coverPhoto from '../assets/djsessionscoverphoto.jpg'
 
 export default function AboutPage() {
   return (
@@ -12,26 +13,21 @@ export default function AboutPage() {
 
       {/* Hero Image */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-        {/* Placeholder gradient - replace with actual image */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%)',
-          }}
-        />
-        {/* Overlay gradient */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, #050505 100%)',
-          }}
-        />
-        {/* Stage lights effect */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-32 h-96 bg-gradient-to-b from-green-500/40 to-transparent blur-3xl" />
-          <div className="absolute top-0 right-1/4 w-32 h-96 bg-gradient-to-b from-green-400/30 to-transparent blur-3xl" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-80 bg-gradient-to-b from-white/20 to-transparent blur-2xl" />
+        {/* Cover Photo with B&W filter */}
+        <div className="absolute inset-0">
+          <img
+            src={coverPhoto}
+            alt="DMV DJ Sessions"
+            className="w-full h-full object-cover grayscale"
+          />
         </div>
+        {/* Dark overlay for contrast */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.3) 50%, #050505 100%)',
+          }}
+        />
       </section>
 
       {/* About Content */}
