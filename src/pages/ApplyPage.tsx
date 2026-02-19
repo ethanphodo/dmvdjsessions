@@ -64,9 +64,10 @@ export default function ApplyPage() {
         can_bring_crowd: formData.canBringCrowd,
       })
       setIsSubmitted(true)
-    } catch (error) {
+    } catch (error: any) {
       console.error('Submission error:', error)
-      setSubmitError('Something went wrong. Please try again.')
+      const message = error?.message || error?.toString() || 'Something went wrong. Please try again.'
+      setSubmitError(message)
     } finally {
       setIsSubmitting(false)
     }
@@ -438,6 +439,9 @@ export default function ApplyPage() {
             transition={{ delay: 0.5 }}
             className="pt-12"
           >
+            {submitError && (
+              <p className="text-red-400 text-sm text-center mb-6">{submitError}</p>
+            )}
             <button
               type="submit"
               disabled={isSubmitting}

@@ -84,7 +84,10 @@ export async function submitDJApplication(data: DJApplication) {
       status: 'pending'
     }])
 
-  if (error) throw error
+  if (error) {
+    console.error('Supabase error:', error)
+    throw new Error(error.message || 'Failed to submit application')
+  }
   return { success: true }
 }
 
